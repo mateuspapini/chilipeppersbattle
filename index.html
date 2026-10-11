@@ -1014,7 +1014,6 @@ function renderAlbumPage(id){
       <div class="ap-stats">
         <div class="stat"><b>${a.tr.length}</b><span>${esc(t("st_tracks"))}</span></div>
         <div class="stat"><b>${esc(I.len)}</b><span>${esc(t("f_len"))}</span></div>
-        <div class="stat"><b>${esc(a.g)}</b><span>${esc(t("r_guitar"))}</span></div>
         <div class="stat"><b>${esc(I.prod.join(", "))}</b><span>${esc(t("f_prod"))}</span></div>
       </div>
       <div class="tbl-wrap"><table class="tracks"><thead><tr><th class="r">#</th><th>${esc(t("c_song"))}</th><th class="r">${esc(t("c_len"))}</th><th class="r">${esc(t("c_listen"))}</th></tr></thead><tbody>${rows}</tbody></table></div>
@@ -1059,7 +1058,7 @@ function renderHome(){
       <button class="mode" data-go="songs"><div class="eyebrow">${esc(t("m_song_eb"))}</div><h3>${esc(t("m_song_h"))}</h3><p>${esc(t("m_song_p"))}</p><span class="go">${esc(t("start"))}</span></button>
     </div>
     <div class="section-title"><h2>${esc(t("disco_h"))}</h2><span class="eyebrow">${esc(t("disco_eb"))}</span></div>
-    <div class="grid">${ALBUMS.map(a=>`<button class="album-mini click" data-open="${a.id}" aria-label="${esc(t("open_album"))}: ${esc(a.t)}">${tile(a)}<span class="name">${esc(a.t)}</span><span class="meta">${a.y} · ${esc(t("tracks",a.tr.length))} · ${esc(a.g)}</span></button>`).join("")}</div>
+    <div class="grid">${ALBUMS.map(a=>`<button class="album-mini click" data-open="${a.id}" aria-label="${esc(t("open_album"))}: ${esc(a.t)}">${tile(a)}<span class="name">${esc(a.t)}</span><span class="meta">${a.y} · ${esc(t("tracks",a.tr.length))}</span></button>`).join("")}</div>
     <div class="section-title"><h2>${esc(t("extras_h"))}</h2><span class="eyebrow">${esc(t("extras_eb"))}</span></div>
     <div class="grid">${EXTRAS.map(x=>`<button class="album-mini click" data-open="${x.id}" aria-label="${esc(t("open_album"))}: ${esc(groupName(x))}">${tile(x)}<span class="name">${esc(x.par && !x.t ? x.pname : groupName(x))}</span><span class="meta">${esc(t("tracks",x.items.length))}${x.par?" · "+esc(t("bside")):""}</span></button>`).join("")}</div>
     ${USE_DEEZER?"":`<p class="note" style="margin-top:28px">${esc(t("proto"))}</p>`}
@@ -1106,7 +1105,7 @@ function battleHTML(r, kind, title, eyebrow){
   const L = r.side ? b : a, R = r.side ? a : b;
   const est = estimate(r), pct = Math.round(100*r.comps/((r.comps+est)||1));
   const card = id => kind==="album"
-    ? `<div class="fighter" data-pick="${id}">${tile(AL[id],"lg")}<div><h3>${esc(AL[id].t)}</h3><div class="sub">${AL[id].y} · ${esc(AL[id].g)}</div><div style="margin-top:10px">${wikiLink(AL[id].la)}</div></div>${listen(AL[id].t)}<button class="pick" data-pick="${id}">${esc(t("pick_a"))}</button></div>`
+    ? `<div class="fighter" data-pick="${id}">${tile(AL[id],"lg")}<div><h3>${esc(AL[id].t)}</h3><div class="sub">${AL[id].y}</div><div style="margin-top:10px">${wikiLink(AL[id].la)}</div></div>${listen(AL[id].t)}<button class="pick" data-pick="${id}">${esc(t("pick_a"))}</button></div>`
     : `<div class="fighter song-fighter" data-pick="${id}"><div class="row">${tile(AL[SG[id].a])}<div style="min-width:0"><h3>${esc(SG[id].t)}</h3><div class="sub" style="margin-top:4px">${esc(groupName(AL[SG[id].a]))} · ${AL[SG[id].a].y}</div>${songNote(SG[id])}</div></div>${listenSong(SG[id])}<button class="pick" data-pick="${id}">${esc(t("pick_s"))}</button></div>`;
   return `<div class="stage">
     <div class="stage-head"><div><div class="eyebrow">${esc(eyebrow)}</div><h2>${esc(title)}</h2></div>
@@ -1138,7 +1137,7 @@ function setlistHTML(ids, kind, limit, movable=true){
   return `<ol class="setlist">${list.map((id,i)=>{
     const a = kind==="album"?AL[id]:AL[SG[id].a];
     const nm = kind==="album"?a.t:SG[id].t;
-    const al = kind==="album"?`${a.y} · ${a.g}`:`${groupName(a)} · ${a.y}`;
+    const al = kind==="album"?`${a.y}`:`${groupName(a)} · ${a.y}`;
     const mv = movable ? `<div class="mv"><button data-mv="${i}" data-d="-1" aria-label="${esc(t("up"))}" ${i===0?"disabled":""}>↑</button><button data-mv="${i}" data-d="1" aria-label="${esc(t("down"))}" ${i===list.length-1?"disabled":""}>↓</button></div>` : "<div></div>";
     return `<li><div class="pos">${i+1}</div>${tile(a)}<div style="min-width:0"><div class="nm">${esc(nm)}</div><div class="al">${esc(al)}</div></div>${mv}</li>`;
   }).join("")}</ol>`;
@@ -1207,7 +1206,7 @@ function songTriage(root){
   const enough = c.love + c.like >= 10;
   root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("s1"))}</div><h2>${esc(t("tri_h"))}</h2></div>
     <div style="min-width:220px;flex:1;max-width:360px"><div class="progress"><i style="width:${pct}%"></i></div><div class="ptext">${esc(t("tri_prog",S.triIdx+1,order.length,c.love,c.like))}</div></div></div>
-    <div class="triage">${tile(a,"lg")}<div style="min-width:0"><div class="eyebrow">${esc(t("track",s.n))} · ${esc(groupName(a))} · ${a.y}</div><h3 style="margin-top:6px">${esc(s.t)}</h3><div class="sub">${esc(t("guitar",gName(a.g)))}</div>${s.note?`<div style="margin:-6px 0 12px"><span class="tag">${esc(noteT(s.note))}</span></div>`:""}<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">${listenSong(s)}${a.la?wikiLink(a.la):""}</div>
+    <div class="triage">${tile(a,"lg")}<div style="min-width:0"><div class="eyebrow">${esc(t("track",s.n))} · ${esc(groupName(a))} · ${a.y}</div><h3 style="margin-top:6px">${esc(s.t)}</h3><div class="sub"></div>${s.note?`<div style="margin:-6px 0 12px"><span class="tag">${esc(noteT(s.note))}</span></div>`:""}<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">${listenSong(s)}${a.la?wikiLink(a.la):""}</div>
       <div class="rates"><button class="rate love" data-r="love">${esc(t("love"))}<small>${esc(t("key",1))}</small></button><button class="rate like" data-r="like">${esc(t("like"))}<small>${esc(t("key",2))}</small></button><button class="rate meh" data-r="meh">${esc(t("meh"))}<small>${esc(t("key",3))}</small></button><button class="rate unk" data-r="unk">${esc(t("unk"))}<small>${esc(t("key",4))}</small></button></div></div></div>
     <div class="duel-actions"><button class="btn" id="t-back" ${S.triIdx?"":"disabled"}>${esc(t("back_one"))}</button><button class="btn" id="t-out">${esc(t("quit"))}</button><button class="btn solid" id="t-end" ${enough?"":"disabled"}>${esc(t("end_tri"))}</button></div></div>`;
   const rate = v=>{ S.ratings[s.id]=v; S.triIdx++; save(); songTriage(root); };
