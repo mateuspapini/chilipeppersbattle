@@ -7,6 +7,7 @@
 <meta name="description" content="Descubra sua música e seu álbum favoritos do Red Hot Chili Peppers em duelos, com Top 10 e Top 20. Site de fã em português, inglês e espanhol.">
 <link rel="canonical" href="https://chilipeppersbattle.mapasolucoesdigitais.com.br/">
 <meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
@@ -200,6 +201,21 @@ footer.site a{color:var(--fg)}
 .mapa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;opacity:.82;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:opacity .15s}
 .mapa-float:hover{opacity:1}
 
+
+/* capas e prévias */
+.tile .cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+.tile.has-cover .tt,.tile.has-cover .yr,.tile.has-cover::after{display:none}
+.tile .stamp{z-index:2}
+.pv{width:32px;height:32px;border-radius:50%;border:0;flex:none;cursor:pointer;display:inline-grid;place-items:center;padding:0;background:conic-gradient(rgba(0,0,0,.32) var(--p,0%), transparent 0), var(--chili);transition:transform .12s}
+.pv:hover{transform:scale(1.1)}
+.pv span{width:0;height:0;border-style:solid;border-width:7px 0 7px 11px;border-color:transparent transparent transparent var(--chili-ink);margin-left:3px}
+.pv.on span{width:10px;height:12px;border:0;margin:0;border-left:3px solid var(--chili-ink);border-right:3px solid var(--chili-ink)}
+.pv.loading{opacity:.6;animation:pvpulse 1s infinite}
+.pv.off{opacity:.3;cursor:not-allowed}
+@keyframes pvpulse{50%{transform:scale(.9)}}
+.themed .pv{background:conic-gradient(rgba(0,0,0,.32) var(--p,0%), transparent 0), var(--acc)}
+.themed .pv span{border-left-color:var(--acc-ink)}
+.themed .pv.on span{border-color:transparent;border-left-color:var(--acc-ink);border-right-color:var(--acc-ink)}
 
 /* logo no topo */
 .hero-logo{background:#000;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
@@ -403,7 +419,7 @@ pt:{
   disc:"Disco", rec_range:(a,b)=>`${a} a ${b}`, open_album:"Abrir álbum", bonus_tracks:"Faixas",
   r_vocals:"Vocal", r_backing:"Vocais de apoio", r_guitar:"Guitarra", r_bass:"Baixo", r_drums:"Bateria", r_perc:"Percussão", r_keys:"Teclados", r_synth:"Sintetizador", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Órgão", r_trumpet:"Trompete", r_sax:"Saxofone", r_trombone:"Trombone", r_violin:"Violino", r_viola:"Viola", r_cello:"Violoncelo", r_harmonica:"Gaita", r_clavinet:"Clavinete", r_choir:"Coral", r_juice_harp:"Berimbau de boca", r_horn_arr:"Arranjo de metais", r_string_arr:"Arranjo de cordas", r_guitar_solo:"Solo de guitarra", r_engineer:"Engenharia de som", r_mixing:"Mixagem", r_mastering:"Masterização", r_recording:"Gravação", r_art:"Arte da capa",
   built:"Desenvolvido por",
-  l_deezer:"Ouvir no Deezer", l_spotify:"Ouvir no Spotify", more:"Saiba mais", c_listen:"Ouvir", l_yt:"Ouvir no YouTube", la:"Wikipédia", la2:"Ver o álbum na Wikipédia",
+  l_deezer:"Ouvir no Deezer", dz_credit:"Capas e prévias de 30 segundos fornecidas pelo <a href=\"https://www.deezer.com/\" target=\"_blank\" rel=\"noopener\">Deezer</a>.", pv_play:"Ouvir prévia de 30 segundos", pv_pause:"Pausar prévia", pv_fail:"Não foi possível tocar esta prévia agora", l_spotify:"Ouvir no Spotify", more:"Saiba mais", c_listen:"Ouvir", l_yt:"Ouvir no YouTube", la:"Wikipédia", la2:"Ver o álbum na Wikipédia",
   duel_n:(n,m)=>`Duelo ${n} · faltam cerca de ${m}`, pick_a:"Esse!", pick_s:"Essa!",
   undo:"↶ Desfazer", tie:"Não sei decidir", quit:"Sair e continuar depois",
   keys:"Teclado: ← esquerda · → direita · ↓ não sei · Backspace desfaz",
@@ -452,7 +468,7 @@ en:{
   disc:"Disc", rec_range:(a,b)=>`${a} to ${b}`, open_album:"Open album", bonus_tracks:"Tracks",
   r_vocals:"Vocals", r_backing:"Backing vocals", r_guitar:"Guitar", r_bass:"Bass", r_drums:"Drums", r_perc:"Percussion", r_keys:"Keyboards", r_synth:"Synthesizer", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Organ", r_trumpet:"Trumpet", r_sax:"Saxophone", r_trombone:"Trombone", r_violin:"Violin", r_viola:"Viola", r_cello:"Cello", r_harmonica:"Harmonica", r_clavinet:"Clavinet", r_choir:"Choir", r_juice_harp:"Jaw harp", r_horn_arr:"Horn arrangements", r_string_arr:"String arrangements", r_guitar_solo:"Guitar solo", r_engineer:"Engineering", r_mixing:"Mixing", r_mastering:"Mastering", r_recording:"Recording", r_art:"Cover art",
   built:"Built by",
-  l_deezer:"Listen on Deezer", l_spotify:"Listen on Spotify", more:"Learn more", c_listen:"Listen", l_yt:"Listen on YouTube", la:"Wikipedia", la2:"View the album on Wikipedia",
+  l_deezer:"Listen on Deezer", dz_credit:"Covers and 30-second previews provided by <a href=\"https://www.deezer.com/\" target=\"_blank\" rel=\"noopener\">Deezer</a>.", pv_play:"Play 30-second preview", pv_pause:"Pause preview", pv_fail:"Couldn't play this preview right now", l_spotify:"Listen on Spotify", more:"Learn more", c_listen:"Listen", l_yt:"Listen on YouTube", la:"Wikipedia", la2:"View the album on Wikipedia",
   duel_n:(n,m)=>`Duel ${n} · about ${m} to go`, pick_a:"This one!", pick_s:"This one!",
   undo:"↶ Undo", tie:"Can't decide", quit:"Leave and continue later",
   keys:"Keyboard: ← left · → right · ↓ can't decide · Backspace undo",
@@ -501,7 +517,7 @@ es:{
   disc:"Disco", rec_range:(a,b)=>`${a} a ${b}`, open_album:"Abrir álbum", bonus_tracks:"Canciones",
   r_vocals:"Voz", r_backing:"Coros", r_guitar:"Guitarra", r_bass:"Bajo", r_drums:"Batería", r_perc:"Percusión", r_keys:"Teclados", r_synth:"Sintetizador", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Órgano", r_trumpet:"Trompeta", r_sax:"Saxofón", r_trombone:"Trombón", r_violin:"Violín", r_viola:"Viola", r_cello:"Violonchelo", r_harmonica:"Armónica", r_clavinet:"Clavinet", r_choir:"Coro", r_juice_harp:"Arpa de boca", r_horn_arr:"Arreglos de metales", r_string_arr:"Arreglos de cuerdas", r_guitar_solo:"Solo de guitarra", r_engineer:"Ingeniería de sonido", r_mixing:"Mezcla", r_mastering:"Masterización", r_recording:"Grabación", r_art:"Arte de portada",
   built:"Desarrollado por",
-  l_deezer:"Escuchar en Deezer", l_spotify:"Escuchar en Spotify", more:"Más información", c_listen:"Escuchar", l_yt:"Escuchar en YouTube", la:"Wikipedia", la2:"Ver el álbum en Wikipedia",
+  l_deezer:"Escuchar en Deezer", dz_credit:"Portadas y fragmentos de 30 segundos proporcionados por <a href=\"https://www.deezer.com/\" target=\"_blank\" rel=\"noopener\">Deezer</a>.", pv_play:"Escuchar fragmento de 30 segundos", pv_pause:"Pausar fragmento", pv_fail:"No se pudo reproducir este fragmento ahora", l_spotify:"Escuchar en Spotify", more:"Más información", c_listen:"Escuchar", l_yt:"Escuchar en YouTube", la:"Wikipedia", la2:"Ver el álbum en Wikipedia",
   duel_n:(n,m)=>`Duelo ${n} · faltan unos ${m}`, pick_a:"¡Este!", pick_s:"¡Esta!",
   undo:"↶ Deshacer", tie:"No sé decidir", quit:"Salir y seguir después",
   keys:"Teclado: ← izquierda · → derecha · ↓ no sé · Retroceso deshace",
@@ -637,19 +653,20 @@ function tile(a, cls=""){
   ];
   const light = isLight(c1) && a.p!==1 && a.p!==4;
   const yr = typeof a.y==="number" ? String(a.y).slice(2) : a.y;
-  return `<div class="tile ${cls}" style="background:${patOf(a)};color:${light?"#1A1112":"#FFFFFF"}"><div class="tt" style="${a.p===4?`background:${c1};padding:4px 6px;border-radius:3px;display:inline-block;color:${isLight(c1)?"#1A1112":"#fff"}`:""}">${esc(tileLabel(a))}</div>${a.kind==="extra"?`<div class="stamp">B</div>`:""}<div class="yr" style="color:${a.p===3?(isLight(c2)?"#1A1112":"#fff"):"inherit"}">${yr}</div></div>`;
+  const cu = coverUrl(a, cls.includes("lg")?500:250);
+  return `<div class="tile ${cls}${cu?" has-cover":""}" style="background:${patOf(a)};color:${light?"#1A1112":"#FFFFFF"}"><div class="tt" style="${a.p===4?`background:${c1};padding:4px 6px;border-radius:3px;display:inline-block;color:${isLight(c1)?"#1A1112":"#fff"}`:""}">${esc(tileLabel(a))}</div>${cu?`<img class="cv" src="${cu}" alt="" loading="lazy" onerror="this.parentNode.classList.remove('has-cover');this.remove()">`:""}${a.kind==="extra"?`<div class="stamp">B</div>`:""}<div class="yr" style="color:${a.p===3?(isLight(c2)?"#1A1112":"#fff"):"inherit"}">${yr}</div></div>`;
 }
 function isLight(hex){const n=parseInt(hex.slice(1),16);const r=n>>16,g=(n>>8)&255,b=n&255;return (r*299+g*587+b*114)/1000>150}
 
 function ib(href,k,label){ return `<a class="ico" href="${href}" target="_blank" rel="noopener" title="${esc(label)}" aria-label="${esc(label)}"><img src="${ICON[k]}" alt=""></a>`; }
-function listen(q){
+function listen(q, song){
   const s = encodeURIComponent("Red Hot Chili Peppers "+q);
-  return `<div class="listen">${ib("https://open.spotify.com/search/"+s,"spotify",t("l_spotify"))}${ib("https://www.deezer.com/search/"+s,"deezer",t("l_deezer"))}${ib("https://www.youtube.com/results?search_query="+s,"youtube",t("l_yt"))}</div>`;
+  return `<div class="listen">${song?pvBtn(song):""}${ib("https://open.spotify.com/search/"+s,"spotify",t("l_spotify"))}${ib("https://www.deezer.com/search/"+s,"deezer",t("l_deezer"))}${ib("https://www.youtube.com/results?search_query="+s,"youtube",t("l_yt"))}</div>`;
 }
 function listenSong(song){
-  if(AL[song.a].kind!=="extra") return listen(song.t);
+  if(AL[song.a].kind!=="extra") return listen(song.t, song);
   const href = song.yt ? `https://youtu.be/${encodeURIComponent(song.yt)}` : `https://www.youtube.com/results?search_query=${encodeURIComponent("Red Hot Chili Peppers "+song.t)}`;
-  return `<div class="listen">${ib(href,"youtube",t("l_yt"))}</div>`;
+  return `<div class="listen">${pvBtn(song)}${ib(href,"youtube",t("l_yt"))}</div>`;
 }
 function wikiLink(url){ return `<a class="wiki" href="${url}" target="_blank" rel="noopener"><span class="ico"><img src="${ICON.wiki}" alt="Wikipedia"></span><span>${esc(t("more"))}</span></a>`; }
 function songNote(song){ return song.note ? `<div style="margin-top:6px"><span class="tag">${esc(noteT(song.note))}</span></div>` : ""; }
@@ -718,6 +735,83 @@ document.addEventListener("click", e=>{
   const o=e.target.closest("[data-open]"); if(o){ openId=o.dataset.open; prevView = current==="album"?prevView:current; go("album"); return; }
   const b=e.target.closest("[data-go]"); if(b){ go(b.dataset.go); }
 });
+
+/* ---------- Deezer: capas oficiais e prévias de 30 segundos ---------- */
+const USE_DEEZER = true;
+const DZ = {"cover":{"rhcp":"7c8977715dac9ab9748fa72630cab257","fs":"9e7edb5bd29d54091b97da7204157562","umpp":"f329af1d3323c5b2d1d7cd5f23684aff","mm":"aa55b970a5118755fd3c013422cb04c6","bssm":"5d7af03204d679ef877b9033d279d8bd","ohm":"9cc1d61dba0176e55e407c1bfe6dde0f","cal":"5e61e8290a4d1d64ca58920656c9602d","btw":"49b073f55550d41055e02c493f9a7d39","sa":"a3a4028b1192c50d82a579439cbfc4af","iwy":"658b79cadf674bbab714b17ae7112a46","tg":"2d7eaff95342162e1e346dc8407be5d6","ul":"e68b2fbc27e04a5b936de68725955c47","rdc":"9064e4169639f1e8f901a9d5e0ef5029","gh":"e3f1bee87b1d5d1313641762f375a3fb"},"tracks":{"rhcp":[3098888,3098889,3098890,3098891,3098892,3098893,3098894,3098895,3098896,3098897,3098898],"fs":[3098937,3098938,3098939,3098940,3098941,3098942,3098943,3098944,3098945,3098946,3098947,3098948,3098949,3098950],"umpp":[118996232,118996234,118996236,118996238,118996240,118996242,118996244,118996246,118996248,118996250,118996252,118996254],"mm":[3098918,3098919,3098920,3098921,3098922,3098923,3098924,3098925,3098926,3098927,3098928,3098929,3098930],"bssm":[725788,725794,725800,725807,725813,725819,725824,725831,725837,725845,725850,725859,725866,725873,725882,725895,725897],"ohm":[775221,775232,775243,775251,775258,775260,775271,775281,775286,775295,775302,775310,775321],"cal":[774239,774246,774253,774261,774269,774278,774282,774287,774294,774301,774309,774316,774322,774329,774336],"btw":[782016,782023,782030,782036,782044,782053,782060,782065,782071,782076,782084,782092,782099,782102,782106,782117],"sa":[680516,680518,680520,680522,680524,680525,680528,680529,680532,680534,680536,680537,680538,680539,680540,680542,680544,680546,680548,680550,680552,680555,680557,680559,680560,0,0,0],"iwy":[14500369,14500370,14500371,14500372,14500373,14500374,14500375,14500376,14500377,14500378,14500379,14500380,14500381,14500382],"tg":[126534871,126534873,126534875,126534877,126534879,126534881,126534883,126534885,126534887,126534889,126534891,126534893,126534895],"ul":[1683706687,1683706697,1683706707,1683706717,1683706727,1683706737,1683706747,1683706757,1683706767,1683706777,1683706787,1683706797,1683706807,1683706817,1683706827,1683706837,1683706847],"rdc":[1928560177,1928560187,1928560197,1928560207,1928560217,1928560227,1928560237,1928560247,1928560257,1928560267,1928560277,1928560287,1928560297,1928560307,1928560317,1928560327,1928560337]},"extra":{"x-rhcp-1":3098903,"x-fs-1":3098954,"x-mm-2":3098931,"x-mm-3":3098934,"x-mm-4":3115381,"x-mm-5":3098936,"x-bssm-1":725911,"x-bssm-2":725904,"x-bssm-4":26286921,"x-bssm-6":785207,"x-ohm-1":4217486,"x-ohm-2":725549,"x-ohm-3":725554,"x-ohm-4":725560,"x-cal-5":725325,"x-cal-7":725331,"x-btw-2":26286901,"x-btw-7":26286911,"x-btw-10":726034,"x-btw-11":726042,"x-gh-1":785288,"x-gh-2":785296,"x-sa-1":3912669,"x-sa-2":3912668,"x-sa-3":3912708,"x-sa-4":3912709,"x-sa-5":3912605,"x-sa-6":3912606,"x-sa-7":3912604,"x-iwy-1":50331191,"x-iwy-2":50331201,"x-iwy-3":56720231,"x-iwy-4":56720241,"x-iwy-5":60683781,"x-iwy-6":60683782,"x-iwy-7":61930200,"x-iwy-8":61930199,"x-iwy-9":63267162,"x-iwy-10":63267163,"x-iwy-11":64398771,"x-iwy-12":69369980,"x-iwy-13":69369981,"x-iwy-14":69369982,"x-iwy-15":69369983,"x-iwy-16":69369979,"x-iwy-17":69369978,"x-ul-1":1765477677,"x-out-3":1230102172,"x-out-4":26286931,"x-out-5":26286941,"x-out-6":26286951}};
+function coverUrl(a, size){
+  if(!USE_DEEZER) return null;
+  const k = a.kind==="extra" ? (a.id==="x-gh" ? "gh" : a.par) : a.id;
+  const m = k && DZ.cover[k];
+  return m ? `https://cdn-images.dzcdn.net/images/cover/${m}/${size}x${size}-000000-80-0-0.jpg` : null;
+}
+function dzTrack(song){
+  if(!USE_DEEZER) return 0;
+  const a = AL[song.a];
+  return a.kind==="studio" ? ((DZ.tracks[a.id]||[])[song.n-1]||0) : (DZ.extra[song.id]||0);
+}
+ALL.forEach(a=>{ const u = coverUrl(a,250); if(u) a.cover = u; });
+
+/* a API do Deezer não aceita chamadas diretas do navegador; o formato JSONP contorna isso */
+function jsonp(url){
+  return new Promise((res,rej)=>{
+    const cb = "dz"+Math.random().toString(36).slice(2), s = document.createElement("script");
+    const done = ()=>{ clearTimeout(timer); try{ delete window[cb]; }catch(e){ window[cb]=undefined; } s.remove(); };
+    const timer = setTimeout(()=>{ done(); rej(new Error("timeout")); }, 8000);
+    window[cb] = d=>{ done(); res(d); };
+    s.onerror = ()=>{ done(); rej(new Error("network")); };
+    s.src = url + (url.includes("?")?"&":"?") + "output=jsonp&callback=" + cb;
+    document.head.appendChild(s);
+  });
+}
+const PREVIEWS = {};
+const player = new Audio();
+let playingId = null;
+function setPlaying(id){
+  playingId = id;
+  document.querySelectorAll(".pv").forEach(b=>{
+    const on = !!id && b.dataset.dz===String(id);
+    b.classList.toggle("on", on);
+    b.setAttribute("aria-label", on ? t("pv_pause") : t("pv_play"));
+    b.title = b.getAttribute("aria-label");
+    if(!on) b.style.removeProperty("--p");
+  });
+}
+player.addEventListener("ended", ()=>setPlaying(null));
+player.addEventListener("timeupdate", ()=>{
+  if(!playingId) return;
+  const p = Math.min(100, player.currentTime/(player.duration||30)*100).toFixed(1)+"%";
+  document.querySelectorAll(`.pv[data-dz="${playingId}"]`).forEach(b=>b.style.setProperty("--p", p));
+});
+function stopPreview(){ if(!player.paused) player.pause(); setPlaying(null); }
+async function togglePreview(id, btn){
+  if(playingId===id && !player.paused){ stopPreview(); return; }
+  btn.classList.add("loading");
+  try{
+    let p = PREVIEWS[id];
+    if(!p || Date.now()-p.t > 10*60*1000){
+      const d = await jsonp(`https://api.deezer.com/track/${id}`);
+      if(!d || !d.preview) throw new Error("no preview");
+      p = PREVIEWS[id] = {url:d.preview, t:Date.now()};
+    }
+    player.src = p.url; await player.play(); setPlaying(id);
+  }catch(e){ btn.disabled = true; btn.classList.add("off"); toast(t("pv_fail")); }
+  btn.classList.remove("loading");
+}
+document.addEventListener("click", e=>{
+  const b = e.target.closest(".pv"); if(!b) return;
+  e.preventDefault(); e.stopPropagation();
+  togglePreview(b.dataset.dz, b);
+}, true);
+/* se o botão da música tocando sumir da tela (troca de duelo ou de página), a prévia para */
+new MutationObserver(()=>{
+  if(!playingId) return;
+  if(!document.querySelector(`.pv[data-dz="${playingId}"]`)) stopPreview(); else setPlaying(playingId);
+}).observe(document.querySelector("main"), {childList:true, subtree:true});
+function pvBtn(song){
+  const id = dzTrack(song);
+  return id ? `<button class="pv" data-dz="${id}" aria-label="${esc(t("pv_play"))}" title="${esc(t("pv_play"))}"><span></span></button>` : "";
+}
 
 /* ---------- de fã para fã: história do Mateus ---------- */
 const EMBED_VIDEOS = true;
@@ -939,7 +1033,7 @@ function applyChrome(){
   document.getElementById("nav-songs").textContent = t("nav_songs");
   document.getElementById("nav-mine").textContent = t("nav_mine");
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===LANG?"true":"false"));
-  document.getElementById("footer").innerHTML = `<p>${t("footer")}</p><a class="mapa" href="https://mapasolucoesdigitais.com.br/" target="_blank" rel="noopener" aria-label="${esc(t("built"))} MAPA Soluções Digitais"><span>${esc(t("built"))}</span><img src="${MAPA_LOGO}" alt="MAPA Soluções Digitais"></a>`;
+  document.getElementById("footer").innerHTML = `<p>${t("footer")}${USE_DEEZER?" "+t("dz_credit"):""}</p><a class="mapa" href="https://mapasolucoesdigitais.com.br/" target="_blank" rel="noopener" aria-label="${esc(t("built"))} MAPA Soluções Digitais"><span>${esc(t("built"))}</span><img src="${MAPA_LOGO}" alt="MAPA Soluções Digitais"></a>`;
 }
 document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click", ()=>{
   LANG = b.dataset.lang; try{ localStorage.setItem("rhcp-lang", LANG); }catch(e){}
@@ -968,7 +1062,7 @@ function renderHome(){
     <div class="grid">${ALBUMS.map(a=>`<button class="album-mini click" data-open="${a.id}" aria-label="${esc(t("open_album"))}: ${esc(a.t)}">${tile(a)}<span class="name">${esc(a.t)}</span><span class="meta">${a.y} · ${esc(t("tracks",a.tr.length))} · ${esc(a.g)}</span></button>`).join("")}</div>
     <div class="section-title"><h2>${esc(t("extras_h"))}</h2><span class="eyebrow">${esc(t("extras_eb"))}</span></div>
     <div class="grid">${EXTRAS.map(x=>`<button class="album-mini click" data-open="${x.id}" aria-label="${esc(t("open_album"))}: ${esc(groupName(x))}">${tile(x)}<span class="name">${esc(x.par && !x.t ? x.pname : groupName(x))}</span><span class="meta">${esc(t("tracks",x.items.length))}${x.par?" · "+esc(t("bside")):""}</span></button>`).join("")}</div>
-    <p class="note" style="margin-top:28px">${esc(t("proto"))}</p>
+    ${USE_DEEZER?"":`<p class="note" style="margin-top:28px">${esc(t("proto"))}</p>`}
     <div class="support" id="apoie">
       <div class="intro"><div class="eyebrow">${esc(t("sup_eb"))}</div><h2>${esc(t("sup_h"))}</h2><p>${esc(t("sup_p"))}</p></div>
       <div class="give">
