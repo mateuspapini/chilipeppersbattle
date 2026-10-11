@@ -65,9 +65,11 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sea);outline-offset
 nav{display:flex;gap:6px;flex-wrap:wrap}
 nav button{border:2px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px}
 nav button[aria-current="true"]{background:var(--fg);color:var(--bg)}
-.lang{display:inline-flex;border:2px solid var(--fg);border-radius:999px;overflow:hidden}
-.lang button{border:0;background:transparent;color:var(--fg);padding:5px 10px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
-.lang button[aria-pressed="true"]{background:var(--chili);color:var(--chili-ink)}
+.lang{display:inline-flex;gap:4px;align-items:center}
+.lang button{border:0;background:transparent;padding:3px;border-radius:50%;line-height:0;opacity:.5;filter:saturate(.6);transition:opacity .15s,transform .15s,filter .15s}
+.lang button img{width:32px;height:32px;display:block}
+.lang button:hover{opacity:.9;filter:none;transform:scale(1.08)}
+.lang button[aria-pressed="true"]{opacity:1;filter:none;transform:scale(1.12)}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding-block:40px 24px}
@@ -235,6 +237,7 @@ a.yt-frame:hover img{opacity:1}
 .yt-play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--chili);box-shadow:0 6px 24px rgba(0,0,0,.4)}
 .yt-play::after{content:"";position:absolute;left:29px;top:22px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #fff}
 .yt-label{position:absolute;left:12px;bottom:10px;font-size:12px;font-weight:600;background:rgba(0,0,0,.55);padding:4px 10px;border-radius:999px}
+.yt-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .gallery{columns:4 220px;column-gap:14px}
 .ph{display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;text-align:left;color:var(--fg);font:inherit}
 .ph img{display:block;width:100%;height:auto;border-radius:10px;transition:transform .2s, box-shadow .2s}
@@ -317,6 +320,8 @@ table.tracks .disc td{background:var(--surface-2);font-family:var(--mono);font-s
   .ap-side .tile{max-width:220px}
   .support{grid-template-columns:1fr}
   .story-top{grid-template-columns:1fr;gap:24px}
+  .yt-row{grid-template-columns:1fr}
+  .lang button img{width:28px;height:28px}
   .story-top .yt.short{max-width:300px}
   .lb-prev,.lb-next{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}
   .mapa-float{display:none}
@@ -344,7 +349,7 @@ table.tracks .disc td{background:var(--surface-2);font-family:var(--mono);font-s
       <button data-go="mine" id="nav-mine"></button>
     </nav>
     <div class="lang" role="group" aria-label="Idioma / Language / Idioma">
-      <button data-lang="pt" lang="pt">PT</button><button data-lang="en" lang="en">EN</button><button data-lang="es" lang="es">ES</button>
+      <button data-lang="pt" lang="pt" title="Português" aria-label="Português"><img src="assets/icons/flag-pt.png" alt=""></button><button data-lang="en" lang="en" title="English" aria-label="English"><img src="assets/icons/flag-en.png" alt=""></button><button data-lang="es" lang="es" title="Español" aria-label="Español"><img src="assets/icons/flag-es.png" alt=""></button>
     </div>
   </div>
 </header>
@@ -724,7 +729,7 @@ pt:{ eb:"A minha história com o RHCP", h:"De fã para fã", sign:"Mateus Papini
    "Enfim... Sintam-se à vontade para usar o site, compartilhar e dar feedbacks para melhorá-lo. É um site feito de fã para fã, para desfrutarmos do nosso amor pela banda.",
    "Viva o Red Hot Chili Peppers! Viva Hillel Slovak! Viva Arik Marshall! Viva Dave Navarro! Viva Jack Sherman! Viva Cliff Martinez! Viva Jack Irons! Viva Josh Klinghoffer! Viva Chad Smith! Viva John Frusciante! Viva Flea! E viva Anthony Kiedis!",
    "Que o Red Hot Chili Peppers possa nos unir sempre!"],
-  v1:"Flea recebendo os fãs na porta do hotel em Belo Horizonte, 3 de novembro de 2013", v2:"Minha tatuagem do I'm with You", credit:"Vídeo", open_yt:"Assistir no YouTube", close:"Fechar", prev:"Foto anterior", next:"Próxima foto" },
+  v1:"Flea recebendo os fãs na porta do hotel em Belo Horizonte, 3 de novembro de 2013", v2:"Minha tatuagem do I'm with You", v3:"Eu cantando Otherside, lá por 2004", credit:"Vídeo", open_yt:"Assistir no YouTube", close:"Fechar", prev:"Foto anterior", next:"Próxima foto" },
 en:{ eb:"My story with RHCP", h:"From a fan, for fans", sign:"Mateus Papini", follow:"Find me online", photos:"In photos", videos:"On video",
   p:[
    "My name is Mateus. I was born in 1994 and I've been listening to Red Hot Chili Peppers for as long as I can remember. My first memories of the band are watching their music videos on MTV and listening to the then brand-new By the Way (the favorite of yours truly, for obvious reasons). I'm completely crazy about this band... A fan just like you, the kind who can't pick a favorite song or album, because, as they say, that would be like picking a favorite child.",
@@ -732,7 +737,7 @@ en:{ eb:"My story with RHCP", h:"From a fan, for fans", sign:"Mateus Papini", fo
    "Anyway... Feel free to use the site, share it and send feedback to make it better. It's a site made by a fan, for fans, so we can all enjoy our love for the band.",
    "Long live Red Hot Chili Peppers! Long live Hillel Slovak! Long live Arik Marshall! Long live Dave Navarro! Long live Jack Sherman! Long live Cliff Martinez! Long live Jack Irons! Long live Josh Klinghoffer! Long live Chad Smith! Long live John Frusciante! Long live Flea! And long live Anthony Kiedis!",
    "May Red Hot Chili Peppers always bring us together!"],
-  v1:"Flea greeting fans at the hotel entrance in Belo Horizonte, November 3, 2013", v2:"My I'm with You tattoo", credit:"Video", open_yt:"Watch on YouTube", close:"Close", prev:"Previous photo", next:"Next photo" },
+  v1:"Flea greeting fans at the hotel entrance in Belo Horizonte, November 3, 2013", v2:"My I'm with You tattoo", v3:"Me singing Otherside, around 2004", credit:"Video", open_yt:"Watch on YouTube", close:"Close", prev:"Previous photo", next:"Next photo" },
 es:{ eb:"Mi historia con RHCP", h:"De fan para fans", sign:"Mateus Papini", follow:"Encuéntrame en", photos:"En fotos", videos:"En video",
   p:[
    "Me llamo Mateus, nací en 1994 y escucho Red Hot Chili Peppers desde que tengo memoria. Mis primeros recuerdos de la banda son ver los videoclips en MTV y escuchar el recién lanzado By the Way (el favorito de quien les habla, por razones obvias). Estoy completamente loco por la banda... Un fan como tú, de esos que no saben elegir la canción o el álbum favorito, porque dicen que sería como elegir al hijo favorito.",
@@ -740,7 +745,7 @@ es:{ eb:"Mi historia con RHCP", h:"De fan para fans", sign:"Mateus Papini", foll
    "En fin... Siéntanse libres de usar el sitio, compartirlo y dejar sus comentarios para mejorarlo. Es un sitio hecho por un fan para fans, para disfrutar juntos de nuestro amor por la banda.",
    "¡Viva Red Hot Chili Peppers! ¡Viva Hillel Slovak! ¡Viva Arik Marshall! ¡Viva Dave Navarro! ¡Viva Jack Sherman! ¡Viva Cliff Martinez! ¡Viva Jack Irons! ¡Viva Josh Klinghoffer! ¡Viva Chad Smith! ¡Viva John Frusciante! ¡Viva Flea! ¡Y viva Anthony Kiedis!",
    "¡Que Red Hot Chili Peppers nos una siempre!"],
-  v1:"Flea recibiendo a los fans en la entrada del hotel en Belo Horizonte, 3 de noviembre de 2013", v2:"Mi tatuaje de I'm with You", credit:"Video", open_yt:"Ver en YouTube", close:"Cerrar", prev:"Foto anterior", next:"Foto siguiente" }
+  v1:"Flea recibiendo a los fans en la entrada del hotel en Belo Horizonte, 3 de noviembre de 2013", v2:"Mi tatuaje de I'm with You", v3:"Yo cantando Otherside, allá por 2004", credit:"Video", open_yt:"Ver en YouTube", close:"Cerrar", prev:"Foto anterior", next:"Foto siguiente" }
 };
 const PHOTOS = [
  ["mateus-with-setlist","Com o setlist do Morumbi, 2023","With the Morumbi setlist, 2023","Con el setlist del Morumbi, 2023"],
@@ -780,7 +785,7 @@ function storyHTML(){
       ${ytCard("LszJipHan_4","short",st("v2"),"")}
     </div>
     <div class="story-sub"><span class="eyebrow">${esc(st("videos"))}</span></div>
-    ${ytCard("BTfe_nDdGKM","wide",st("v1"),"filipedidi")}
+    <div class="yt-row">${ytCard("Krr5O_v6bpI","wide",st("v3"),"")}${ytCard("BTfe_nDdGKM","wide",st("v1"),"filipedidi")}</div>
     <div class="story-sub"><span class="eyebrow">${esc(st("photos"))}</span></div>
     <div class="gallery">${PHOTOS.map((ph,i)=>`<button class="ph" data-ph="${i}" aria-label="${esc(capOf(i))}"><img src="assets/fotos/${ph[0]}.webp" alt="${esc(capOf(i))}" loading="lazy"><span>${esc(capOf(i))}</span></button>`).join("")}</div>
   </section>`;
