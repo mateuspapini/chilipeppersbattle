@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chilipeppersbattle.mapasolucoesdigitais.com.br/sitemap.xml

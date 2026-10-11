@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Batalha Chili Peppers · Chili Peppers Battle</title>
+<meta name="description" content="Descubra sua música e seu álbum favoritos do Red Hot Chili Peppers em duelos, com Top 10 e Top 20. Site de fã em português, inglês e espanhol.">
+<link rel="canonical" href="https://chilipeppersbattle.mapasolucoesdigitais.com.br/">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="assets/img/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chilipeppersbattle.mapasolucoesdigitais.com.br/">
+<meta property="og:title" content="Chili Peppers Battle · Fan site">
+<meta property="og:description" content="Find your favorite Red Hot Chili Peppers song and album through head-to-head battles. Top 10 and Top 20, in English, Portuguese and Spanish.">
+<meta property="og:image" content="https://chilipeppersbattle.mapasolucoesdigitais.com.br/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: cartaz de show — faixa de topo, palco central com duelo lado a lado, listas numeradas como setlist */
+:root{
+  --bg:#F6EEE9; --surface:#FFFFFF; --surface-2:#F0E3DC; --fg:#1E1415; --muted:#6E5B58; --line:#E2D1C9;
+  --chili:#D7261E; --chili-ink:#FFFFFF; --sea:#0E7C86; --sun:#F2B134;
+  --love:#D7261E; --like:#E58A1F; --meh:#8C7C78; --unk:#5B6B8C;
+  --display:"Bowlby One", "Arial Black", Impact, sans-serif;
+  --body:"Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --shadow:0 10px 30px rgba(80,20,20,.12);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#150E10; --surface:#22181A; --surface-2:#2C2023; --fg:#F5E9E4; --muted:#B9A7A2; --line:#3A2B2E;
+  --chili:#FF4A3D; --chili-ink:#1A0D0E; --sea:#39C2CC; --sun:#F6C25A;
+  --love:#FF4A3D; --like:#F5A043; --meh:#A89894; --unk:#8EA0C8; --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#150E10; --surface:#22181A; --surface-2:#2C2023; --fg:#F5E9E4; --muted:#B9A7A2; --line:#3A2B2E;
+  --chili:#FF4A3D; --chili-ink:#1A0D0E; --sea:#39C2CC; --sun:#F6C25A;
+  --love:#FF4A3D; --like:#F5A043; --meh:#A89894; --unk:#8EA0C8; --shadow:0 10px 30px rgba(0,0,0,.45); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:2px solid var(--fg)}
+.top .wrap{display:flex;align-items:center;gap:12px 16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:20px;letter-spacing:.01em;margin-right:auto;background:none;border:0;color:var(--fg);padding:0;text-align:left}
+.brand span{color:var(--chili)}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{border:2px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px}
+nav button[aria-current="true"]{background:var(--fg);color:var(--bg)}
+.lang{display:inline-flex;border:2px solid var(--fg);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;color:var(--fg);padding:5px 10px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.lang button[aria-pressed="true"]{background:var(--chili);color:var(--chili-ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;padding-block:40px 24px}
+.hero h1{font-size:clamp(40px,7vw,76px)}
+.hero h1 em{font-style:normal;color:var(--chili)}
+.hero p{max-width:52ch;color:var(--muted);font-size:17px;margin:16px 0 0}
+.stack{position:relative;height:260px}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:8px}
+.mode{background:var(--surface);border:2px solid var(--fg);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:10px;text-align:left;color:var(--fg)}
+.mode h3{font-size:26px}
+.mode p{margin:0;color:var(--muted)}
+.mode .go{margin-top:auto;font-weight:700;color:var(--chili)}
+.mode:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:40px 0 16px;flex-wrap:wrap}
+.section-title h2{font-size:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px}
+.album-mini{display:flex;flex-direction:column;gap:6px}
+.album-mini .name{font-weight:600;line-height:1.25}
+.album-mini a.name{color:var(--fg);text-decoration:none}
+.album-mini a.name:hover{color:var(--chili);text-decoration:underline}
+.album-mini .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+/* capas tipográficas */
+.tile{aspect-ratio:1;max-width:100%;border-radius:4px;position:relative;overflow:hidden;color:#fff;isolation:isolate}
+.tile .yr{position:absolute;right:8%;bottom:6%;font-family:var(--display);font-size:clamp(22px,22%,60px);line-height:1}
+.tile .tt{position:absolute;left:8%;top:7%;right:8%;font-family:var(--body);font-weight:700;font-size:12px;line-height:1.15;letter-spacing:.04em;text-transform:uppercase}
+.tile.lg .tt{font-size:16px}
+.tile.lg .yr{font-size:64px}
+.tile::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 20% 0%,rgba(255,255,255,.18),transparent 60%);pointer-events:none}
+.tile .stamp{position:absolute;left:8%;bottom:8%;width:30%;aspect-ratio:1;border-radius:50%;background:#1A1112;color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:clamp(10px,40%,26px);line-height:1;border:2px solid currentColor}
+
+/* duelo */
+.stage{padding-block:28px}
+.stage-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.stage-head h2{font-size:clamp(28px,4vw,40px)}
+.progress{height:10px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--chili),var(--sun));width:0;transition:width .3s}
+.ptext{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.duel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:18px;align-items:stretch}
+.fighter{background:var(--surface);border:2px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;text-align:left;color:var(--fg);transition:transform .12s,border-color .12s}
+.fighter:hover{border-color:var(--chili);transform:translateY(-3px)}
+.fighter .pick{background:var(--chili);color:var(--chili-ink);border:0;border-radius:6px;padding:12px;font-weight:700;font-size:16px;margin-top:auto}
+.fighter h3{font-family:var(--body);font-weight:700;font-size:22px;line-height:1.2}
+.fighter .sub{color:var(--muted);font-size:14px;margin-top:-6px}
+.fighter .tile{width:100%}
+.song-fighter .tile{width:96px;flex:none}
+.song-fighter .row{display:flex;gap:14px;align-items:center}
+.vs{align-self:center;font-family:var(--display);font-size:34px;color:var(--chili);transform:rotate(-8deg)}
+.listen{display:flex;gap:6px;flex-wrap:wrap}
+.listen{align-items:center}
+.ico{width:32px;height:32px;border-radius:50%;background:#FFFFFF;border:1.5px solid var(--line);display:inline-grid;place-items:center;flex:none;transition:transform .12s,border-color .12s;text-decoration:none}
+.ico img{width:18px;height:18px;object-fit:contain;display:block}
+a.ico:hover,.wiki:hover .ico{transform:scale(1.1);border-color:var(--sea)}
+.wiki{display:inline-flex;align-items:center;gap:8px;color:var(--fg);font-weight:600;font-size:13px;text-decoration:none}
+.wiki .ico img{width:22px;height:22px}
+.wiki:hover span:last-child{text-decoration:underline}
+.duel-actions{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn{border:2px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:8px 18px;font-weight:600;text-decoration:none;display:inline-block}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn.hot{background:var(--chili);border-color:var(--chili);color:var(--chili-ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.keys{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--muted)}
+.la{font-size:12px;font-weight:600;color:var(--sea);text-decoration:none}
+.la:hover{text-decoration:underline}
+
+/* triagem */
+.triage{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:center;background:var(--surface);border:2px solid var(--fg);border-radius:10px;padding:24px}
+.triage .tile{width:100%}
+.triage h3{font-family:var(--body);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.1}
+.triage .sub{color:var(--muted);margin:6px 0 14px}
+.rates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:20px}
+.rate{border:2px solid currentColor;background:transparent;border-radius:8px;padding:12px 6px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
+.rate small{font-family:var(--mono);font-weight:500;font-size:11px;opacity:.75}
+.rate.love{color:var(--love)} .rate.like{color:var(--like)} .rate.meh{color:var(--meh)} .rate.unk{color:var(--unk)}
+.rate:hover{background:var(--surface-2)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.counts{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.count{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:10px 14px;min-width:110px}
+.count b{display:block;font-family:var(--display);font-size:28px;font-weight:400;font-variant-numeric:tabular-nums}
+.count span{font-size:13px;color:var(--muted)}
+.panel{background:var(--surface);border:2px solid var(--fg);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.panel p{margin:0;color:var(--muted);max-width:60ch}
+.seg{display:inline-flex;border:2px solid var(--fg);border-radius:999px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--fg);padding:8px 18px;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.seg button:disabled{opacity:.35;cursor:not-allowed}
+
+/* setlist */
+.setlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.setlist li{display:grid;grid-template-columns:48px 56px minmax(0,1fr) auto;gap:14px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:8px 12px}
+.setlist li:nth-child(-n+3){border-color:var(--chili)}
+.setlist .pos{font-family:var(--display);font-size:26px;color:var(--chili);text-align:center;font-variant-numeric:tabular-nums}
+.setlist .tile{width:56px}
+.setlist .nm{font-weight:700;line-height:1.2}
+.setlist .al{font-size:13px;color:var(--muted)}
+.mv{display:flex;gap:4px}
+.mv button{width:32px;height:32px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--fg);border-radius:6px;font-weight:700}
+.mv button:disabled{opacity:.3}
+.empty{border:2px dashed var(--line);border-radius:10px;padding:28px;text-align:center;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--sun);padding-left:12px;max-width:70ch}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:600;z-index:20;max-width:calc(100% - 32px);text-align:center}
+textarea.copy{position:absolute;left:-9999px}
+
+/* apoio + rodapé */
+.support{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;margin-top:48px;align-items:stretch}
+.support .intro h2{font-size:30px}
+.support .intro p{color:var(--muted);margin:10px 0 0;max-width:42ch}
+.give{background:var(--surface);border:2px solid var(--fg);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.give h3{font-family:var(--body);font-weight:700;font-size:20px}
+.give p{margin:0;color:var(--muted);font-size:14px}
+.qr-box{background:#FFFFFF;border-radius:8px;padding:8px;width:min(180px,100%);border:1.5px solid var(--line);display:block}
+.qr-box svg{display:block;width:100%;height:auto}
+.qr-cap{font-family:var(--mono);font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.qr-cap a{color:var(--sea)}
+.pix{background:var(--surface-2);border:1.5px dashed var(--line);border-radius:8px;padding:8px 12px;min-width:0;font-size:14px}
+.pix-key{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere;user-select:all}
+.give-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+footer.site{border-top:2px solid var(--fg);margin-top:56px}
+footer.site .wrap{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-block:24px}
+footer.site p{margin:0;color:var(--muted);font-size:13px;max-width:60ch}
+footer.site a{color:var(--fg)}
+.mapa{display:inline-flex;align-items:center;gap:10px;background:#0F1B2D;color:#fff;border-radius:999px;padding:8px 14px;text-decoration:none;font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,.12)}
+.mapa img{height:22px;width:auto;display:block}
+.mapa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;opacity:.82;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:opacity .15s}
+.mapa-float:hover{opacity:1}
+
+
+/* logo no topo */
+.hero-logo{background:#000;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-logo img{display:block;width:100%;height:auto}
+
+/* de fã para fã */
+.story{margin-top:64px;padding-top:40px;border-top:2px solid var(--fg)}
+.story-head h2{font-size:clamp(34px,6vw,60px);margin-top:6px}
+.story-head h2{color:var(--chili)}
+.story-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,320px);gap:40px;align-items:start;margin-top:28px}
+.story-text{max-width:64ch}
+.story-text p{margin:0 0 16px;font-size:16.5px;line-height:1.75}
+.story-text p.lead{font-size:19px;line-height:1.65}
+.story-text p.lead::first-letter{font-family:var(--display);font-size:3.2em;float:left;line-height:.9;margin:4px 10px 0 0;color:var(--chili)}
+.story-text p.viva{font-weight:600;color:var(--muted);font-size:15px}
+.story-text p.motto{font-family:var(--display);font-size:clamp(22px,3vw,30px);line-height:1.2;color:var(--chili);margin-top:22px}
+.sign{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.social{display:flex;flex-direction:column;gap:10px}
+.social-links{display:flex;gap:10px 20px;flex-wrap:wrap}
+.social-links a{display:inline-flex;align-items:center;gap:8px;color:var(--fg);text-decoration:none;font-size:14px;font-weight:600}
+.social-links .ico{width:36px;height:36px}
+.social-links .ico img{width:24px;height:24px}
+.social-links a:hover .ico{transform:scale(1.1);border-color:var(--sea)}
+.social-links a:hover span:last-child{text-decoration:underline}
+.story-sub{margin:40px 0 14px;display:flex;align-items:center;gap:12px}
+.story-sub::after{content:"";flex:1;height:2px;background:var(--line)}
+.yt{margin:0;display:flex;flex-direction:column;gap:8px}
+.yt figcaption{font-size:13px;color:var(--fg)}
+.yt .dim{color:var(--muted)}
+.yt-frame{position:relative;display:block;width:100%;border:0;border-radius:12px;overflow:hidden;background:#0D0809;color:#fff;text-decoration:none}
+.yt.wide .yt-frame{aspect-ratio:16/9}
+.yt.short .yt-frame{aspect-ratio:9/16;max-height:640px}
+.yt-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .2s}
+a.yt-frame:hover img{opacity:1}
+.yt-play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--chili);box-shadow:0 6px 24px rgba(0,0,0,.4)}
+.yt-play::after{content:"";position:absolute;left:29px;top:22px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #fff}
+.yt-label{position:absolute;left:12px;bottom:10px;font-size:12px;font-weight:600;background:rgba(0,0,0,.55);padding:4px 10px;border-radius:999px}
+.gallery{columns:4 220px;column-gap:14px}
+.ph{display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;text-align:left;color:var(--fg);font:inherit}
+.ph img{display:block;width:100%;height:auto;border-radius:10px;transition:transform .2s, box-shadow .2s}
+.ph:hover img{transform:translateY(-3px);box-shadow:var(--shadow)}
+.ph span{display:block;font-size:12.5px;color:var(--muted);margin-top:6px}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(10,6,7,.92);display:grid;place-items:center;padding:calc(56px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px))}
+.lightbox figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;max-width:min(1000px,100%)}
+.lightbox img{max-width:100%;max-height:78vh;border-radius:10px;display:block}
+.lightbox figcaption{color:#F5E9E4;font-size:14px;text-align:center}
+.lightbox .dim{color:#B9A7A2;margin-left:6px}
+.lb-btn{position:fixed;border:0;background:rgba(255,255,255,.12);color:#fff;width:48px;height:48px;border-radius:50%;font-size:28px;line-height:1;display:grid;place-items:center}
+.lb-btn:hover{background:rgba(255,255,255,.25)}
+.lb-close{top:calc(12px + env(safe-area-inset-top,0px));right:16px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+.lb-next{right:16px;top:50%;transform:translateY(-50%)}
+
+/* página do álbum: cores de cada disco */
+.themed{--acc:var(--accL);--acc-ink:var(--inkL)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .themed{--acc:var(--accD);--acc-ink:var(--inkD)}}
+:root[data-theme="dark"] .themed{--acc:var(--accD);--acc-ink:var(--inkD)}
+.themed .eyebrow.acc,.themed .facts .ord,.themed table.tracks .num,.themed .stat b{color:var(--acc)}
+.themed .facts{border-color:var(--acc)}
+.themed .stat{border-top:3px solid var(--acc)}
+.themed table.tracks th{border-bottom-color:var(--acc)}
+.themed table.tracks tbody tr:hover td{background:color-mix(in srgb, var(--acc) 9%, transparent)}
+.themed .btn.hot{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.themed .tbl-wrap{border-color:color-mix(in srgb, var(--acc) 35%, var(--line))}
+.ap-band{height:150px;border-radius:12px;position:relative;overflow:hidden;margin-bottom:-80px}
+.ap-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,color-mix(in srgb,var(--bg) 55%,transparent))}
+.ap-band-yr{position:absolute;right:20px;top:10px;font-family:var(--display);font-size:clamp(48px,9vw,96px);line-height:1;opacity:.9;z-index:1}
+.ap .ap-side{z-index:2}
+.ap-main{padding-top:96px}
+.sub-note{font-size:12px;color:var(--muted);margin-top:2px}
+table.tracks td .listen{justify-content:flex-end;flex-wrap:nowrap}
+.album-mini.click{background:none;border:0;padding:0;text-align:left;color:var(--fg);cursor:pointer;font:inherit}
+.album-mini.click .tile{transition:transform .15s, box-shadow .15s}
+.album-mini.click:hover .tile{transform:translateY(-3px);box-shadow:var(--shadow)}
+.album-mini.click:hover .name{color:var(--chili)}
+.ap-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}
+.ap{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start}
+.ap-side{display:flex;flex-direction:column;gap:16px;position:sticky;top:calc(80px + env(safe-area-inset-top,0px))}
+.ap-side .tile{width:100%}
+.facts{background:var(--surface);border:2px solid var(--fg);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.facts .ord{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--chili)}
+.facts .rel{font-size:18px;line-height:1.3}
+.facts .rel b{font-family:var(--display);font-weight:400;font-size:22px;display:block}
+.facts dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;margin:0;font-size:13px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-weight:600}
+.facts h4{margin:0 0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.people{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:13px}
+.people b{font-weight:700}
+.people span{color:var(--muted)}
+.ap-main h1{font-size:clamp(32px,5vw,56px);margin-bottom:8px}
+.ap-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 20px}
+.stat{background:var(--surface-2);border-radius:8px;padding:10px 14px;min-width:0}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:22px;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:12px;color:var(--muted)}
+.tbl-wrap{overflow-x:auto;background:var(--surface);border:1.5px solid var(--line);border-radius:10px}
+table.tracks{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+table.tracks th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;text-align:left;padding:10px 12px;border-bottom:2px solid var(--line)}
+table.tracks td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.tracks tr:last-child td{border-bottom:0}
+table.tracks .num, table.tracks .r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.tracks th.r{text-align:right}
+table.tracks .num{color:var(--muted);width:2.5em}
+table.tracks .tt{font-weight:600}
+table.tracks .tt a{color:inherit;text-decoration:none}
+table.tracks .tt a:hover{color:var(--chili);text-decoration:underline}
+table.tracks .plays{font-family:var(--display);font-size:16px}
+table.tracks .bar{display:inline-block;height:6px;border-radius:3px;background:var(--chili);vertical-align:middle;margin-right:8px;opacity:.75}
+table.tracks .dim{color:var(--muted)}
+table.tracks .disc td{background:var(--surface-2);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:760px){
+  .ap{grid-template-columns:1fr}
+  .ap-side{position:static}
+  .ap-main{padding-top:0}
+  .ap-band{height:110px;margin-bottom:-60px}
+  .ap-side .tile{max-width:220px}
+  .support{grid-template-columns:1fr}
+  .story-top{grid-template-columns:1fr;gap:24px}
+  .story-top .yt.short{max-width:300px}
+  .lb-prev,.lb-next{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}
+  .mapa-float{display:none}
+  .hero{grid-template-columns:1fr;padding-block:24px 8px}
+  .stack{height:200px}
+  .modes{grid-template-columns:1fr}
+  .duel{grid-template-columns:1fr;gap:10px}
+  .vs{justify-self:center;font-size:26px}
+  .triage{grid-template-columns:1fr;padding:18px}
+  .triage .tile{max-width:180px}
+  .rates{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .setlist li{grid-template-columns:36px 44px minmax(0,1fr) auto;gap:10px}
+  .setlist .tile{width:44px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <button class="brand" data-go="home" id="brand"></button>
+    <nav>
+      <button data-go="albums" id="nav-albums"></button>
+      <button data-go="songs" id="nav-songs"></button>
+      <button data-go="mine" id="nav-mine"></button>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language / Idioma">
+      <button data-lang="pt" lang="pt">PT</button><button data-lang="en" lang="en">EN</button><button data-lang="es" lang="es">ES</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="v-home"></section>
+  <section id="v-albums" hidden></section>
+  <section id="v-songs" hidden></section>
+  <section id="v-mine" hidden></section>
+  <section id="v-album" hidden></section>
+</main>
+
+<footer class="site"><div class="wrap" id="footer"></div></footer>
+<a class="mapa mapa-float" href="https://mapasolucoesdigitais.com.br/" target="_blank" rel="noopener" aria-label="MAPA Soluções Digitais"><img src="assets/img/mapa-logo.png" alt="MAPA Soluções Digitais"></a>
+
+<script>
+const MAPA_LOGO = "assets/img/mapa-logo.png";
+const PIX_QR = `<svg role="img" aria-label="QR Code Pix" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 228 228" class="pix-qr"><g transform="scale(4)"><path fill="#fff" d="M0 0h57v57h-57z"/><path class="qrline" stroke="#1a1112" d="M2 2.5h7m6 0h2m1 0h3m1 0h3m1 0h1m1 0h2m2 0h1m1 0h4m1 0h1m4 0h1m3 0h7m-53 1h1m5 0h1m2 0h1m1 0h2m1 0h5m6 0h1m1 0h2m1 0h1m3 0h1m1 0h1m5 0h2m2 0h1m5 0h1m-53 1h1m1 0h3m1 0h1m4 0h5m1 0h1m1 0h1m1 0h4m2 0h2m3 0h2m2 0h2m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m-53 1h1m1 0h3m1 0h1m5 0h1m3 0h4m11 0h1m1 0h3m1 0h1m3 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-53 1h1m1 0h3m1 0h1m4 0h2m4 0h1m1 0h1m2 0h10m1 0h1m1 0h2m1 0h2m1 0h2m3 0h1m1 0h3m1 0h1m-53 1h1m5 0h1m1 0h1m1 0h4m2 0h1m3 0h2m2 0h1m3 0h1m1 0h5m2 0h6m3 0h1m5 0h1m-53 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-44 1h1m4 0h1m1 0h2m2 0h1m3 0h1m3 0h2m3 0h3m1 0h2m-39 1h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h10m1 0h2m3 0h3m1 0h2m2 0h2m1 0h1m-47 1h1m1 0h1m1 0h1m3 0h3m1 0h1m1 0h1m2 0h1m4 0h1m1 0h1m2 0h2m1 0h3m1 0h1m1 0h1m1 0h3m3 0h1m1 0h1m4 0h1m-51 1h2m1 0h2m1 0h2m1 0h5m1 0h6m2 0h3m1 0h1m3 0h2m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m-51 1h4m1 0h1m1 0h2m3 0h1m3 0h5m1 0h2m1 0h2m6 0h1m1 0h1m2 0h3m4 0h1m1 0h2m1 0h2m-52 1h1m1 0h1m3 0h4m1 0h2m4 0h1m1 0h4m2 0h1m1 0h4m1 0h9m1 0h2m2 0h1m1 0h2m2 0h1m-51 1h1m1 0h2m3 0h4m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h3m9 0h3m-49 1h1m2 0h1m1 0h4m2 0h2m1 0h1m1 0h3m2 0h5m1 0h2m1 0h2m1 0h7m3 0h2m3 0h1m2 0h2m-53 1h2m2 0h2m1 0h6m4 0h2m2 0h1m3 0h1m1 0h1m2 0h2m2 0h4m2 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-50 1h2m1 0h2m1 0h4m1 0h4m2 0h1m1 0h1m2 0h2m1 0h1m4 0h1m1 0h1m1 0h1m5 0h3m2 0h2m2 0h1m-52 1h1m1 0h1m4 0h3m1 0h1m6 0h5m1 0h3m1 0h2m1 0h1m2 0h2m2 0h1m5 0h2m3 0h2m1 0h1m-53 1h1m1 0h5m1 0h1m1 0h8m1 0h1m1 0h1m3 0h1m2 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h3m2 0h1m2 0h2m-51 1h2m4 0h1m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m5 0h6m1 0h2m3 0h4m1 0h3m1 0h2m2 0h1m-51 1h2m2 0h6m1 0h1m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1m3 0h1m5 0h2m2 0h1m1 0h7m1 0h1m1 0h1m-51 1h2m1 0h1m2 0h1m1 0h1m2 0h1m1 0h3m1 0h3m3 0h1m1 0h1m3 0h3m2 0h2m1 0h1m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m-53 1h5m1 0h2m1 0h2m4 0h3m6 0h1m1 0h7m1 0h3m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m-51 1h2m5 0h2m3 0h2m1 0h1m7 0h6m2 0h3m3 0h2m1 0h1m3 0h2m1 0h2m1 0h3m-53 1h1m1 0h1m1 0h6m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h9m2 0h1m4 0h1m3 0h5m1 0h1m1 0h1m-53 1h3m1 0h1m3 0h1m4 0h1m1 0h1m1 0h1m1 0h1m4 0h1m3 0h1m2 0h2m1 0h4m1 0h2m3 0h1m3 0h1m-47 1h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h3m3 0h1m1 0h1m1 0h1m1 0h1m4 0h1m3 0h1m2 0h5m1 0h1m1 0h1m2 0h2m-52 1h1m1 0h2m3 0h1m1 0h2m1 0h3m2 0h1m1 0h2m2 0h1m3 0h2m8 0h1m1 0h2m1 0h2m3 0h2m-47 1h6m1 0h1m2 0h1m1 0h2m1 0h1m4 0h11m1 0h3m4 0h7m2 0h1m-51 1h2m1 0h1m2 0h1m1 0h3m2 0h2m4 0h1m1 0h1m1 0h1m3 0h1m3 0h2m4 0h2m3 0h1m2 0h2m1 0h2m1 0h1m-53 1h1m5 0h2m3 0h1m1 0h1m1 0h2m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m2 0h1m4 0h1m2 0h1m1 0h4m2 0h1m-53 1h1m1 0h1m2 0h1m2 0h2m2 0h3m1 0h1m3 0h1m5 0h3m1 0h3m1 0h2m2 0h2m1 0h4m2 0h1m1 0h1m1 0h2m-52 1h1m2 0h1m1 0h3m1 0h2m2 0h1m4 0h4m2 0h2m1 0h2m3 0h2m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m2 0h3m-52 1h1m1 0h1m5 0h1m1 0h3m2 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m2 0h3m1 0h1m3 0h1m3 0h1m-47 1h1m3 0h2m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h5m1 0h1m5 0h1m3 0h1m8 0h3m-52 1h1m1 0h1m4 0h1m1 0h4m1 0h3m6 0h2m1 0h1m6 0h1m2 0h3m1 0h1m3 0h1m1 0h1m2 0h4m-52 1h1m2 0h7m2 0h2m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h7m1 0h2m5 0h1m1 0h1m-50 1h1m1 0h3m3 0h2m2 0h1m5 0h3m1 0h5m1 0h1m3 0h3m1 0h2m1 0h3m2 0h1m1 0h2m1 0h1m1 0h1m-50 1h1m1 0h1m1 0h2m2 0h2m1 0h3m6 0h3m2 0h1m1 0h2m2 0h2m5 0h1m4 0h3m3 0h2m-53 1h1m1 0h3m3 0h2m1 0h2m2 0h2m1 0h2m5 0h1m3 0h1m2 0h1m1 0h2m2 0h2m4 0h3m1 0h2m2 0h1m-52 1h2m3 0h1m1 0h1m1 0h1m2 0h1m2 0h3m1 0h1m5 0h2m1 0h1m1 0h2m1 0h4m5 0h2m2 0h3m-50 1h6m3 0h1m1 0h4m2 0h2m4 0h1m2 0h4m1 0h2m3 0h1m2 0h1m5 0h1m1 0h1m1 0h1m2 0h1m-53 1h2m1 0h4m2 0h1m1 0h1m1 0h4m1 0h2m2 0h1m1 0h1m1 0h3m3 0h1m1 0h2m2 0h4m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m-52 1h2m5 0h2m1 0h1m2 0h1m7 0h1m5 0h1m4 0h2m6 0h1m1 0h1m3 0h1m1 0h1m2 0h1m-50 1h1m2 0h3m1 0h4m1 0h2m1 0h2m1 0h11m3 0h2m1 0h1m1 0h2m2 0h5m1 0h3m-45 1h1m1 0h3m1 0h2m2 0h1m1 0h1m3 0h1m3 0h1m2 0h3m3 0h1m1 0h1m1 0h1m1 0h2m3 0h2m1 0h2m-53 1h7m2 0h2m2 0h2m1 0h1m3 0h3m1 0h1m1 0h1m1 0h1m2 0h4m1 0h2m3 0h1m2 0h1m1 0h1m1 0h4m-52 1h1m5 0h1m1 0h2m1 0h1m4 0h2m2 0h3m1 0h1m3 0h2m1 0h4m1 0h3m1 0h1m2 0h2m3 0h4m-52 1h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m3 0h1m2 0h5m1 0h2m1 0h2m1 0h2m2 0h1m1 0h1m1 0h6m1 0h2m-53 1h1m1 0h3m1 0h1m1 0h1m12 0h2m2 0h1m2 0h2m2 0h3m1 0h2m2 0h2m1 0h4m1 0h1m3 0h1m-53 1h1m1 0h3m1 0h1m2 0h6m2 0h3m2 0h3m6 0h3m4 0h1m7 0h3m-49 1h1m5 0h1m4 0h1m2 0h5m1 0h6m3 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h1m3 0h1m3 0h1m-52 1h7m1 0h6m1 0h5m3 0h4m2 0h2m1 0h1m3 0h4m1 0h4m1 0h1m1 0h2m1 0h1"/></g></svg>`;
+const KOFI_QR = `<svg role="img" aria-label="QR Code Ko-fi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" class="segno"><g transform="scale(4)"><path fill="#fff" d="M0 0h33v33h-33z"/><path class="qrline" stroke="#1a1112" d="M2 2.5h7m6 0h3m3 0h1m2 0h7m-29 1h1m5 0h1m2 0h1m2 0h1m2 0h1m4 0h1m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h2m4 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m3 0h1m3 0h2m2 0h2m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m5 0h2m1 0h4m3 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h4m2 0h2m1 0h4m1 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-18 1h2m1 0h2m1 0h2m-19 1h1m2 0h1m1 0h2m1 0h2m10 0h2m1 0h1m-23 1h1m2 0h2m3 0h1m1 0h1m1 0h1m2 0h1m3 0h3m2 0h1m2 0h1m-29 1h2m4 0h1m1 0h2m2 0h3m1 0h1m2 0h1m2 0h1m2 0h3m-27 1h2m2 0h1m2 0h1m1 0h1m2 0h3m3 0h2m2 0h1m2 0h2m-28 1h2m1 0h4m3 0h2m2 0h4m2 0h1m1 0h1m2 0h1m1 0h2m-28 1h2m1 0h2m1 0h1m1 0h1m1 0h3m3 0h5m-21 1h2m3 0h3m1 0h1m1 0h3m2 0h1m2 0h2m2 0h5m-29 1h1m1 0h2m1 0h1m4 0h1m5 0h7m1 0h2m1 0h1m-27 1h1m2 0h1m1 0h1m5 0h2m3 0h1m2 0h2m5 0h1m-26 1h2m1 0h1m1 0h5m1 0h2m1 0h1m4 0h2m2 0h1m2 0h1m-29 1h1m1 0h7m5 0h1m2 0h2m3 0h2m3 0h2m-25 1h2m1 0h1m3 0h2m1 0h7m3 0h1m2 0h2m-29 1h1m1 0h1m2 0h5m2 0h1m2 0h2m2 0h6m1 0h1m-19 1h1m5 0h1m1 0h1m2 0h2m3 0h1m1 0h3m-29 1h7m4 0h2m4 0h1m2 0h1m1 0h1m1 0h1m2 0h1m-28 1h1m5 0h1m1 0h1m1 0h1m3 0h3m1 0h3m3 0h5m-29 1h1m1 0h3m1 0h1m2 0h2m1 0h1m3 0h2m2 0h5m2 0h2m-29 1h1m1 0h3m1 0h1m1 0h2m2 0h2m3 0h1m1 0h1m2 0h6m-28 1h1m1 0h3m1 0h1m4 0h1m1 0h1m3 0h1m1 0h2m3 0h3m1 0h1m-29 1h1m5 0h1m2 0h1m2 0h1m4 0h4m1 0h1m1 0h1m2 0h1m-28 1h7m1 0h1m2 0h1m1 0h2m1 0h2m2 0h3m2 0h1m1 0h1"/></g></svg>
+`;
+const KOFI_URL = "https://ko-fi.com/mapasolucoesdigitais";
+const PIX_KEY = "mateuspapini@yahoo.com.br";
+const ICON = {"spotify": "assets/icons/spotify.png", "deezer": "assets/icons/deezer.png", "youtube": "assets/icons/youtube.png", "wiki": "assets/icons/wiki.png"};
+const PIX_CODE = "00020126600014BR.GOV.BCB.PIX0125mateuspapini@yahoo.com.br0209Site RHCP5204000053039865802BR5922Mateus Frossard Papini6009SAO PAULO62140510jQTaQZTyHn6304A2B4";
+
+/* ---------- textos ---------- */
+const T = {
+pt:{
+  brand:'Batalha <span>Chili Peppers</span>', title:"Batalha Chili Peppers",
+  nav_albums:"Álbuns", nav_songs:"Músicas", nav_mine:"Meus rankings",
+  hero_count:(a,b)=>`13 álbuns · ${a} músicas de estúdio + ${b} lados B e raridades`,
+  hero_h:'Descubra qual é a <em>sua</em> música favorita.',
+  hero_p:"Primeiro você separa o que ama numa triagem rápida. Depois só as favoritas vão para o duelo, uma contra a outra, até sair o seu Top 10 ou Top 20.",
+  m_alb_eb:"Cerca de 2 minutos", m_alb_h:"Batalha de álbuns", m_alb_p:"Os 13 discos, dois de cada vez. Uns 35 duelos e sai o ranking completo.",
+  m_song_eb:"Triagem + duelos", m_song_h:"Batalha de músicas", m_song_p:"Marque cada música como Amo, Gosto, Tanto faz ou Não conheço. As que você ama disputam o Top 10 ou Top 20.",
+  start:"Começar →",
+  disco_h:"A discografia", disco_eb:"Guitarrista de cada disco",
+  extras_h:"Lados B e raridades", extras_eb:"Singles, bônus, demos vazadas e covers",
+  tracks:n=>n===1?"1 faixa":`${n} faixas`, bside:"lado B",
+  proto:'Protótipo: as capas aqui são ilustrações provisórias. Nos álbuns de estúdio, o "Ouvir" abre a música no serviço escolhido; nos lados B, abre o vídeo indicado no YouTube. No site final, a capa oficial e o trecho de 30 segundos tocam aqui mesmo.',
+  sup_eb:"Projeto de fã, sem anúncios", sup_h:"Ajude a manter o site no ar", sup_p:"O site é gratuito para fãs do mundo todo. As doações pagam hospedagem e domínio.",
+  kofi_tag:"Do mundo todo", kofi_p:"Doe qualquer valor com cartão, de qualquer país. Não precisa criar conta.", kofi_qr:"Ou aponte a câmera do celular:", kofi_btn:"Apoiar no Ko-fi",
+  pix_tag:"Brasil", pix_p:"Aponte a câmera do app do banco para o QR Code, ou copie o código e use o Pix Copia e Cola.", pix_key:"Chave:", pix_code_btn:"Copiar código Pix", pix_key_btn:"Copiar chave",
+  t_pix_key:"Chave Pix copiada", t_pix_code:"Código Pix copiado, cole no app do banco", t_fail:"Não deu para copiar automaticamente", t_rank:"Ranking copiado",
+  footer:'Site de fã, sem ligação oficial com o Red Hot Chili Peppers, a gravadora ou o empresário da banda.',
+  ap_back:"← Voltar", ap_wiki:"Ler na Wikipédia", ap_battle:"Fazer a batalha de álbuns", ord:n=>`${n}º álbum de estúdio`, released:"Lançado em",
+  f_rec:"Gravação", f_studio:"Estúdio", f_len:"Duração", f_label:"Gravadora", f_prod:"Produção", lineup:"Formação", extra_m:"Músicos convidados", tech_m:"Equipe técnica",
+  c_song:"Música", c_len:"Duração", c_live:"Ao vivo", c_first:"Primeira vez", c_last:"Última vez",
+  st_tracks:"faixas", st_live:"execuções ao vivo", st_top:"mais tocada ao vivo", st_never:"nunca tocadas ao vivo",
+  live_note:"A contagem ao vivo considera só execuções completas, não trechos.", never:"Nunca tocada ao vivo",
+  disc:"Disco", rec_range:(a,b)=>`${a} a ${b}`, open_album:"Abrir álbum", bonus_tracks:"Faixas",
+  r_vocals:"Vocal", r_backing:"Vocais de apoio", r_guitar:"Guitarra", r_bass:"Baixo", r_drums:"Bateria", r_perc:"Percussão", r_keys:"Teclados", r_synth:"Sintetizador", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Órgão", r_trumpet:"Trompete", r_sax:"Saxofone", r_trombone:"Trombone", r_violin:"Violino", r_viola:"Viola", r_cello:"Violoncelo", r_harmonica:"Gaita", r_clavinet:"Clavinete", r_choir:"Coral", r_juice_harp:"Berimbau de boca", r_horn_arr:"Arranjo de metais", r_string_arr:"Arranjo de cordas", r_guitar_solo:"Solo de guitarra", r_engineer:"Engenharia de som", r_mixing:"Mixagem", r_mastering:"Masterização", r_recording:"Gravação", r_art:"Arte da capa",
+  built:"Desenvolvido por",
+  l_deezer:"Ouvir no Deezer", l_spotify:"Ouvir no Spotify", more:"Saiba mais", c_listen:"Ouvir", l_yt:"Ouvir no YouTube", la:"Wikipédia", la2:"Ver o álbum na Wikipédia",
+  duel_n:(n,m)=>`Duelo ${n} · faltam cerca de ${m}`, pick_a:"Esse!", pick_s:"Essa!",
+  undo:"↶ Desfazer", tie:"Não sei decidir", quit:"Sair e continuar depois",
+  keys:"Teclado: ← esquerda · → direita · ↓ não sei · Backspace desfaz",
+  ab_eb:"Batalha de álbuns", ab_h:"Qual disco fica?", ab_res_eb:n=>`Resultado · ${n} duelos`, ab_res_h:"Seu ranking de álbuns",
+  copy:"Copiar ranking", redo:"Refazer", fine:"Use ↑ e ↓ para o ajuste fino.", up:"Subir", down:"Descer",
+  copy_alb:"Meu ranking de álbuns do Red Hot Chili Peppers:", copy_song:k=>`Meu Top ${k} do Red Hot Chili Peppers:`,
+  s1:"Etapa 1 de 3 · Triagem", s2:"Etapa 2 de 3 · Duelos", s3:"Etapa 3 de 3 · Ajuste final",
+  setup_h:"Quais discos entram?", setup_p:"Cada música aparece uma vez. Você marca Amo, Gosto, Tanto faz ou Não conheço. Leva 2 ou 3 segundos por faixa, e dá para parar e continuar depois.",
+  shortcuts:"Atalhos", only_studio:"Só estúdio", all_b:"Tudo, com lados B", era:g=>`Fase ${g}`, studio:"Álbuns de estúdio",
+  start_tri:n=>`Começar triagem · ${n} músicas`, skip_tri:"Já fiz a triagem, ir para os duelos",
+  tri_h:"O que você acha dessa?", tri_prog:(i,n,l,k)=>`${i} de ${n} · Amo ${l} · Gosto ${k}`, track:n=>`Faixa ${n}`, guitar:g=>`Guitarra: ${g}`,
+  love:"Amo", like:"Gosto", meh:"Tanto faz", unk:"Não conheço", key:n=>`tecla ${n}`,
+  back_one:"↶ Voltar uma", end_tri:"Encerrar triagem e ir para os duelos",
+  pre_h:"Hora do confronto", size:"Tamanho do ranking", pre_need:"Você precisa marcar mais músicas como Amo ou Gosto antes dos duelos.",
+  pre_msg:(n,k,mixed,est)=>`${n} músicas vão disputar seu Top ${k}${mixed?" (as que você ama e as que você gosta, porque só as do Amo não davam para preencher)":" (só as que você ama)"}. Serão cerca de ${est} duelos.${k===20?" Com o Top 20 você também consegue ver o Top 10 no final.":""}`,
+  pre_go:"Começar os duelos", pre_back:"Voltar para a triagem",
+  sb_h:k=>`Qual fica no seu Top ${k}?`, res_eb:n=>`Etapa 3 de 3 · Ajuste final · ${n} duelos`, res_h:"Seu setlist dos sonhos", need20:"Para ver o Top 20, refaça os duelos escolhendo Top 20.",
+  redo_duels:"Refazer os duelos", redo_tri:"Refazer a triagem",
+  m_albums:"Álbuns", m_songs:"Músicas", empty_alb:"Você ainda não fez a batalha de álbuns.", do_now:"Fazer agora", empty_song:"Seu Top de músicas aparece aqui depois dos duelos.", begin:"Começar",
+  reset:"Apagar tudo e começar do zero", reset_ok:"Clique de novo para confirmar",
+  bside_pre:"Lado B · ", other_rar:"Outras raridades", various:"Vários"
+},
+en:{
+  brand:'Chili Peppers <span>Battle</span>', title:"Chili Peppers Battle",
+  nav_albums:"Albums", nav_songs:"Songs", nav_mine:"My rankings",
+  hero_count:(a,b)=>`13 albums · ${a} studio songs + ${b} B-sides and rarities`,
+  hero_h:'Find out which song is <em>your</em> favorite.',
+  hero_p:"First, a quick pass to sort out the songs you love. Then only your favorites go head-to-head, two at a time, until your Top 10 or Top 20 is set.",
+  m_alb_eb:"About 2 minutes", m_alb_h:"Album battle", m_alb_p:"All 13 albums, two at a time. About 35 duels and your full ranking is done.",
+  m_song_eb:"Sorting + duels", m_song_h:"Song battle", m_song_p:"Mark each song as Love it, Like it, Meh or Don't know it. The ones you love compete for your Top 10 or Top 20.",
+  start:"Start →",
+  disco_h:"The discography", disco_eb:"Guitarist on each album",
+  extras_h:"B-sides and rarities", extras_eb:"Singles, bonus tracks, leaked demos and covers",
+  tracks:n=>n===1?"1 track":`${n} tracks`, bside:"B-side",
+  proto:'Prototype: the covers here are placeholder illustrations. For studio albums, "Listen" opens the song on the service you pick; for B-sides, it opens the linked YouTube video. On the final site, the official cover and a 30-second preview will play right here.',
+  sup_eb:"Fan project, no ads", sup_h:"Help keep the site running", sup_p:"The site is free for fans everywhere. Donations cover hosting and the domain.",
+  kofi_tag:"Worldwide", kofi_p:"Give any amount by card, from any country. No account needed.", kofi_qr:"Or scan it with your phone:", kofi_btn:"Support on Ko-fi",
+  pix_tag:"Brazil only", pix_p:"For Brazilian bank apps. Scan the QR code, or copy the code and use Pix Copia e Cola.", pix_key:"Key:", pix_code_btn:"Copy Pix code", pix_key_btn:"Copy key",
+  t_pix_key:"Pix key copied", t_pix_code:"Pix code copied, paste it in your bank app", t_fail:"Couldn't copy automatically", t_rank:"Ranking copied",
+  footer:'Fan site, not affiliated with Red Hot Chili Peppers, their label or their management.',
+  ap_back:"← Back", ap_wiki:"Read on Wikipedia", ap_battle:"Do the album battle", ord:n=>`${n}${n%100>=11&&n%100<=13?"th":({1:"st",2:"nd",3:"rd"}[n%10]||"th")} studio album`, released:"Released",
+  f_rec:"Recorded", f_studio:"Studio", f_len:"Length", f_label:"Label", f_prod:"Producer", lineup:"Lineup", extra_m:"Additional musicians", tech_m:"Production",
+  c_song:"Song", c_len:"Length", c_live:"Played live", c_first:"First", c_last:"Last",
+  st_tracks:"tracks", st_live:"live performances", st_top:"most played live", st_never:"never played live",
+  live_note:"Live counts include only full performances, not snippets.", never:"Never played live",
+  disc:"Disc", rec_range:(a,b)=>`${a} to ${b}`, open_album:"Open album", bonus_tracks:"Tracks",
+  r_vocals:"Vocals", r_backing:"Backing vocals", r_guitar:"Guitar", r_bass:"Bass", r_drums:"Drums", r_perc:"Percussion", r_keys:"Keyboards", r_synth:"Synthesizer", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Organ", r_trumpet:"Trumpet", r_sax:"Saxophone", r_trombone:"Trombone", r_violin:"Violin", r_viola:"Viola", r_cello:"Cello", r_harmonica:"Harmonica", r_clavinet:"Clavinet", r_choir:"Choir", r_juice_harp:"Jaw harp", r_horn_arr:"Horn arrangements", r_string_arr:"String arrangements", r_guitar_solo:"Guitar solo", r_engineer:"Engineering", r_mixing:"Mixing", r_mastering:"Mastering", r_recording:"Recording", r_art:"Cover art",
+  built:"Built by",
+  l_deezer:"Listen on Deezer", l_spotify:"Listen on Spotify", more:"Learn more", c_listen:"Listen", l_yt:"Listen on YouTube", la:"Wikipedia", la2:"View the album on Wikipedia",
+  duel_n:(n,m)=>`Duel ${n} · about ${m} to go`, pick_a:"This one!", pick_s:"This one!",
+  undo:"↶ Undo", tie:"Can't decide", quit:"Leave and continue later",
+  keys:"Keyboard: ← left · → right · ↓ can't decide · Backspace undo",
+  ab_eb:"Album battle", ab_h:"Which album stays?", ab_res_eb:n=>`Result · ${n} duels`, ab_res_h:"Your album ranking",
+  copy:"Copy ranking", redo:"Start over", fine:"Use ↑ and ↓ to fine-tune.", up:"Move up", down:"Move down",
+  copy_alb:"My Red Hot Chili Peppers album ranking:", copy_song:k=>`My Red Hot Chili Peppers Top ${k}:`,
+  s1:"Step 1 of 3 · Sorting", s2:"Step 2 of 3 · Duels", s3:"Step 3 of 3 · Final tweaks",
+  setup_h:"Which albums are in?", setup_p:"Each song shows up once. You mark it Love it, Like it, Meh or Don't know it. It takes 2 or 3 seconds per track, and you can stop and pick up later.",
+  shortcuts:"Shortcuts", only_studio:"Studio only", all_b:"Everything, with B-sides", era:g=>`${g} era`, studio:"Studio albums",
+  start_tri:n=>`Start sorting · ${n} songs`, skip_tri:"I've already sorted, go to the duels",
+  tri_h:"What do you think of this one?", tri_prog:(i,n,l,k)=>`${i} of ${n} · Love it ${l} · Like it ${k}`, track:n=>`Track ${n}`, guitar:g=>`Guitar: ${g}`,
+  love:"Love it", like:"Like it", meh:"Meh", unk:"Don't know it", key:n=>`key ${n}`,
+  back_one:"↶ Back one", end_tri:"Finish sorting and go to the duels",
+  pre_h:"Showdown time", size:"Ranking size", pre_need:"Mark more songs as Love it or Like it before the duels.",
+  pre_msg:(n,k,mixed,est)=>`${n} songs will compete for your Top ${k}${mixed?" (the ones you love plus the ones you like, since the loved ones alone weren't enough)":" (only the ones you love)"}. That's about ${est} duels.${k===20?" With a Top 20 you can also view the Top 10 at the end.":""}`,
+  pre_go:"Start the duels", pre_back:"Back to sorting",
+  sb_h:k=>`Which one makes your Top ${k}?`, res_eb:n=>`Step 3 of 3 · Final tweaks · ${n} duels`, res_h:"Your dream setlist", need20:"To see a Top 20, redo the duels and pick Top 20.",
+  redo_duels:"Redo the duels", redo_tri:"Redo the sorting",
+  m_albums:"Albums", m_songs:"Songs", empty_alb:"You haven't done the album battle yet.", do_now:"Do it now", empty_song:"Your song Top shows up here after the duels.", begin:"Start",
+  reset:"Erase everything and start over", reset_ok:"Click again to confirm",
+  bside_pre:"B-sides · ", other_rar:"Other rarities", various:"Various"
+},
+es:{
+  brand:'Batalla <span>Chili Peppers</span>', title:"Batalla Chili Peppers",
+  nav_albums:"Álbumes", nav_songs:"Canciones", nav_mine:"Mis rankings",
+  hero_count:(a,b)=>`13 álbumes · ${a} canciones de estudio + ${b} caras B y rarezas`,
+  hero_h:'Descubre cuál es <em>tu</em> canción favorita.',
+  hero_p:"Primero haces una clasificación rápida de lo que te encanta. Después solo las favoritas se enfrentan, de dos en dos, hasta que sale tu Top 10 o Top 20.",
+  m_alb_eb:"Unos 2 minutos", m_alb_h:"Batalla de álbumes", m_alb_p:"Los 13 discos, de dos en dos. Unos 35 duelos y sale el ranking completo.",
+  m_song_eb:"Clasificación + duelos", m_song_h:"Batalla de canciones", m_song_p:"Marca cada canción como Me encanta, Me gusta, Me da igual o No la conozco. Las que te encantan compiten por el Top 10 o Top 20.",
+  start:"Empezar →",
+  disco_h:"La discografía", disco_eb:"Guitarrista de cada disco",
+  extras_h:"Caras B y rarezas", extras_eb:"Singles, temas extra, demos filtradas y versiones",
+  tracks:n=>n===1?"1 canción":`${n} canciones`, bside:"cara B",
+  proto:'Prototipo: las portadas son ilustraciones provisionales. En los álbumes de estudio, "Escuchar" abre la canción en el servicio elegido; en las caras B, abre el video indicado en YouTube. En el sitio final, la portada oficial y un fragmento de 30 segundos sonarán aquí mismo.',
+  sup_eb:"Proyecto de fans, sin anuncios", sup_h:"Ayuda a mantener el sitio en línea", sup_p:"El sitio es gratis para fans de todo el mundo. Las donaciones pagan el hosting y el dominio.",
+  kofi_tag:"Todo el mundo", kofi_p:"Dona lo que quieras con tarjeta, desde cualquier país. No hace falta crear cuenta.", kofi_qr:"O escanéalo con tu celular:", kofi_btn:"Apoyar en Ko-fi",
+  pix_tag:"Solo Brasil", pix_p:"Para apps de bancos brasileños. Escanea el QR o copia el código y usa Pix Copia e Cola.", pix_key:"Clave:", pix_code_btn:"Copiar código Pix", pix_key_btn:"Copiar clave",
+  t_pix_key:"Clave Pix copiada", t_pix_code:"Código Pix copiado, pégalo en la app del banco", t_fail:"No se pudo copiar automáticamente", t_rank:"Ranking copiado",
+  footer:'Sitio de fans, sin relación oficial con Red Hot Chili Peppers, su discográfica ni su mánager.',
+  ap_back:"← Volver", ap_wiki:"Leer en Wikipedia", ap_battle:"Hacer la batalla de álbumes", ord:n=>`Álbum de estudio n.º ${n}`, released:"Publicado el",
+  f_rec:"Grabación", f_studio:"Estudio", f_len:"Duración", f_label:"Discográfica", f_prod:"Producción", lineup:"Formación", extra_m:"Músicos invitados", tech_m:"Equipo técnico",
+  c_song:"Canción", c_len:"Duración", c_live:"En vivo", c_first:"Primera vez", c_last:"Última vez",
+  st_tracks:"canciones", st_live:"ejecuciones en vivo", st_top:"la más tocada en vivo", st_never:"nunca tocadas en vivo",
+  live_note:"El conteo en vivo solo incluye ejecuciones completas, no fragmentos.", never:"Nunca tocada en vivo",
+  disc:"Disco", rec_range:(a,b)=>`${a} a ${b}`, open_album:"Abrir álbum", bonus_tracks:"Canciones",
+  r_vocals:"Voz", r_backing:"Coros", r_guitar:"Guitarra", r_bass:"Bajo", r_drums:"Batería", r_perc:"Percusión", r_keys:"Teclados", r_synth:"Sintetizador", r_mellotron:"Mellotron", r_piano:"Piano", r_organ:"Órgano", r_trumpet:"Trompeta", r_sax:"Saxofón", r_trombone:"Trombón", r_violin:"Violín", r_viola:"Viola", r_cello:"Violonchelo", r_harmonica:"Armónica", r_clavinet:"Clavinet", r_choir:"Coro", r_juice_harp:"Arpa de boca", r_horn_arr:"Arreglos de metales", r_string_arr:"Arreglos de cuerdas", r_guitar_solo:"Solo de guitarra", r_engineer:"Ingeniería de sonido", r_mixing:"Mezcla", r_mastering:"Masterización", r_recording:"Grabación", r_art:"Arte de portada",
+  built:"Desarrollado por",
+  l_deezer:"Escuchar en Deezer", l_spotify:"Escuchar en Spotify", more:"Más información", c_listen:"Escuchar", l_yt:"Escuchar en YouTube", la:"Wikipedia", la2:"Ver el álbum en Wikipedia",
+  duel_n:(n,m)=>`Duelo ${n} · faltan unos ${m}`, pick_a:"¡Este!", pick_s:"¡Esta!",
+  undo:"↶ Deshacer", tie:"No sé decidir", quit:"Salir y seguir después",
+  keys:"Teclado: ← izquierda · → derecha · ↓ no sé · Retroceso deshace",
+  ab_eb:"Batalla de álbumes", ab_h:"¿Qué disco se queda?", ab_res_eb:n=>`Resultado · ${n} duelos`, ab_res_h:"Tu ranking de álbumes",
+  copy:"Copiar ranking", redo:"Rehacer", fine:"Usa ↑ y ↓ para el ajuste fino.", up:"Subir", down:"Bajar",
+  copy_alb:"Mi ranking de álbumes de Red Hot Chili Peppers:", copy_song:k=>`Mi Top ${k} de Red Hot Chili Peppers:`,
+  s1:"Paso 1 de 3 · Clasificación", s2:"Paso 2 de 3 · Duelos", s3:"Paso 3 de 3 · Ajuste final",
+  setup_h:"¿Qué discos entran?", setup_p:"Cada canción aparece una vez. La marcas como Me encanta, Me gusta, Me da igual o No la conozco. Toma 2 o 3 segundos por canción, y puedes parar y seguir después.",
+  shortcuts:"Atajos", only_studio:"Solo estudio", all_b:"Todo, con caras B", era:g=>`Etapa ${g}`, studio:"Álbumes de estudio",
+  start_tri:n=>`Empezar clasificación · ${n} canciones`, skip_tri:"Ya clasifiqué, ir a los duelos",
+  tri_h:"¿Qué te parece esta?", tri_prog:(i,n,l,k)=>`${i} de ${n} · Me encanta ${l} · Me gusta ${k}`, track:n=>`Canción ${n}`, guitar:g=>`Guitarra: ${g}`,
+  love:"Me encanta", like:"Me gusta", meh:"Me da igual", unk:"No la conozco", key:n=>`tecla ${n}`,
+  back_one:"↶ Volver una", end_tri:"Terminar y pasar a los duelos",
+  pre_h:"Hora del duelo", size:"Tamaño del ranking", pre_need:"Marca más canciones como Me encanta o Me gusta antes de los duelos.",
+  pre_msg:(n,k,mixed,est)=>`${n} canciones van a disputar tu Top ${k}${mixed?" (las que te encantan y las que te gustan, porque solo las que te encantan no alcanzaban)":" (solo las que te encantan)"}. Serán unos ${est} duelos.${k===20?" Con el Top 20 también puedes ver el Top 10 al final.":""}`,
+  pre_go:"Empezar los duelos", pre_back:"Volver a la clasificación",
+  sb_h:k=>`¿Cuál entra en tu Top ${k}?`, res_eb:n=>`Paso 3 de 3 · Ajuste final · ${n} duelos`, res_h:"Tu setlist soñado", need20:"Para ver el Top 20, rehaz los duelos eligiendo Top 20.",
+  redo_duels:"Rehacer los duelos", redo_tri:"Rehacer la clasificación",
+  m_albums:"Álbumes", m_songs:"Canciones", empty_alb:"Todavía no hiciste la batalla de álbumes.", do_now:"Hacerlo ahora", empty_song:"Tu Top de canciones aparece aquí después de los duelos.", begin:"Empezar",
+  reset:"Borrar todo y empezar de cero", reset_ok:"Haz clic de nuevo para confirmar",
+  bside_pre:"Caras B · ", other_rar:"Otras rarezas", various:"Varios"
+}};
+
+/* notas dos lados B */
+const NOTES = {
+  "Vazou":["Leaked","Filtrada"], "Demo vazada":["Leaked demo","Demo filtrada"], "Demo instrumental vazada":["Leaked instrumental demo","Demo instrumental filtrada"],
+  "Instrumental vazado":["Leaked instrumental","Instrumental filtrado"], "Inédita, o instrumental vazou":["Unreleased, the instrumental leaked","Inédita, se filtró el instrumental"],
+  "Mother's Milk remasterizado":["Mother's Milk remaster","Remasterización de Mother's Milk"], "Saiu no What Hits!?":["Released on What Hits!?","Publicada en What Hits!?"],
+  "Ao vivo, bônus do Mother's Milk":["Live, Mother's Milk bonus track","En vivo, tema extra de Mother's Milk"],
+  "Faixa bônus nas plataformas digitais":["Bonus track on streaming platforms","Tema extra en plataformas digitales"],
+  "Lado B de Under the Bridge, trilha de Quanto Mais Idiota Melhor":["B-side of Under the Bridge, Wayne's World soundtrack","Cara B de Under the Bridge, banda sonora de Wayne's World"],
+  "Compilação de raridades":["Rarities compilation","Recopilatorio de rarezas"],
+  "Gravada com Navarro para o disco seguinte, vazou":["Recorded with Navarro for the next album, leaked","Grabada con Navarro para el siguiente disco, filtrada"],
+  "Disco bônus australiano":["Australian bonus disc","Disco extra australiano"], "Ao vivo, lado B de Can't Stop":["Live, B-side of Can't Stop","En vivo, cara B de Can't Stop"],
+  "Saiu no Greatest Hits":["Released on Greatest Hits","Publicada en Greatest Hits"], "Só ao vivo, no Live in Hyde Park":["Live only, on Live in Hyde Park","Solo en vivo, en Live in Hyde Park"],
+  "Só ao vivo":["Live only","Solo en vivo"], "Ao vivo":["Live","En vivo"],
+  "Inédita, citada pelo Josh e tocada ao vivo":["Unreleased, mentioned by Josh and teased live","Inédita, mencionada por Josh y tocada en vivo"],
+  "Bônus da edição japonesa":["Bonus track on the Japanese edition","Tema extra de la edición japonesa"],
+  "Trecho no filme Tough Guys (1986), nunca lançada":["Snippet in the film Tough Guys (1986), never released","Fragmento en la película Tough Guys (1986), nunca publicada"],
+  "Trilha de Beavis and Butt-Head Do America":["Beavis and Butt-Head Do America soundtrack","Banda sonora de Beavis and Butt-Head Do America"]
+};
+function noteT(n){
+  if(!n || LANG==="pt") return n;
+  const i = LANG==="en"?0:1;
+  if(NOTES[n]) return NOTES[n][i];
+  let m;
+  if((m=n.match(/^Lado B do single 12'' de (.+)$/))) return i?`Cara B del single de 12'' de ${m[1]}`:`B-side of the ${m[1]} 12'' single`;
+  if((m=n.match(/^Lado B de (.+)$/))) return i?`Cara B de ${m[1].replace(" e "," y ")}`:`B-side of ${m[1].replace(" e "," and ")}`;
+  if((m=n.match(/^Bônus do (.+) remasterizado$/))) return i?`Tema extra en la remasterización de ${m[1]}`:`Bonus track on the ${m[1]} remaster`;
+  if((m=n.match(/^Cover d[eoa]s? (.+)$/))) return i?`Versión de ${m[1]}`:`${m[1]} cover`;
+  return n;
+}
+
+/* ---------- dados ---------- */
+const ALBUMS = [
+ {id:"rhcp", t:"The Red Hot Chili Peppers", y:1984, g:"Jack Sherman", c:["#D7322A","#F2D13A"], p:0, tr:["True Men Don't Kill Coyotes","Baby Appeal","Buckle Down","Get Up and Jump","Why Don't You Love Me","Green Heaven","Mommy, Where's Daddy?","Out in L.A.","Police Helicopter","You Always Sing the Same","Grand Pappy Du Plenty"]},
+ {id:"fs", t:"Freaky Styley", y:1985, g:"Hillel Slovak", c:["#E2583E","#F3D9A4"], p:1, tr:["Jungle Man","Hollywood (Africa)","American Ghost Dance","If You Want Me to Stay","Nevermind","Freaky Styley","Blackeyed Blonde","The Brothers Cup","Battle Ship","Lovin' and Touchin'","Catholic School Girls Rule","Sex Rap","Thirty Dirty Birds","Yertle the Turtle"]},
+ {id:"umpp", t:"The Uplift Mofo Party Plan", y:1987, g:"Hillel Slovak", c:["#3D6DB5","#F0C94B"], p:2, tr:["Fight Like a Brave","Funky Crime","Me and My Friends","Backwoods","Skinny Sweaty Man","Behind the Sun","Subterranean Homesick Blues","Special Secret Song Inside","No Chump Love Sucker","Walkin' on Down the Road","Love Trilogy","Organic Anti-Beat Box Band"]},
+ {id:"mm", t:"Mother's Milk", y:1989, g:"John Frusciante", c:["#C93C8E","#F7E06A"], p:3, tr:["Good Time Boys","Higher Ground","Subway to Venus","Magic Johnson","Nobody Weird Like Me","Knock Me Down","Taste the Pain","Stone Cold Bush","Fire","Pretty Little Ditty","Punk Rock Classic","Sexy Mexican Maid","Johnny, Kick a Hole in the Sky"]},
+ {id:"bssm", t:"Blood Sugar Sex Magik", y:1991, g:"John Frusciante", c:["#1C1C1C","#D9D2C5"], p:4, tr:["The Power of Equality","If You Have to Ask","Breaking the Girl","Funky Monks","Suck My Kiss","I Could Have Lied","Mellowship Slinky in B Major","The Righteous & the Wicked","Give It Away","Blood Sugar Sex Magik","Under the Bridge","Naked in the Rain","Apache Rose Peacock","The Greeting Song","My Lovely Man","Sir Psycho Sexy","They're Red Hot"]},
+ {id:"ohm", t:"One Hot Minute", y:1995, g:"Dave Navarro", c:["#E6B32E","#7A2E1F"], p:0, tr:["Warped","Aeroplane","Deep Kick","My Friends","Coffee Shop","Pea","One Big Mob","Walkabout","Tearjerker","One Hot Minute","Falling into Grace","Shallow Be Thy Game","Transcending"]},
+ {id:"cal", t:"Californication", y:1999, g:"John Frusciante", c:["#2D7FC1","#8FDCEB"], p:1, tr:["Around the World","Parallel Universe","Scar Tissue","Otherside","Get on Top","Californication","Easily","Porcelain","Emit Remmus","I Like Dirt","This Velvet Glove","Savior","Purple Stain","Right on Time","Road Trippin'"]},
+ {id:"btw", t:"By the Way", y:2002, g:"John Frusciante", c:["#B83B32","#1E3550"], p:2, tr:["By the Way","Universally Speaking","This Is the Place","Dosed","Don't Forget Me","The Zephyr Song","Can't Stop","I Could Die for You","Midnight","Throw Away Your Television","Cabron","Tear","On Mercury","Minor Thing","Warm Tape","Venice Queen"]},
+ {id:"sa", t:"Stadium Arcadium", y:2006, g:"John Frusciante", c:["#28304A","#E7A93B"], p:3, tr:["Dani California","Snow (Hey Oh)","Charlie","Stadium Arcadium","Hump de Bump","She's Only 18","Slow Cheetah","Torture Me","Strip My Mind","Especially in Michigan","Warlocks","C'mon Girl","Wet Sand","Hey","Desecration Smile","Tell Me Baby","Hard to Concentrate","21st Century","She Looks to Me","Readymade","If","Make You Feel Better","Animal Bar","So Much I","Storm in a Teacup","We Believe","Turn It Again","Death of a Martian"]},
+ {id:"iwy", t:"I'm with You", y:2011, g:"Josh Klinghoffer", c:["#2E6FA8","#F4F2EC"], p:4, tr:["Monarchy of Roses","Factory of Faith","Brendan's Death Song","Ethiopia","Annie Wants a Baby","Look Around","The Adventures of Rain Dance Maggie","Did I Let You Know","Goodbye Hooray","Happiness Loves Company","Police Station","Even You Brutus?","Meet Me at the Corner","Dance, Dance, Dance"]},
+ {id:"tg", t:"The Getaway", y:2016, g:"Josh Klinghoffer", c:["#6B4AA0","#F5B9A0"], p:0, tr:["The Getaway","Dark Necessities","We Turn Red","The Longest Wave","Goodbye Angels","Sick Love","Go Robot","Feasting on the Flowers","Detroit","This Ticonderoga","Encore","The Hunter","Dreams of a Samurai"]},
+ {id:"ul", t:"Unlimited Love", y:2022, g:"John Frusciante", c:["#E7742E","#203B5C"], p:1, tr:["Black Summer","Here Ever After","Aquatic Mouth Dance","Not the One","Poster Child","The Great Apes","It's Only Natural","She's a Lover","These Are the Ways","Whatchu Thinkin'","Bastards of Light","White Braids & Pillow Chair","One Way Traffic","Veronica","Let 'Em Cry","The Heavy Wing","Tangelo"]},
+ {id:"rdc", t:"Return of the Dream Canteen", y:2022, g:"John Frusciante", c:["#5BB3D9","#F0E05A"], p:2, tr:["Tippa My Tongue","Peace and Love","Reach Out","Eddie","Fake as Fu@k","Bella","Roulette","My Cigarette","Afterlife","Shoot Me a Smile","Handful","The Drummer","Bag of Grins","La La La La La La La La","Copperbelly","Carry Me Home","In the Snow"]}
+];
+/* ficha de cada álbum: créditos e durações da Wikipédia; contagem ao vivo por faixa */
+const INFO = {"rhcp":{"wiki":"https://en.wikipedia.org/wiki/The_Red_Hot_Chili_Peppers_(album)","n":1,"rel":"1984-08-10","rec":["1984-04"],"studio":"Eldorado, Hollywood","len":"31:54","label":"EMI America / Enigma","prod":["Andy Gill"],"band":[["Anthony Kiedis",["vocals"]],["Jack Sherman",["guitar"]],["Flea",["bass"]],["Cliff Martinez",["drums"]]],"extra":[["Keith Barry",["horn_arr","viola"]],["Gwen Dickey",["backing"]],["Cliff Brooks",["perc"]],["Patrick English",["trumpet"]],["Kenny Flood",["sax"]],["Phil Ranelin",["trombone"]]],"tech":[["Dave Jerden",["engineer"]],["Rob Stevens",["mixing"]],["Greg Fulginiti",["mastering"]],["Gary Panter",["art"]]],"dur":["3:38","3:40","3:21","2:51","3:21","3:58","3:29","2:00","1:16","0:16","4:04"]},"fs":{"wiki":"https://en.wikipedia.org/wiki/Freaky_Styley","n":2,"rel":"1985-08-16","rec":["1985-05"],"studio":"United Sound, Detroit","len":"39:50","label":"EMI America","prod":["George Clinton"],"band":[["Anthony Kiedis",["vocals"]],["Hillel Slovak",["guitar"]],["Flea",["bass"]],["Cliff Martinez",["drums"]]],"extra":[["Maceo Parker",["sax"]],["Fred Wesley",["trombone","horn_arr"]],["Benny Cowan",["trumpet"]],["Larry Fratangelo",["perc"]],["George Clinton",["backing"]]],"tech":[["Greg Ward",["engineer","mixing"]],["Ron McMaster",["mastering"]]],"dur":["4:08","5:03","3:51","4:06","2:47","3:39","2:40","3:26","1:53","0:36","1:55","1:54","0:14","3:38"]},"umpp":{"wiki":"https://en.wikipedia.org/wiki/The_Uplift_Mofo_Party_Plan","n":3,"rel":"1987-09-29","rec":["1987-05"],"studio":"Capitol / Eldorado, Hollywood","len":"37:54","label":"EMI Manhattan","prod":["Michael Beinhorn"],"band":[["Anthony Kiedis",["vocals"]],["Hillel Slovak",["guitar"]],["Flea",["bass"]],["Jack Irons",["drums"]]],"extra":[],"tech":[],"dur":["3:51","3:01","3:05","3:05","1:15","4:39","2:32","3:14","2:42","3:46","2:39","4:00"]},"mm":{"wiki":"https://en.wikipedia.org/wiki/Mother%27s_Milk_(album)","n":4,"rel":"1989-08-16","rec":["1988-11","1989-03"],"studio":"Ocean Way, Image / Track Record, Los Angeles","len":"44:52","label":"EMI USA","prod":["Michael Beinhorn"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","backing"]],["Flea",["bass","trumpet"]],["Chad Smith",["drums"]]],"extra":[["Hillel Slovak",["guitar"],"Fire"],["Jack Irons",["drums"],"Fire"],["Philip \"Fish\" Fisher",["drums"],"Taste the Pain"],["Dave Coleman",["cello"],"Taste the Pain"],["Keith Barry",["sax"],"Subway to Venus"],["Patrick English",["trumpet"],"Subway to Venus"]],"tech":[],"dur":["5:01","3:22","4:25","2:57","3:48","3:43","4:33","3:05","2:03","1:36","1:46","3:21","5:10"]},"bssm":{"wiki":"https://en.wikipedia.org/wiki/Blood_Sugar_Sex_Magik","n":5,"rel":"1991-09-24","rec":["1991-04","1991-06"],"studio":"The Mansion, Los Angeles","len":"73:56","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals","perc"]],["John Frusciante",["guitar","backing"]],["Flea",["bass","backing","piano","trumpet"]],["Chad Smith",["drums","perc"]]],"extra":[["Brendan O'Brien",["mellotron","organ","synth"]],["Pete Weiss",["juice_harp"]],["Gail Frusciante",["choir"]]],"tech":[["Brendan O'Brien",["engineer","mixing"]],["Howie Weinberg",["mastering"]],["Gus Van Sant",["art"]]],"dur":["4:03","3:36","4:55","5:22","3:36","4:04","3:59","4:07","4:42","4:31","4:24","4:25","4:41","3:13","4:39","8:16","1:09"]},"ohm":{"wiki":"https://en.wikipedia.org/wiki/One_Hot_Minute","n":6,"rel":"1995-09-12","rec":["1994-06","1995-02"],"studio":"The Sound Factory, Hollywood / Sound City, Van Nuys","len":"61:14","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["Dave Navarro",["guitar","backing"]],["Flea",["bass","backing"]],["Chad Smith",["drums","perc"]]],"extra":[["Lenny Castro",["perc"]],["John Lurie",["harmonica"]],["Keith Barry",["violin"]],["Stephen Perkins",["perc"]]],"tech":[["Dave Sardy",["recording","mixing"]],["Stephen Marcussen",["mastering"]],["Mark Ryden",["art"]]],"dur":["5:04","4:44","6:34","4:03","3:08","1:46","6:01","5:07","4:19","6:25","3:47","4:33","5:43"]},"cal":{"wiki":"https://en.wikipedia.org/wiki/Californication_(album)","n":7,"rel":"1999-06-08","rec":["1998-12","1999-03"],"studio":"Cello Studios, Los Angeles","len":"56:24","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","backing"]],["Flea",["bass"]],["Chad Smith",["drums"]]],"extra":[],"tech":[["Jim Scott",["engineer","mixing"]]],"dur":["3:58","4:30","3:37","4:15","3:18","5:21","3:51","2:43","4:00","2:37","3:45","4:52","4:13","1:52","3:25"]},"btw":{"wiki":"https://en.wikipedia.org/wiki/By_the_Way","n":8,"rel":"2002-07-09","rec":["2001-11","2002-05"],"studio":"Cello / Chateau Marmont, Los Angeles","len":"68:27","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","backing","keys","mellotron"]],["Flea",["bass","trumpet"]],["Chad Smith",["drums","perc"]]],"extra":[["David Campbell",["string_arr"]]],"tech":[["Jim Scott",["recording","mixing"]],["Ryan Hewitt",["engineer"]],["Vlado Meller",["mastering"]],["Julian Schnabel",["art"]]],"dur":["3:37","4:18","4:16","5:11","4:36","3:52","4:28","3:13","4:54","3:43","3:37","5:16","3:28","3:37","4:15","6:06"]},"sa":{"wiki":"https://en.wikipedia.org/wiki/Stadium_Arcadium","n":9,"rel":"2006-05-05","rec":["2004","2005"],"studio":"The Mansion, Los Angeles / Sound City, Van Nuys","len":"122:19","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","backing","keys"]],["Flea",["bass","trumpet"]],["Chad Smith",["drums","perc"]]],"extra":[["Omar Rodríguez-López",["guitar_solo"]],["Billy Preston",["clavinet"]],["Lenny Castro",["perc"]],["Paulinho da Costa",["perc"]],["Emily Kokal",["backing"]]],"tech":[["Ryan Hewitt",["engineer","mixing"]],["Andrew Scheps",["engineer","mixing"]],["Vlado Meller",["mastering"]]],"dur":["4:42","5:34","4:37","5:15","3:33","3:25","5:19","3:44","4:19","4:00","3:25","3:48","5:09","5:39","5:01","4:07","4:01","4:22","4:06","4:30","2:52","3:52","5:24","3:44","3:45","3:36","6:06","4:24"]},"iwy":{"wiki":"https://en.wikipedia.org/wiki/I%27m_with_You_(album)","n":10,"rel":"2011-08-26","rec":["2010-09","2011-03"],"studio":"EastWest, Los Angeles / Shangri-La, Malibu","len":"59:15","label":"Warner Bros.","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["Josh Klinghoffer",["guitar","backing","keys"]],["Flea",["bass","piano","backing"]],["Chad Smith",["drums"]]],"extra":[["Mauro Refosco",["perc"]],["Lenny Castro",["perc"]],["Greg Kurstin",["piano"]],["Money Mark",["organ"]],["Mike Bulger",["trumpet"]]],"tech":[["Andrew Scheps",["mixing","recording"]],["Greg Fidelman",["mixing","recording"]],["Ryan Hewitt",["recording"]]],"dur":["4:11","4:19","5:39","3:50","3:40","3:28","4:42","4:21","3:52","3:33","5:35","4:00","4:21","3:45"]},"tg":{"wiki":"https://en.wikipedia.org/wiki/The_Getaway_(Red_Hot_Chili_Peppers_album)","n":11,"rel":"2016-06-17","rec":["2015-01","2016-03"],"studio":"The Sound Factory, Hollywood","len":"53:41","label":"Warner Bros.","prod":["Danger Mouse"],"band":[["Anthony Kiedis",["vocals"]],["Josh Klinghoffer",["guitar"]],["Flea",["bass"]],["Chad Smith",["drums"]]],"extra":[["Danger Mouse",["mellotron","organ","synth"]],["Elton John",["piano"]],["Mauro Refosco",["perc"]],["Anna Waronker",["backing"]],["Daniele Luppi",["string_arr"]]],"tech":[["Nigel Godrich",["mixing"]],["Kennie Takahashi",["recording"]],["Stephen Marcussen",["mastering"]]],"dur":["4:10","5:02","3:20","3:31","4:28","3:41","4:23","3:22","3:46","3:35","4:14","4:00","6:09"]},"ul":{"wiki":"https://en.wikipedia.org/wiki/Unlimited_Love","n":12,"rel":"2022-04-01","rec":["2020-11","2021-08"],"studio":"Shangri-La, Malibu","len":"73:13","label":"Warner Records","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","backing","synth"]],["Flea",["bass","piano","trumpet"]],["Chad Smith",["drums","perc"]]],"extra":[["Cory Henry",["organ"]],["Lenny Castro",["perc"]],["Mauro Refosco",["perc"]],["Josh Johnson",["sax"]],["Nate Walcott",["trumpet"]],["Vikram Devasthali",["trombone"]]],"tech":[["Ryan Hewitt",["mixing","recording"]],["Vlado Meller",["mastering"]],["Bernie Grundman",["mastering"]]],"dur":["3:52","3:50","4:20","4:26","5:18","5:01","5:33","3:41","3:56","3:40","3:38","3:40","4:10","4:28","4:23","5:31","3:37"]},"rdc":{"wiki":"https://en.wikipedia.org/wiki/Return_of_the_Dream_Canteen","n":13,"rel":"2022-10-14","rec":["2020-11","2021-08"],"studio":"Shangri-La, Malibu","len":"75:23","label":"Warner Records","prod":["Rick Rubin"],"band":[["Anthony Kiedis",["vocals"]],["John Frusciante",["guitar","keys","synth","backing"]],["Flea",["bass"]],["Chad Smith",["drums"]]],"extra":[["Josh Johnson",["sax"]],["Nathaniel Walcott",["trumpet"]],["Vikram Devasthali",["trombone"]],["Lenny Castro",["perc"]],["Mauro Refosco",["perc"]]],"tech":[["Ryan Hewitt",["mixing","engineer"]],["Vlado Meller",["mastering"]],["Bernie Grundman",["mastering"]]],"dur":["4:20","4:03","4:11","5:42","4:22","4:51","4:57","4:24","4:14","3:42","4:00","3:22","5:06","3:57","3:45","4:13","6:05"]}};
+const ACC = {rhcp:"#D7322A", umpp:"#3D6DB5", bssm:"#C8102E", ohm:"#D2541E", sa:"#2F5DA8", rdc:"#2C8FC0"};
+ALBUMS.forEach(a=>{ a.info = INFO[a.id]; a.la = a.info.wiki; a.kind="studio"; if(ACC[a.id]) a.acc = ACC[a.id]; });
+
+/* Lados B e raridades: "Título|id do YouTube|observação" (id vazio = busca no YouTube) */
+const EXTRAS = [
+ {id:"x-rhcp", y:1984, par:"rhcp", tr:["What It Is|2wcSUCaoBQM|"]},
+ {id:"x-fs", y:1985, par:"fs", tr:["Millionaires Against Hunger|NLJtMwYYLX8|Bônus do Freaky Styley remasterizado","Stranded|Qfe-8BbfbFI|Lado B do single 12'' de Jungle Man","Prince of Sadness|Ex5xWtD0Sh4|Vazou","Bone|_IfkD84Vh3A|"]},
+ {id:"x-umpp", y:1987, par:"umpp", tr:["Aroma|c7vBpGr1e7A|Inédita, o instrumental vazou"]},
+ {id:"x-mm", y:1989, par:"mm", tr:["Politician (Mini Rap)|cQ9zDQ7mj0Y|Lado B de Higher Ground","Song That Made Us What We Are Today|kvjhCJ-1do8|","Salute to Kareem|abNSJyzvDjU|Mother's Milk remasterizado","Show Me Your Soul|ToAk89ozubA|Saiu no What Hits!?","Crosstown Traffic|QHWLQ3muA6I|Ao vivo, bônus do Mother's Milk"]},
+ {id:"x-bssm", y:1991, par:"bssm", tr:["Castles Made of Sand||Faixa bônus nas plataformas digitais","Little Miss Lover|Jmy0gEROxnw|Faixa bônus nas plataformas digitais","Fela's Cock|bn2byeySto4|Lado B de Suck My Kiss","Search and Destroy|VW0sueFgcCk|Lado B de Under the Bridge e Give It Away","Sikamikaniko|0QhYvWHZHi8|Lado B de Under the Bridge, trilha de Quanto Mais Idiota Melhor","Soul to Squeeze|0XcN12uVHeQ|Lado B de Under the Bridge e Give It Away"]},
+ {id:"x-ola", t:"Out in L.A.", y:1994, c:["#2F2A26","#E9B949"], p:3, g:"*", tr:["Oom Chucka Willie|AEBwh9z4uHQ|Compilação de raridades","Blues for Meister|MjpAmPoqSB0|Compilação de raridades","Deck the Halls|5PIuTXqFrMg|Compilação de raridades","F.U.|zLbFpAMITmA|Compilação de raridades"]},
+ {id:"x-ohm", y:1995, par:"ohm", tr:["Melancholy Mechanics|56PWNtiIV3o|Lado B de Warped","Let's Make Evil|8kFavNl07SE|Lado B de My Friends","Stretch You Out|S0wtM8PdaBQ|Lado B de My Friends","Bob|qSAahkL6SeE|Faixa bônus nas plataformas digitais","I Found Out|qfbI82qdOls|Cover de John Lennon","Circle of the Noose|tS9NTmjnpDo|Gravada com Navarro para o disco seguinte, vazou"]},
+ {id:"x-cal", y:1999, par:"cal", tr:["Instrumental #1|zUTWSL_uSuE|Lado B de Scar Tissue","Instrumental #2|9jDHLbjoqYM|Disco bônus australiano","Gong Li|g6TRzzfZjlU|Lado B de Scar Tissue","How Strong|ArQiPAzpx48|Lado B de Otherside","Fat Dance|zzlxNsqKCwg|Faixa bônus nas plataformas digitais","Quixotelixir|sspiWqii5vw|Faixa bônus nas plataformas digitais","Over Funk|oj_w9EsAQzQ|Faixa bônus nas plataformas digitais","Trouble in the Pub|Ui2z6qgy5aM|Demo vazada","Boatman|BY7TUfJSrpY|Demo instrumental vazada","Andaman & Nicobar|GjFXn3ZvlHc|Demo vazada","Tellin' a Lie|M-1QF7d4-0Q|Demo vazada","Sugar Sugar|9l4OW37FhCE|Demo vazada","Mommasan|-w30fC5A1os|Demo vazada","Plate of Brown|EkNfW6A3zBo|Demo instrumental vazada"]},
+ {id:"x-btw", y:2002, par:"btw", tr:["Time|M6RMq-WiCJE|Lado B de By the Way","A Teenager in Love|iYYNfpO2GrA|Lado B de By the Way","Body of Water|vWqN-3ecc64|Lado B de The Zephyr Song","Someone|AATqzT7mzuQ|Lado B de The Zephyr Song","Out of Range|o0yzcb59IIs|Lado B de The Zephyr Song","Rivers of Avalon|b46SkuckKsY|Lado B de The Zephyr Song","Havana Affair|JAFi9V6czdE|Cover dos Ramones","Slowly Deeply|hOIjWgw6CwM|Lado B de Universally Speaking","Nothing to Lose|0EzWmAPwoTs|Ao vivo, lado B de Can't Stop","Runaway|dBBFQyZPLyk|Bônus do By the Way remasterizado","Bicycle Song|cpV6H6y5n8E|Bônus do By the Way remasterizado","Fall Water|gGDd1U7Q4JA|Demo vazada","Goldmine|PuVdwAiMak0|Demo vazada","Rock and Roll|3xwv6EJxC0I|Demo vazada"]},
+ {id:"x-gh", t:"Greatest Hits", y:2003, c:["#C7372F","#F3E3C3"], p:0, g:"John Frusciante", tr:["Fortune Faded|TYYW_WwYHuM|Saiu no Greatest Hits","Save the Population|tSjw2LMtl9U|Saiu no Greatest Hits","Eskimo|9ZAPwlntLt8|Lado B de Fortune Faded","Bunker Hill|pBo55gu8b1Q|Lado B de Fortune Faded","50/Fifty|FJu8xd2yOS8|Instrumental vazado","Starlight|TxscvwCVEwQ|Vazou","Leverage of Space|bQYq_NEsPVY|Só ao vivo, no Live in Hyde Park","Rolling Sly Stone|hMBMuulCW-0|Só ao vivo, no Live in Hyde Park","Fight for Your Country (Mini Epic)|agOPYVuJZIU|Só ao vivo"]},
+ {id:"x-sa", y:2006, par:"sa", tr:["A Certain Someone|uodn9x8CDqQ|Lado B de Tell Me Baby","Mercy Mercy|4w5gi198LA4|Lado B de Tell Me Baby","Funny Face|yro5ohnpbXQ|Lado B de Snow (Hey Oh)","I'll Be Your Domino|qeqxzusURjQ|Lado B de Snow (Hey Oh)","Lately|o-g2xPH6Z2w|Lado B de Dani California","Million Miles of Water|hfyi9cewKe4|Lado B de Dani California","Whatever We Want|Phl5zMEDbUo|Lado B de Dani California","Joe|SPQm_g4UvZs|Lado B de Desecration Smile e Hump de Bump","Save This Lady|cL3UsX45PW4|Lado B de Desecration Smile e Hump de Bump"]},
+ {id:"x-iwy", t:"I'm Beside You", y:2011, par:"iwy", tr:["Strange Man|DmPPONFRla4|","Long Progression|XBtSHoflrVY|","Magpies on Fire|Odw2fQOQBFc|","Victorian Machinery|o-4Fo-gJnXU|","Never Is a Long Time|pxAqxI5R6RA|","Love of Your Life|g4LFjWlcoF8|","Hometown Gypsy|chVLUCdK_zY|","The Sunset Sleeps|KUlSJGgTulY|","Pink as Floyd|bcP-nC0lWTc|","Your Eyes Girl|NI6OHk-docQ|","In Love, Dying|2uhTHpf0c9E|","This Is the Kitt||","Brave from Afar|_Mx82hTic90|","Catch My Death|tPvA1Xhp1Jk|","How It Ends|6K02Xu9P9wo|","Open/Close|VwWV62EfYkU|","Hanalei|UGVzkSg0ZV0|","Renaissance|Vr6uDiLyI9s|Inédita, citada pelo Josh e tocada ao vivo"]},
+ {id:"x-tg", y:2016, par:"tg", tr:["Kaly|djgSAtV-13M|Vazou","Outer Space|UvYiEj47Gwo|Vazou"]},
+ {id:"x-ul", y:2022, par:"ul", tr:["Nerve Flip|hadG1wTbj3A|Bônus da edição japonesa"]},
+ {id:"x-out", y:"—", c:["#455A3A","#EAD9A0"], p:4, g:"*", tr:["Set It Straight|xRsj3YjwGg0|Trecho no filme Tough Guys (1986), nunca lançada","Love Rollercoaster|CZfuqFWad2Q|Trilha de Beavis and Butt-Head Do America","Bulletproof|_QGtlOdnbBk|Ao vivo","Everybody Knows This Is Nowhere|VCjeTJu-tfY|Cover de Neil Young","I Get Around|Hz6ibuY_Ezw|Cover dos Beach Boys","Suffragette City|A81N61q1-x4|Cover de David Bowie","Tiny Dancer|AfvIvI8uDiY|Cover de Elton John","Dr. Funkenstein|3WoxJrD_Bdg|Cover do Parliament"]}
+];
+EXTRAS.forEach(x=>{
+  x.kind="extra";
+  if(x.par){ const p=ALBUMS.find(a=>a.id===x.par); x.c=p.c; x.p=p.p; x.acc=p.acc; x.g=p.g; x.la=p.la; x.pname=p.t; }
+  x.items = x.tr.map(s=>{ const [t,yt,note]=s.split("|"); return {t,yt,note}; });
+});
+const ALL = ALBUMS.concat(EXTRAS);
+const AL = Object.fromEntries(ALL.map(a=>[a.id,a]));
+const SONGS = ALBUMS.flatMap(a=>a.tr.map((t,i)=>({id:a.id+"-"+(i+1), t, a:a.id, n:i+1})))
+  .concat(EXTRAS.flatMap(x=>x.items.map((s,i)=>({id:x.id+"-"+(i+1), t:s.t, a:x.id, n:i+1, yt:s.yt, note:s.note}))));
+const SG = Object.fromEntries(SONGS.map(s=>[s.id,s]));
+const GUITAR = ["Jack Sherman","Hillel Slovak","John Frusciante","Dave Navarro","Josh Klinghoffer"];
+
+const esc = s => String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- idioma ---------- */
+let LANG = "pt";
+(function(){
+  const h = (location.hash||"").slice(1).toLowerCase();
+  let saved=null; try{ saved = localStorage.getItem("rhcp-lang"); }catch(e){}
+  const nav = (navigator.language||"en").slice(0,2).toLowerCase();
+  LANG = ["pt","en","es"].includes(h) ? h : ["pt","en","es"].includes(saved) ? saved : (["pt","es"].includes(nav) ? nav : "en");
+})();
+function t(k, ...a){ const v = (T[LANG]||T.pt)[k]; return typeof v==="function" ? v(...a) : v; }
+function groupName(a){ if(a.kind!=="extra") return a.t; if(a.id==="x-out") return t("other_rar"); if(a.t) return a.t; return t("bside_pre")+a.pname; }
+function tileLabel(a){ if(a.kind!=="extra") return a.t; if(a.id==="x-out") return t("other_rar"); return a.t || a.pname; }
+function gName(g){ return g==="*" ? t("various") : g; }
+
+/* capa tipográfica provisória */
+function patOf(a){
+  const [c1,c2]=a.c;
+  return [`linear-gradient(135deg,${c1} 0 55%,${c2} 55% 100%)`,`repeating-linear-gradient(90deg,${c1} 0 18%,${c2} 18% 24%)`,`radial-gradient(circle at 70% 70%,${c2} 0 18%,${c1} 18% 30%,${c2} 30% 40%,${c1} 40% 100%)`,`linear-gradient(${c1},${c1}) top/100% 62% no-repeat, ${c2}`,`repeating-linear-gradient(45deg,${c1} 0 10px,${c2} 10px 20px)`][a.p];
+}
+function tile(a, cls=""){
+  const [c1,c2] = a.c;
+  const pats = [
+    `linear-gradient(135deg,${c1} 0 55%,${c2} 55% 100%)`,
+    `repeating-linear-gradient(90deg,${c1} 0 18%,${c2} 18% 24%)`,
+    `radial-gradient(circle at 70% 70%,${c2} 0 18%,${c1} 18% 30%,${c2} 30% 40%,${c1} 40% 100%)`,
+    `linear-gradient(${c1},${c1}) top/100% 62% no-repeat, ${c2}`,
+    `repeating-linear-gradient(45deg,${c1} 0 10px,${c2} 10px 20px)`
+  ];
+  const light = isLight(c1) && a.p!==1 && a.p!==4;
+  const yr = typeof a.y==="number" ? String(a.y).slice(2) : a.y;
+  return `<div class="tile ${cls}" style="background:${patOf(a)};color:${light?"#1A1112":"#FFFFFF"}"><div class="tt" style="${a.p===4?`background:${c1};padding:4px 6px;border-radius:3px;display:inline-block;color:${isLight(c1)?"#1A1112":"#fff"}`:""}">${esc(tileLabel(a))}</div>${a.kind==="extra"?`<div class="stamp">B</div>`:""}<div class="yr" style="color:${a.p===3?(isLight(c2)?"#1A1112":"#fff"):"inherit"}">${yr}</div></div>`;
+}
+function isLight(hex){const n=parseInt(hex.slice(1),16);const r=n>>16,g=(n>>8)&255,b=n&255;return (r*299+g*587+b*114)/1000>150}
+
+function ib(href,k,label){ return `<a class="ico" href="${href}" target="_blank" rel="noopener" title="${esc(label)}" aria-label="${esc(label)}"><img src="${ICON[k]}" alt=""></a>`; }
+function listen(q){
+  const s = encodeURIComponent("Red Hot Chili Peppers "+q);
+  return `<div class="listen">${ib("https://open.spotify.com/search/"+s,"spotify",t("l_spotify"))}${ib("https://www.deezer.com/search/"+s,"deezer",t("l_deezer"))}${ib("https://www.youtube.com/results?search_query="+s,"youtube",t("l_yt"))}</div>`;
+}
+function listenSong(song){
+  if(AL[song.a].kind!=="extra") return listen(song.t);
+  const href = song.yt ? `https://youtu.be/${encodeURIComponent(song.yt)}` : `https://www.youtube.com/results?search_query=${encodeURIComponent("Red Hot Chili Peppers "+song.t)}`;
+  return `<div class="listen">${ib(href,"youtube",t("l_yt"))}</div>`;
+}
+function wikiLink(url){ return `<a class="wiki" href="${url}" target="_blank" rel="noopener"><span class="ico"><img src="${ICON.wiki}" alt="Wikipedia"></span><span>${esc(t("more"))}</span></a>`; }
+function songNote(song){ return song.note ? `<div style="margin-top:6px"><span class="tag">${esc(noteT(song.note))}</span></div>` : ""; }
+
+/* ---------- estado salvo ---------- */
+const KEY = "rhcp-batalha-v1";
+let S = {albumRanker:null, albumResult:null, ratings:{}, triOrder:null, triIdx:0, triScope:null, songRanker:null, songResult:null, songK:10, songStage:"setup"};
+try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ---------- motor de duelos: inserção binária num Top-K ---------- */
+function newRanker(ids, K){
+  const q = ids.slice(); for(let i=q.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[q[i],q[j]]=[q[j],q[i]]}
+  const r = {ranked:[], queue:q, cur:null, lo:0, hi:0, gate:false, K, comps:0, side:0, total:ids.length};
+  advance(r); return r;
+}
+function advance(r){
+  while(r.cur===null && r.queue.length){
+    r.cur = r.queue.shift();
+    if(r.ranked.length===0){ r.ranked.push(r.cur); r.cur=null; continue; }
+    if(r.ranked.length>=r.K){ r.gate=true; }
+    else { r.gate=false; r.lo=0; r.hi=r.ranked.length; }
+  }
+  r.side = Math.random()<.5?0:1;
+}
+function opponent(r){ return r.gate ? r.ranked[r.ranked.length-1] : r.ranked[Math.floor((r.lo+r.hi)/2)]; }
+function answer(r, curWins){
+  r.comps++;
+  if(r.gate){
+    if(!curWins){ r.cur=null; advance(r); return; }
+    r.gate=false; r.lo=0; r.hi=r.ranked.length-1;
+    if(r.lo===r.hi){ insert(r); }
+    return;
+  }
+  const mid = Math.floor((r.lo+r.hi)/2);
+  if(curWins) r.hi=mid; else r.lo=mid+1;
+  if(r.lo>=r.hi) insert(r);
+}
+function insert(r){ r.ranked.splice(r.lo,0,r.cur); if(r.ranked.length>r.K) r.ranked.pop(); r.cur=null; advance(r); }
+function done(r){ return r.cur===null && r.queue.length===0; }
+function estimate(r){
+  let n=r.ranked.length, rem=0;
+  const items = r.queue.length + (r.cur?1:0);
+  for(let i=0;i<items;i++){
+    if(n>=r.K){ rem += 1 + 0.35*Math.ceil(Math.log2(r.K)); }
+    else { rem += Math.ceil(Math.log2(n+1)); n++; }
+  }
+  return Math.round(rem);
+}
+
+/* ---------- navegação ---------- */
+const views = ["home","albums","songs","mine","album"];
+let current="home", openId=null, prevView="home";
+function go(v){
+  if(v!=="album" && current!=="album") prevView = v;
+  views.forEach(x=>{ document.getElementById("v-"+x).hidden = x!==v; const n=document.getElementById("nav-"+x); if(n) n.setAttribute("aria-current", x===v?"true":"false"); });
+  current = v; keyHandler=null;
+  if(v==="album") renderAlbumPage(openId);
+  if(v==="home") renderHome();
+  if(v==="albums") renderAlbums();
+  if(v==="songs") renderSongs();
+  if(v==="mine") renderMine();
+  window.scrollTo({top:0});
+}
+document.addEventListener("click", e=>{
+  const o=e.target.closest("[data-open]"); if(o){ openId=o.dataset.open; prevView = current==="album"?prevView:current; go("album"); return; }
+  const b=e.target.closest("[data-go]"); if(b){ go(b.dataset.go); }
+});
+
+/* ---------- de fã para fã: história do Mateus ---------- */
+const EMBED_VIDEOS = true;
+const STORY = {
+pt:{ eb:"A minha história com o RHCP", h:"De fã para fã", sign:"Mateus Papini", follow:"Me encontre por aí", photos:"Em fotos", videos:"Em vídeo",
+  p:[
+   "Me chamo Mateus, nasci em 1994 e escuto Red Hot Chili Peppers desde que me conheço por gente. Minhas primeiras memórias da banda são de assistir aos clipes na MTV e ouvir o então recém-lançado álbum By the Way (o preferido deste que vos fala, por razões óbvias). Sou completamente alucinado pela banda... Um fã como você, daqueles que não sabem escolher a música ou o álbum preferido, pois dizem que isso seria como escolher o filho preferido.",
+   "Costumo dizer que o Red Hot é a trilha sonora da minha vida e uma parte importante de quem eu sou. Já tive o prazer de ganhar o setlist do show do Morumbi (10 de Novembro de 2023, Estádio Cícero Pompeu de Toledo (Morumbi), São Paulo, Brasil) e também de tirar uma foto com o Flea quando a banda veio tocar na minha cidade (2 de Novembro de 2013, Mega Space (Circuito Banco do Brasil Festival) Belo Horizonte, Brasil)... Foi mágico, a verdadeira realização de um sonho.",
+   "Enfim... Sintam-se à vontade para usar o site, compartilhar e dar feedbacks para melhorá-lo. É um site feito de fã para fã, para desfrutarmos do nosso amor pela banda.",
+   "Viva o Red Hot Chili Peppers! Viva Hillel Slovak! Viva Arik Marshall! Viva Dave Navarro! Viva Jack Sherman! Viva Cliff Martinez! Viva Jack Irons! Viva Josh Klinghoffer! Viva Chad Smith! Viva John Frusciante! Viva Flea! E viva Anthony Kiedis!",
+   "Que o Red Hot Chili Peppers possa nos unir sempre!"],
+  v1:"Flea recebendo os fãs na porta do hotel em Belo Horizonte, 3 de novembro de 2013", v2:"Minha tatuagem do I'm with You", credit:"Vídeo", open_yt:"Assistir no YouTube", close:"Fechar", prev:"Foto anterior", next:"Próxima foto" },
+en:{ eb:"My story with RHCP", h:"From a fan, for fans", sign:"Mateus Papini", follow:"Find me online", photos:"In photos", videos:"On video",
+  p:[
+   "My name is Mateus. I was born in 1994 and I've been listening to Red Hot Chili Peppers for as long as I can remember. My first memories of the band are watching their music videos on MTV and listening to the then brand-new By the Way (the favorite of yours truly, for obvious reasons). I'm completely crazy about this band... A fan just like you, the kind who can't pick a favorite song or album, because, as they say, that would be like picking a favorite child.",
+   "I like to say that the Red Hot is the soundtrack of my life and an important part of who I am. I've had the pleasure of getting the setlist from the Morumbi show (November 10, 2023, Estádio Cícero Pompeu de Toledo (Morumbi), São Paulo, Brazil) and of taking a photo with Flea when the band came to play in my city (November 2, 2013, Mega Space (Circuito Banco do Brasil Festival), Belo Horizonte, Brazil)... It was magical, a true dream come true.",
+   "Anyway... Feel free to use the site, share it and send feedback to make it better. It's a site made by a fan, for fans, so we can all enjoy our love for the band.",
+   "Long live Red Hot Chili Peppers! Long live Hillel Slovak! Long live Arik Marshall! Long live Dave Navarro! Long live Jack Sherman! Long live Cliff Martinez! Long live Jack Irons! Long live Josh Klinghoffer! Long live Chad Smith! Long live John Frusciante! Long live Flea! And long live Anthony Kiedis!",
+   "May Red Hot Chili Peppers always bring us together!"],
+  v1:"Flea greeting fans at the hotel entrance in Belo Horizonte, November 3, 2013", v2:"My I'm with You tattoo", credit:"Video", open_yt:"Watch on YouTube", close:"Close", prev:"Previous photo", next:"Next photo" },
+es:{ eb:"Mi historia con RHCP", h:"De fan para fans", sign:"Mateus Papini", follow:"Encuéntrame en", photos:"En fotos", videos:"En video",
+  p:[
+   "Me llamo Mateus, nací en 1994 y escucho Red Hot Chili Peppers desde que tengo memoria. Mis primeros recuerdos de la banda son ver los videoclips en MTV y escuchar el recién lanzado By the Way (el favorito de quien les habla, por razones obvias). Estoy completamente loco por la banda... Un fan como tú, de esos que no saben elegir la canción o el álbum favorito, porque dicen que sería como elegir al hijo favorito.",
+   "Suelo decir que los Red Hot son la banda sonora de mi vida y una parte importante de quien soy. Tuve el placer de quedarme con el setlist del show del Morumbi (10 de noviembre de 2023, Estadio Cícero Pompeu de Toledo (Morumbi), São Paulo, Brasil) y también de sacarme una foto con Flea cuando la banda vino a tocar a mi ciudad (2 de noviembre de 2013, Mega Space (Circuito Banco do Brasil Festival), Belo Horizonte, Brasil)... Fue mágico, un sueño hecho realidad.",
+   "En fin... Siéntanse libres de usar el sitio, compartirlo y dejar sus comentarios para mejorarlo. Es un sitio hecho por un fan para fans, para disfrutar juntos de nuestro amor por la banda.",
+   "¡Viva Red Hot Chili Peppers! ¡Viva Hillel Slovak! ¡Viva Arik Marshall! ¡Viva Dave Navarro! ¡Viva Jack Sherman! ¡Viva Cliff Martinez! ¡Viva Jack Irons! ¡Viva Josh Klinghoffer! ¡Viva Chad Smith! ¡Viva John Frusciante! ¡Viva Flea! ¡Y viva Anthony Kiedis!",
+   "¡Que Red Hot Chili Peppers nos una siempre!"],
+  v1:"Flea recibiendo a los fans en la entrada del hotel en Belo Horizonte, 3 de noviembre de 2013", v2:"Mi tatuaje de I'm with You", credit:"Video", open_yt:"Ver en YouTube", close:"Cerrar", prev:"Foto anterior", next:"Foto siguiente" }
+};
+const PHOTOS = [
+ ["mateus-with-setlist","Com o setlist do Morumbi, 2023","With the Morumbi setlist, 2023","Con el setlist del Morumbi, 2023"],
+ ["photo-with-flea","Com o Flea em Belo Horizonte, 2013","With Flea in Belo Horizonte, 2013","Con Flea en Belo Horizonte, 2013"],
+ ["red-hot-chili-peppers-tickets-brasil-2013","O ingresso de BH, 2 de novembro de 2013","The Belo Horizonte ticket, November 2, 2013","La entrada de Belo Horizonte, 2 de noviembre de 2013"],
+ ["rhcp-live-at-morumbi-sao-paulo","Show no Morumbi, São Paulo","Live at Morumbi, São Paulo","En vivo en el Morumbi, São Paulo"],
+ ["rhcp-live-at-belo-horizonte","Show em Belo Horizonte","Live in Belo Horizonte","En vivo en Belo Horizonte"],
+ ["the-getaway-with-tattoo","The Getaway e o asterisco tatuado","The Getaway and the asterisk tattoo","The Getaway y el asterisco tatuado"],
+ ["rhcp-live-at-curitiba","Show em Curitiba","Live in Curitiba","En vivo en Curitiba"],
+ ["photo-with-mauro-refosco","Com Mauro Refosco, percussionista das turnês","With Mauro Refosco, the band's touring percussionist","Con Mauro Refosco, percusionista de las giras"],
+ ["rhcp-live-at-rio-de-janeiro-with-family","Show no Rio de Janeiro, com a família","Live in Rio de Janeiro, with family","En vivo en Río de Janeiro, con la familia"],
+ ["im-with-tattoo","A tatuagem do I'm with You","My I'm with You tattoo","Mi tatuaje de I'm with You"],
+ ["rhcp-tattoo-friends","Tatuagem dividida com os amigos","A tattoo shared with friends","Un tatuaje compartido con amigos"],
+ ["im-with-you-brasil","Clima de I'm with You","I'm with You days","Época de I'm with You"],
+ ["rhcp-cake","Até o bolo de aniversário","Even the birthday cake","Hasta el pastel de cumpleaños"]
+];
+const SOCIAL = [["Reddit","u/mateuspapini","https://www.reddit.com/user/mateuspapini/","reddit"],["X (Twitter)","@MateusPapini","https://x.com/MateusPapini","x"],["Instagram","@mateuspapini","https://www.instagram.com/mateuspapini/","instagram"]];
+function st(k){ return (STORY[LANG]||STORY.pt)[k]; }
+function capOf(i){ return PHOTOS[i][LANG==="en"?2:LANG==="es"?3:1]; }
+function ytCard(id, kind, cap, credit){
+  const url = kind==="short" ? `https://www.youtube.com/shorts/${id}` : `https://www.youtube.com/watch?v=${id}`;
+  return `<figure class="yt ${kind}"><a class="yt-frame" href="${url}" target="_blank" rel="noopener" data-yt="${id}" aria-label="${esc(st("open_yt"))}: ${esc(cap)}">
+    <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="yt-play" aria-hidden="true"></span><span class="yt-label">${esc(st("open_yt"))}</span></a>
+    <figcaption>${esc(cap)}${credit?` <span class="dim">· ${esc(st("credit"))}: ${esc(credit)}</span>`:""}</figcaption></figure>`;
+}
+function storyHTML(){
+  const p = st("p");
+  return `<section class="story" id="historia" aria-labelledby="story-h">
+    <div class="story-head"><div class="eyebrow">${esc(st("eb"))}</div><h2 id="story-h">${esc(st("h"))}</h2></div>
+    <div class="story-top">
+      <div class="story-text">
+        <p class="lead">${esc(p[0])}</p><p>${esc(p[1])}</p><p>${esc(p[2])}</p>
+        <p class="viva">${esc(p[3])}</p><p class="motto">${esc(p[4])}</p>
+        <div class="sign">— ${esc(st("sign"))}</div>
+        <div class="social"><span class="eyebrow">${esc(st("follow"))}</span><div class="social-links">${SOCIAL.map(s=>`<a href="${s[2]}" target="_blank" rel="noopener me" aria-label="${esc(s[0])}: ${esc(s[1])}"><span class="ico"><img src="assets/icons/${s[3]}.png" alt=""></span><span>${esc(s[1])}</span></a>`).join("")}</div></div>
+      </div>
+      ${ytCard("LszJipHan_4","short",st("v2"),"")}
+    </div>
+    <div class="story-sub"><span class="eyebrow">${esc(st("videos"))}</span></div>
+    ${ytCard("BTfe_nDdGKM","wide",st("v1"),"filipedidi")}
+    <div class="story-sub"><span class="eyebrow">${esc(st("photos"))}</span></div>
+    <div class="gallery">${PHOTOS.map((ph,i)=>`<button class="ph" data-ph="${i}" aria-label="${esc(capOf(i))}"><img src="assets/fotos/${ph[0]}.webp" alt="${esc(capOf(i))}" loading="lazy"><span>${esc(capOf(i))}</span></button>`).join("")}</div>
+  </section>`;
+}
+/* vídeos: no site final o player abre na própria página; aqui, abre no YouTube */
+document.addEventListener("click", e=>{
+  const a = e.target.closest("a[data-yt]"); if(!a || !EMBED_VIDEOS) return;
+  e.preventDefault();
+  const f = document.createElement("iframe");
+  f.src = `https://www.youtube-nocookie.com/embed/${a.dataset.yt}?autoplay=1&rel=0`;
+  f.title = a.getAttribute("aria-label")||"YouTube"; f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"; f.allowFullscreen = true;
+  f.className = "yt-frame"; a.replaceWith(f);
+});
+/* galeria em tela cheia */
+let lbIndex = -1;
+function openLightbox(i){
+  lbIndex = (i+PHOTOS.length)%PHOTOS.length;
+  let lb = document.getElementById("lightbox");
+  if(!lb){ lb = document.createElement("div"); lb.id="lightbox"; lb.className="lightbox"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-modal","true"); document.body.appendChild(lb);
+    lb.addEventListener("click", e=>{ if(e.target===lb || e.target.closest("[data-lb=close]")) closeLightbox(); else if(e.target.closest("[data-lb=prev]")) openLightbox(lbIndex-1); else if(e.target.closest("[data-lb=next]")) openLightbox(lbIndex+1); }); }
+  lb.innerHTML = `<figure><img src="assets/fotos/${PHOTOS[lbIndex][0]}.webp" alt="${esc(capOf(lbIndex))}"><figcaption>${esc(capOf(lbIndex))} <span class="dim">${lbIndex+1}/${PHOTOS.length}</span></figcaption></figure>
+    <button class="lb-btn lb-close" data-lb="close" aria-label="${esc(st("close"))}">×</button><button class="lb-btn lb-prev" data-lb="prev" aria-label="${esc(st("prev"))}">‹</button><button class="lb-btn lb-next" data-lb="next" aria-label="${esc(st("next"))}">›</button>`;
+  lb.hidden = false; lb.querySelector(".lb-close").focus();
+}
+function closeLightbox(){ const lb=document.getElementById("lightbox"); if(lb) lb.hidden=true; lbIndex=-1; }
+document.addEventListener("click", e=>{ const b=e.target.closest("[data-ph]"); if(b) openLightbox(+b.dataset.ph); });
+document.addEventListener("keydown", e=>{ if(lbIndex<0) return; if(e.key==="Escape") closeLightbox(); else if(e.key==="ArrowLeft") openLightbox(lbIndex-1); else if(e.key==="ArrowRight") openLightbox(lbIndex+1); });
+
+/* ---------- página do álbum ---------- */
+function fmtDate(iso){
+  if(!iso) return "—";
+  const p = iso.split("-").map(Number);
+  const loc = LANG==="pt"?"pt-BR":LANG==="es"?"es-ES":"en-US";
+  const d = new Date(Date.UTC(p[0], (p[1]||1)-1, p[2]||1));
+  const opt = p.length===1 ? {year:"numeric"} : p.length===2 ? {month:"long",year:"numeric"} : {day:"numeric",month:"long",year:"numeric"};
+  return new Intl.DateTimeFormat(loc, {...opt, timeZone:"UTC"}).format(d);
+}
+function roles(rs){ return rs.map(r=>t("r_"+r)||r).join(", "); }
+function peopleHTML(list){ return `<ul class="people">${list.map(p=>`<li><b>${esc(p[0])}</b> <span>· ${esc(roles(p[1]))}${p[2]?` ("${esc(p[2])}")`:""}</span></li>`).join("")}</ul>`; }
+
+/* cores do disco ajustadas para ter contraste nos dois temas */
+function hexRgb(h){ const n=parseInt(h.slice(1),16); return [n>>16,(n>>8)&255,n&255]; }
+function lum(c){ const f=v=>{v/=255; return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)}; return .2126*f(c[0])+.7152*f(c[1])+.0722*f(c[2]); }
+function contrast(a,b){ const A=lum(a),B=lum(b); return (Math.max(A,B)+.05)/(Math.min(A,B)+.05); }
+function toHex(c){ return "#"+c.map(v=>Math.round(v).toString(16).padStart(2,"0")).join(""); }
+function fitColor(hex,bg,min){
+  const base=hexRgb(hex), B=hexRgb(bg), target = lum(B)>.4?[0,0,0]:[255,255,255];
+  let c=base, k=0;
+  while(contrast(c,B)<min && k<1){ k+=.06; c=base.map((v,i)=>v+(target[i]-v)*k); }
+  return toHex(c);
+}
+function inkOn(hex){ const c=hexRgb(hex); return contrast(c,[255,255,255])>=contrast(c,[20,12,14]) ? "#FFFFFF" : "#140C0E"; }
+function albumTheme(a){
+  const sat = h=>{ const c=hexRgb(h); return Math.max(...c)-Math.min(...c); };
+  const base = a.acc || (sat(a.c[0])>=sat(a.c[1]) ? a.c[0] : a.c[1]);
+  const accL = fitColor(base,"#F6EEE9",4.5), accD = fitColor(base,"#150E10",4.5);
+  return `--accL:${accL};--accD:${accD};--inkL:${inkOn(accL)};--inkD:${inkOn(accD)}`;
+}
+
+/* cores tiradas da capa oficial (no site final, a.cover = URL da capa vinda da API).
+   Se a capa não carregar, a página fica com as cores definidas à mão. */
+const PALETTE_CACHE = {};
+function quantize(data){
+  const bins = new Map();
+  for(let i=0;i<data.length;i+=4){
+    if(data[i+3]<200) continue;
+    const r=data[i]>>4, g=data[i+1]>>4, b=data[i+2]>>4, k=(r<<8)|(g<<4)|b;
+    const e = bins.get(k) || {n:0,r:0,g:0,b:0}; e.n++; e.r+=data[i]; e.g+=data[i+1]; e.b+=data[i+2]; bins.set(k,e);
+  }
+  const cols = [...bins.values()].map(e=>{ const c=[e.r/e.n,e.g/e.n,e.b/e.n]; const sat=Math.max(...c)-Math.min(...c); return {c, n:e.n, score:e.n*(0.35+sat/255)}; }).sort((a,b)=>b.score-a.score);
+  const picked = [];
+  for(const x of cols){ if(picked.every(p=>Math.hypot(p.c[0]-x.c[0],p.c[1]-x.c[1],p.c[2]-x.c[2])>70)) picked.push(x); if(picked.length===3) break; }
+  if(!picked.length) return null;
+  while(picked.length<3) picked.push(picked[picked.length-1]);
+  const accent = picked.slice().sort((a,b)=>(Math.max(...b.c)-Math.min(...b.c))-(Math.max(...a.c)-Math.min(...a.c)))[0];
+  return {colors:picked.map(p=>toHex(p.c)), acc:toHex(accent.c)};
+}
+function paletteFromCover(url){
+  if(PALETTE_CACHE[url]!==undefined) return Promise.resolve(PALETTE_CACHE[url]);
+  return new Promise(res=>{
+    const img = new Image(); img.crossOrigin = "anonymous";
+    img.onload = ()=>{ try{ const cv=document.createElement("canvas"); cv.width=cv.height=48; const cx=cv.getContext("2d"); cx.drawImage(img,0,0,48,48); res(PALETTE_CACHE[url]=quantize(cx.getImageData(0,0,48,48).data)); }catch(e){ res(PALETTE_CACHE[url]=null); } };
+    img.onerror = ()=>res(PALETTE_CACHE[url]=null);
+    img.src = url;
+  });
+}
+function applyCoverPalette(root, a, pal){
+  const band = root.querySelector(".ap-band"); if(!band || !pal) return;
+  const [c0,c1,c2] = pal.colors;
+  band.style.background = `linear-gradient(120deg, ${c0} 0%, ${c1} 55%, ${c2} 100%)`;
+  const yr = band.querySelector(".ap-band-yr"); if(yr) yr.style.color = inkOn(c0)==="#FFFFFF" ? "#FFFFFF" : "#1A1112";
+  root.setAttribute("style", albumTheme({...a, acc:pal.acc}));
+}
+
+function renderAlbumPage(id){
+  const root = document.getElementById("v-album");
+  const a = AL[id]; if(!a){ go("home"); return; }
+  root.setAttribute("style", albumTheme(a));
+  root.className = "themed";
+  const light = isLight(a.c[0]) && a.p!==1 && a.p!==4;
+  const band = `<div class="ap-band" style="background:${patOf(a)}" aria-hidden="true"><span class="ap-band-yr" style="color:${light?"#1A1112":"#FFFFFF"}">${a.y}</span></div>`;
+  const head = `<div class="ap-top"><button class="btn" id="ap-back">${esc(t("ap_back"))}</button>${a.la?wikiLink(a.la):""}</div>`;
+  if(a.kind==="extra"){
+    root.innerHTML = `<div class="stage">${head}${band}<div class="ap"><div class="ap-side">${tile(a,"lg")}</div><div class="ap-main">
+      <div class="eyebrow acc">${esc(t("extras_h"))} · ${a.y}</div><h1>${esc(groupName(a))}</h1>
+      <div class="ap-stats"><div class="stat"><b>${a.items.length}</b><span>${esc(t("st_tracks"))}</span></div></div>
+      <div class="tbl-wrap"><table class="tracks"><thead><tr><th class="r">#</th><th>${esc(t("c_song"))}</th><th class="r">${esc(t("c_listen"))}</th></tr></thead><tbody>
+      ${SONGS.filter(s=>s.a===a.id).map(s=>`<tr><td class="num">${s.n}</td><td><div class="tt">${esc(s.t)}</div>${s.note?`<div class="sub-note">${esc(noteT(s.note))}</div>`:""}</td><td class="r">${listenSong(s)}</td></tr>`).join("")}
+      </tbody></table></div></div></div></div>`;
+    root.querySelector("#ap-back").onclick=()=>go(prevView);
+    window.scrollTo({top:0}); return;
+  }
+  const I = a.info;
+  const rec = I.rec.length>1 ? t("rec_range", fmtDate(I.rec[0]), fmtDate(I.rec[1])) : fmtDate(I.rec[0]);
+  const rows = a.tr.map((name,i)=>{
+    const disc = id==="sa" && (i===0||i===14) ? `<tr class="disc"><td colspan="4">${esc(t("disc"))} ${i===0?"1 · Jupiter":"2 · Mars"}</td></tr>` : "";
+    return disc + `<tr><td class="num">${i+1}</td><td class="tt">${esc(name)}</td><td class="r dim">${I.dur[i]}</td><td class="r">${listenSong(SG[a.id+"-"+(i+1)])}</td></tr>`;
+  }).join("");
+  root.innerHTML = `<div class="stage">${head}${band}<div class="ap">
+    <div class="ap-side">${tile(a,"lg")}
+      <div class="facts">
+        <div><div class="ord">${esc(t("ord",I.n))}</div><div class="rel">${esc(t("released"))}<b>${esc(fmtDate(I.rel))}</b></div></div>
+        <dl><dt>${esc(t("f_prod"))}</dt><dd>${esc(I.prod.join(", "))}</dd><dt>${esc(t("f_rec"))}</dt><dd>${esc(rec)}</dd><dt>${esc(t("f_studio"))}</dt><dd>${esc(I.studio)}</dd><dt>${esc(t("f_label"))}</dt><dd>${esc(I.label)}</dd><dt>${esc(t("f_len"))}</dt><dd>${esc(I.len)}</dd></dl>
+        <div><h4>${esc(t("lineup"))}</h4>${peopleHTML(I.band)}</div>
+        ${I.extra.length?`<div><h4>${esc(t("extra_m"))}</h4>${peopleHTML(I.extra)}</div>`:""}
+        ${I.tech.length?`<div><h4>${esc(t("tech_m"))}</h4>${peopleHTML(I.tech)}</div>`:""}
+      </div>
+    </div>
+    <div class="ap-main">
+      <div class="eyebrow acc">${esc(t("ord",I.n))} · ${a.y}</div>
+      <h1>${esc(a.t)}</h1>
+      <div class="ap-stats">
+        <div class="stat"><b>${a.tr.length}</b><span>${esc(t("st_tracks"))}</span></div>
+        <div class="stat"><b>${esc(I.len)}</b><span>${esc(t("f_len"))}</span></div>
+        <div class="stat"><b>${esc(a.g)}</b><span>${esc(t("r_guitar"))}</span></div>
+        <div class="stat"><b>${esc(I.prod.join(", "))}</b><span>${esc(t("f_prod"))}</span></div>
+      </div>
+      <div class="tbl-wrap"><table class="tracks"><thead><tr><th class="r">#</th><th>${esc(t("c_song"))}</th><th class="r">${esc(t("c_len"))}</th><th class="r">${esc(t("c_listen"))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="duel-actions" style="justify-content:flex-start"><button class="btn hot" data-go="albums">${esc(t("ap_battle"))}</button><button class="btn" data-go="songs">${esc(t("m_song_h"))}</button></div>
+    </div></div></div>`;
+  root.querySelector("#ap-back").onclick=()=>go(prevView);
+  window.scrollTo({top:0});
+  if(a.cover) paletteFromCover(a.cover).then(pal=>{ if(current==="album" && openId===id) applyCoverPalette(root, a, pal); });
+}
+
+function applyChrome(){
+  document.documentElement.lang = LANG==="pt"?"pt-BR":LANG;
+  document.title = t("title");
+  document.getElementById("brand").innerHTML = t("brand");
+  document.getElementById("nav-albums").textContent = t("nav_albums");
+  document.getElementById("nav-songs").textContent = t("nav_songs");
+  document.getElementById("nav-mine").textContent = t("nav_mine");
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===LANG?"true":"false"));
+  document.getElementById("footer").innerHTML = `<p>${t("footer")}</p><a class="mapa" href="https://mapasolucoesdigitais.com.br/" target="_blank" rel="noopener" aria-label="${esc(t("built"))} MAPA Soluções Digitais"><span>${esc(t("built"))}</span><img src="${MAPA_LOGO}" alt="MAPA Soluções Digitais"></a>`;
+}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click", ()=>{
+  LANG = b.dataset.lang; try{ localStorage.setItem("rhcp-lang", LANG); }catch(e){}
+  applyChrome(); go(current);
+}));
+
+/* ---------- início ---------- */
+function renderHome(){
+  const nStudio = SONGS.filter(s=>AL[s.a].kind==="studio").length, nExtra = SONGS.length - nStudio;
+  const pick=["bssm","cal","btw","sa"];
+  const stack = pick.map((id,i)=>`<div style="position:absolute;left:${8+i*20}%;top:${[30,4,40,12][i]}px;transform:rotate(${[-8,5,-3,9][i]}deg);z-index:${i};width:clamp(110px,28%,150px)">${tile(AL[id])}</div>`).join("");
+  document.getElementById("v-home").innerHTML = `
+    <div class="hero">
+      <div>
+        <div class="eyebrow">${esc(t("hero_count",nStudio,nExtra))}</div>
+        <h1>${t("hero_h")}</h1>
+        <p>${esc(t("hero_p"))}</p>
+      </div>
+      <div class="hero-logo"><img src="assets/img/logo-chili-peppers-battle.webp" alt="Chili Peppers Battle · Fan site" width="1448" height="1086"></div>
+    </div>
+    <div class="modes">
+      <button class="mode" data-go="albums"><div class="eyebrow">${esc(t("m_alb_eb"))}</div><h3>${esc(t("m_alb_h"))}</h3><p>${esc(t("m_alb_p"))}</p><span class="go">${esc(t("start"))}</span></button>
+      <button class="mode" data-go="songs"><div class="eyebrow">${esc(t("m_song_eb"))}</div><h3>${esc(t("m_song_h"))}</h3><p>${esc(t("m_song_p"))}</p><span class="go">${esc(t("start"))}</span></button>
+    </div>
+    <div class="section-title"><h2>${esc(t("disco_h"))}</h2><span class="eyebrow">${esc(t("disco_eb"))}</span></div>
+    <div class="grid">${ALBUMS.map(a=>`<button class="album-mini click" data-open="${a.id}" aria-label="${esc(t("open_album"))}: ${esc(a.t)}">${tile(a)}<span class="name">${esc(a.t)}</span><span class="meta">${a.y} · ${esc(t("tracks",a.tr.length))} · ${esc(a.g)}</span></button>`).join("")}</div>
+    <div class="section-title"><h2>${esc(t("extras_h"))}</h2><span class="eyebrow">${esc(t("extras_eb"))}</span></div>
+    <div class="grid">${EXTRAS.map(x=>`<button class="album-mini click" data-open="${x.id}" aria-label="${esc(t("open_album"))}: ${esc(groupName(x))}">${tile(x)}<span class="name">${esc(x.par && !x.t ? x.pname : groupName(x))}</span><span class="meta">${esc(t("tracks",x.items.length))}${x.par?" · "+esc(t("bside")):""}</span></button>`).join("")}</div>
+    <p class="note" style="margin-top:28px">${esc(t("proto"))}</p>
+    <div class="support" id="apoie">
+      <div class="intro"><div class="eyebrow">${esc(t("sup_eb"))}</div><h2>${esc(t("sup_h"))}</h2><p>${esc(t("sup_p"))}</p></div>
+      <div class="give">
+        <span class="tag" style="align-self:flex-start">${esc(t("kofi_tag"))}</span>
+        <h3>Ko-fi</h3>
+        <p>${esc(t("kofi_p"))}</p>
+        <div class="qr-cap">${esc(t("kofi_qr"))}</div>
+        <a class="qr-box" href="${KOFI_URL}" target="_blank" rel="noopener">${KOFI_QR}</a>
+        <div class="qr-cap"><a href="${KOFI_URL}" target="_blank" rel="noopener">ko-fi.com/mapasolucoesdigitais</a></div>
+        <div class="give-actions"><a class="btn hot" href="${KOFI_URL}" target="_blank" rel="noopener">${esc(t("kofi_btn"))}</a></div>
+      </div>
+      <div class="give">
+        <span class="tag" style="align-self:flex-start">${esc(t("pix_tag"))}</span>
+        <h3>Pix</h3>
+        <p>${esc(t("pix_p"))}</p>
+        <div class="qr-box">${PIX_QR}</div>
+        <div class="pix">${esc(t("pix_key"))} <span class="pix-key">${PIX_KEY}</span></div>
+        <div class="give-actions"><button class="btn solid" id="pix-code">${esc(t("pix_code_btn"))}</button><button class="btn" id="pix-copy">${esc(t("pix_key_btn"))}</button></div>
+      </div>
+    </div>
+    ${storyHTML()}`;
+  document.getElementById("pix-copy").onclick = ()=>copyPlain(PIX_KEY, t("t_pix_key"));
+  document.getElementById("pix-code").onclick = ()=>copyPlain(PIX_CODE, t("t_pix_code"));
+}
+
+/* ---------- utilidades ---------- */
+function copyPlain(txt, okMsg){
+  const ok = ()=>toast(okMsg);
+  const fallback = ()=>{ const ta=document.createElement("textarea"); ta.className="copy"; ta.value=txt; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); ok(); }catch(e){ toast(t("t_fail")); } ta.remove(); };
+  try{ navigator.clipboard.writeText(txt).then(ok).catch(fallback); }catch(e){ fallback(); }
+}
+function toast(m){ const el=document.createElement("div"); el.className="toast"; el.textContent=m; document.body.appendChild(el); setTimeout(()=>el.remove(),1800); }
+
+/* ---------- duelo genérico ---------- */
+let undoStack=[];
+let keyHandler=null;
+document.addEventListener("keydown", e=>{ if(keyHandler && !e.metaKey && !e.ctrlKey && !e.altKey) keyHandler(e); });
+
+function battleHTML(r, kind, title, eyebrow){
+  const a = r.cur, b = opponent(r);
+  const L = r.side ? b : a, R = r.side ? a : b;
+  const est = estimate(r), pct = Math.round(100*r.comps/((r.comps+est)||1));
+  const card = id => kind==="album"
+    ? `<div class="fighter" data-pick="${id}">${tile(AL[id],"lg")}<div><h3>${esc(AL[id].t)}</h3><div class="sub">${AL[id].y} · ${esc(AL[id].g)}</div><div style="margin-top:10px">${wikiLink(AL[id].la)}</div></div>${listen(AL[id].t)}<button class="pick" data-pick="${id}">${esc(t("pick_a"))}</button></div>`
+    : `<div class="fighter song-fighter" data-pick="${id}"><div class="row">${tile(AL[SG[id].a])}<div style="min-width:0"><h3>${esc(SG[id].t)}</h3><div class="sub" style="margin-top:4px">${esc(groupName(AL[SG[id].a]))} · ${AL[SG[id].a].y}</div>${songNote(SG[id])}</div></div>${listenSong(SG[id])}<button class="pick" data-pick="${id}">${esc(t("pick_s"))}</button></div>`;
+  return `<div class="stage">
+    <div class="stage-head"><div><div class="eyebrow">${esc(eyebrow)}</div><h2>${esc(title)}</h2></div>
+    <div style="min-width:220px;flex:1;max-width:360px"><div class="progress"><i style="width:${pct}%"></i></div><div class="ptext">${esc(t("duel_n",r.comps+1,est))}</div></div></div>
+    <div class="duel">${card(L)}<div class="vs">VS</div>${card(R)}</div>
+    <div class="duel-actions"><button class="btn" id="b-undo" ${undoStack.length?"":"disabled"}>${esc(t("undo"))}</button><button class="btn" id="b-tie">${esc(t("tie"))}</button><button class="btn" id="b-quit">${esc(t("quit"))}</button></div>
+    <div class="keys">${esc(t("keys"))}</div></div>`;
+}
+function wireBattle(root, getR, setR, onPick, onQuit){
+  const r = getR();
+  const L = r.side ? opponent(r) : r.cur;
+  const R = L===r.cur ? opponent(r) : r.cur;
+  const choose = id => { undoStack.push(JSON.stringify(getR())); const rr=getR(); answer(rr, id===rr.cur); setR(rr); onPick(); };
+  root.querySelectorAll("[data-pick]").forEach(el=>el.addEventListener("click", e=>{ e.stopPropagation(); if(e.target.closest("a")) return; choose(el.dataset.pick); }));
+  root.querySelector("#b-tie").onclick = ()=>{ undoStack.push(JSON.stringify(getR())); const rr=getR(); answer(rr,false); setR(rr); onPick(); };
+  root.querySelector("#b-undo").onclick = ()=>{ if(!undoStack.length) return; setR(JSON.parse(undoStack.pop())); onPick(); };
+  root.querySelector("#b-quit").onclick = onQuit;
+  keyHandler = e=>{
+    if(e.key==="ArrowLeft"){ e.preventDefault(); choose(L); }
+    else if(e.key==="ArrowRight"){ e.preventDefault(); choose(R); }
+    else if(e.key==="ArrowDown"){ e.preventDefault(); root.querySelector("#b-tie").click(); }
+    else if(e.key==="Backspace"){ e.preventDefault(); root.querySelector("#b-undo").click(); }
+  };
+}
+
+/* ---------- setlist (resultado) ---------- */
+function setlistHTML(ids, kind, limit, movable=true){
+  const list = ids.slice(0,limit);
+  return `<ol class="setlist">${list.map((id,i)=>{
+    const a = kind==="album"?AL[id]:AL[SG[id].a];
+    const nm = kind==="album"?a.t:SG[id].t;
+    const al = kind==="album"?`${a.y} · ${a.g}`:`${groupName(a)} · ${a.y}`;
+    const mv = movable ? `<div class="mv"><button data-mv="${i}" data-d="-1" aria-label="${esc(t("up"))}" ${i===0?"disabled":""}>↑</button><button data-mv="${i}" data-d="1" aria-label="${esc(t("down"))}" ${i===list.length-1?"disabled":""}>↓</button></div>` : "<div></div>";
+    return `<li><div class="pos">${i+1}</div>${tile(a)}<div style="min-width:0"><div class="nm">${esc(nm)}</div><div class="al">${esc(al)}</div></div>${mv}</li>`;
+  }).join("")}</ol>`;
+}
+function wireSetlist(root, arr, rerender){
+  root.querySelectorAll("[data-mv]").forEach(b=>b.onclick=()=>{ const i=+b.dataset.mv, j=i+(+b.dataset.d); [arr[i],arr[j]]=[arr[j],arr[i]]; save(); rerender(); });
+}
+
+/* ---------- batalha de álbuns ---------- */
+function renderAlbums(){
+  const root = document.getElementById("v-albums");
+  keyHandler=null;
+  if(S.albumResult){
+    root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("ab_res_eb",S.albumComps||0))}</div><h2>${esc(t("ab_res_h"))}</h2></div>
+      <div class="duel-actions" style="margin:0"><button class="btn solid" id="a-copy">${esc(t("copy"))}</button><button class="btn" id="a-redo">${esc(t("redo"))}</button></div></div>
+      <p class="note" style="margin-bottom:16px">${esc(t("fine"))}</p>${setlistHTML(S.albumResult,"album",13)}</div>`;
+    wireSetlist(root, S.albumResult, renderAlbums);
+    root.querySelector("#a-copy").onclick=()=>copyPlain(t("copy_alb")+"\n"+S.albumResult.map((id,i)=>`${i+1}. ${AL[id].t} (${AL[id].y})`).join("\n"), t("t_rank"));
+    root.querySelector("#a-redo").onclick=()=>{ S.albumResult=null; S.albumRanker=newRanker(ALBUMS.map(a=>a.id),13); undoStack=[]; save(); renderAlbums(); };
+    return;
+  }
+  if(!S.albumRanker){ S.albumRanker = newRanker(ALBUMS.map(a=>a.id),13); undoStack=[]; save(); }
+  const r = S.albumRanker;
+  if(done(r)){ S.albumResult = r.ranked.slice(); S.albumComps=r.comps; S.albumRanker=null; undoStack=[]; save(); return renderAlbums(); }
+  root.innerHTML = battleHTML(r,"album",t("ab_h"),t("ab_eb"));
+  wireBattle(root, ()=>S.albumRanker, v=>{S.albumRanker=v; save();}, renderAlbums, ()=>go("home"));
+}
+
+/* ---------- batalha de músicas ---------- */
+function counts(){ const c={love:0,like:0,meh:0,unk:0}; Object.values(S.ratings).forEach(v=>{ if(v in c) c[v]++; }); return c; }
+function pool(){ const love=SONGS.filter(s=>S.ratings[s.id]==="love").map(s=>s.id); const like=SONGS.filter(s=>S.ratings[s.id]==="like").map(s=>s.id); return {love,like}; }
+
+function renderSongs(){
+  const root = document.getElementById("v-songs");
+  keyHandler=null;
+  const st = S.songStage;
+  if(st==="setup") return songSetup(root);
+  if(st==="triage") return songTriage(root);
+  if(st==="pre") return songPre(root);
+  if(st==="battle") return songBattle(root);
+  if(st==="result") return songResult(root);
+}
+function songSetup(root){
+  const scope = (S.triScope || ALBUMS.map(a=>a.id)).filter(id=>AL[id]);
+  const sel = new Set(scope);
+  const n = SONGS.filter(s=>sel.has(s.a)).length;
+  root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("s1"))}</div><h2>${esc(t("setup_h"))}</h2></div></div>
+    <div class="panel">
+      <p>${esc(t("setup_p"))}</p>
+      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("shortcuts"))}</div><div class="chips"><button class="chip" data-q="studio">${esc(t("only_studio"))}</button><button class="chip" data-q="all">${esc(t("all_b"))}</button>${GUITAR.map(g=>`<button class="chip" data-g="${esc(g)}">${esc(t("era",g))}</button>`).join("")}</div></div>
+      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("studio"))}</div><div class="chips">${ALBUMS.map(a=>`<button class="chip" data-al="${a.id}" aria-pressed="${sel.has(a.id)}"><span class="dot" style="background:${a.c[0]}"></span>${esc(a.t)} · ${a.y}</button>`).join("")}</div></div>
+      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("extras_h"))}</div><div class="chips">${EXTRAS.map(x=>`<button class="chip" data-al="${x.id}" aria-pressed="${sel.has(x.id)}"><span class="dot" style="background:${x.c[0]}"></span>${esc(groupName(x))} · ${x.items.length}</button>`).join("")}</div></div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button class="btn hot" id="s-start" ${n?"":"disabled"}>${esc(t("start_tri",n))}</button>${Object.keys(S.ratings).length?`<button class="btn" id="s-skip">${esc(t("skip_tri"))}</button>`:""}</div>
+    </div></div>`;
+  root.querySelectorAll("[data-al]").forEach(b=>b.onclick=()=>{ const id=b.dataset.al; sel.has(id)?sel.delete(id):sel.add(id); S.triScope=[...sel]; save(); songSetup(root); });
+  root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{ const g=b.dataset.g; S.triScope = ALL.filter(a=>a.g===g).map(a=>a.id); save(); songSetup(root); });
+  root.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{ S.triScope = (b.dataset.q==="all"?ALL:ALBUMS).map(a=>a.id); save(); songSetup(root); });
+  root.querySelector("#s-start").onclick=()=>{ S.triOrder = SONGS.filter(s=>sel.has(s.a)).map(s=>s.id); S.triIdx=0; S.songStage="triage"; save(); renderSongs(); };
+  const sk=root.querySelector("#s-skip"); if(sk) sk.onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
+}
+function songTriage(root){
+  const order = (S.triOrder||[]).filter(id=>SG[id]);
+  if(S.triIdx>=order.length){ S.songStage="pre"; save(); return renderSongs(); }
+  const s = SG[order[S.triIdx]], a = AL[s.a], c = counts();
+  const pct = Math.round(100*S.triIdx/order.length);
+  const enough = c.love + c.like >= 10;
+  root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("s1"))}</div><h2>${esc(t("tri_h"))}</h2></div>
+    <div style="min-width:220px;flex:1;max-width:360px"><div class="progress"><i style="width:${pct}%"></i></div><div class="ptext">${esc(t("tri_prog",S.triIdx+1,order.length,c.love,c.like))}</div></div></div>
+    <div class="triage">${tile(a,"lg")}<div style="min-width:0"><div class="eyebrow">${esc(t("track",s.n))} · ${esc(groupName(a))} · ${a.y}</div><h3 style="margin-top:6px">${esc(s.t)}</h3><div class="sub">${esc(t("guitar",gName(a.g)))}</div>${s.note?`<div style="margin:-6px 0 12px"><span class="tag">${esc(noteT(s.note))}</span></div>`:""}<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">${listenSong(s)}${a.la?wikiLink(a.la):""}</div>
+      <div class="rates"><button class="rate love" data-r="love">${esc(t("love"))}<small>${esc(t("key",1))}</small></button><button class="rate like" data-r="like">${esc(t("like"))}<small>${esc(t("key",2))}</small></button><button class="rate meh" data-r="meh">${esc(t("meh"))}<small>${esc(t("key",3))}</small></button><button class="rate unk" data-r="unk">${esc(t("unk"))}<small>${esc(t("key",4))}</small></button></div></div></div>
+    <div class="duel-actions"><button class="btn" id="t-back" ${S.triIdx?"":"disabled"}>${esc(t("back_one"))}</button><button class="btn" id="t-out">${esc(t("quit"))}</button><button class="btn solid" id="t-end" ${enough?"":"disabled"}>${esc(t("end_tri"))}</button></div></div>`;
+  const rate = v=>{ S.ratings[s.id]=v; S.triIdx++; save(); songTriage(root); };
+  root.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>rate(b.dataset.r));
+  root.querySelector("#t-back").onclick=()=>{ if(S.triIdx>0){ S.triIdx--; save(); songTriage(root);} };
+  root.querySelector("#t-out").onclick=()=>go("home");
+  root.querySelector("#t-end").onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
+  keyHandler = e=>{ const m={"1":"love","2":"like","3":"meh","4":"unk"}[e.key]; if(m){ e.preventDefault(); rate(m); } else if(e.key==="Backspace"){ e.preventDefault(); root.querySelector("#t-back").click(); } };
+}
+function songPre(root){
+  const c = counts(), p = pool();
+  const K = S.songK;
+  let ids = p.love.slice(), mixed=false;
+  if(ids.length < K+5){ ids = ids.concat(p.like); mixed = p.love.length < K+5 && p.like.length>0; }
+  const est = ids.length ? estimate({ranked:[],queue:ids.slice(),cur:null,K}) : 0;
+  root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("s2"))}</div><h2>${esc(t("pre_h"))}</h2></div></div>
+    <div class="counts"><div class="count"><b style="color:var(--love)">${c.love}</b><span>${esc(t("love"))}</span></div><div class="count"><b style="color:var(--like)">${c.like}</b><span>${esc(t("like"))}</span></div><div class="count"><b style="color:var(--meh)">${c.meh}</b><span>${esc(t("meh"))}</span></div><div class="count"><b style="color:var(--unk)">${c.unk}</b><span>${esc(t("unk"))}</span></div></div>
+    <div class="panel">
+      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("size"))}</div><div class="seg"><button data-k="10" aria-pressed="${K===10}">Top 10</button><button data-k="20" aria-pressed="${K===20}">Top 20</button></div></div>
+      <p>${esc(ids.length < 2 ? t("pre_need") : t("pre_msg",ids.length,K,mixed,est))}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn hot" id="p-go" ${ids.length<2?"disabled":""}>${esc(t("pre_go"))}</button><button class="btn" id="p-tri">${esc(t("pre_back"))}</button></div>
+    </div></div>`;
+  root.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{ S.songK=+b.dataset.k; save(); songPre(root); });
+  root.querySelector("#p-go").onclick=()=>{ S.songRanker=newRanker(ids, Math.min(K, ids.length)); S.songRankerK=K; undoStack=[]; S.songStage="battle"; save(); renderSongs(); };
+  root.querySelector("#p-tri").onclick=()=>{ S.songStage = (S.triOrder && S.triIdx<S.triOrder.length) ? "triage" : "setup"; save(); renderSongs(); };
+}
+function songBattle(root){
+  const r = S.songRanker;
+  if(!r){ S.songStage="pre"; save(); return renderSongs(); }
+  if(done(r)){ S.songResult=r.ranked.slice(); S.songResultK=S.songRankerK; S.songComps=r.comps; S.songView=Math.min(S.songRankerK, r.ranked.length); S.songRanker=null; undoStack=[]; S.songStage="result"; save(); return renderSongs(); }
+  root.innerHTML = battleHTML(r,"song",t("sb_h",S.songRankerK),t("s2"));
+  wireBattle(root, ()=>S.songRanker, v=>{S.songRanker=v; save();}, ()=>songBattle(root), ()=>go("home"));
+}
+function songResult(root){
+  const res = S.songResult||[], max = res.length, view = Math.min(S.songView||10, max);
+  root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("res_eb",S.songComps||0))}</div><h2>${esc(t("res_h"))}</h2></div>
+    <div class="seg"><button data-v="10" aria-pressed="${view<=10}">Top 10</button><button data-v="20" aria-pressed="${view>10}" ${max>10?"":"disabled"}>Top 20</button></div></div>
+    <p class="note" style="margin-bottom:16px">${esc(max<=10 && S.songResultK!==20 ? t("need20") : t("fine"))}</p>
+    ${setlistHTML(res,"song",view)}
+    <div class="duel-actions"><button class="btn solid" id="r-copy">${esc(t("copy"))}</button><button class="btn" id="r-again">${esc(t("redo_duels"))}</button><button class="btn" id="r-tri">${esc(t("redo_tri"))}</button></div></div>`;
+  root.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{ S.songView=+b.dataset.v; save(); songResult(root); });
+  wireSetlist(root, S.songResult, ()=>songResult(root));
+  root.querySelector("#r-copy").onclick=()=>copyPlain(t("copy_song",view)+"\n"+res.slice(0,view).map((id,i)=>`${i+1}. ${SG[id].t} (${groupName(AL[SG[id].a])})`).join("\n"), t("t_rank"));
+  root.querySelector("#r-again").onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
+  root.querySelector("#r-tri").onclick=()=>{ S.ratings={}; S.triIdx=0; S.triOrder=null; S.songStage="setup"; save(); renderSongs(); };
+}
+
+/* ---------- meus rankings ---------- */
+function renderMine(){
+  const root = document.getElementById("v-mine"); keyHandler=null;
+  const albums = S.albumResult ? setlistHTML(S.albumResult,"album",13,false) : `<div class="empty">${esc(t("empty_alb"))} <button class="btn hot" data-go="albums" style="margin-left:8px">${esc(t("do_now"))}</button></div>`;
+  const view = Math.min(S.songView||10, (S.songResult||[]).length);
+  const songs = S.songResult ? setlistHTML(S.songResult,"song",view,false) : `<div class="empty">${esc(t("empty_song"))} <button class="btn hot" data-go="songs" style="margin-left:8px">${esc(t("begin"))}</button></div>`;
+  root.innerHTML = `<div class="stage"><div class="section-title" style="margin-top:0"><h2>${esc(t("m_albums"))}</h2></div>${albums}
+    <div class="section-title"><h2>${esc(t("m_songs"))}${S.songResult?` · Top ${view}`:""}</h2></div>${songs}
+    <div class="duel-actions" style="margin-top:32px"><button class="btn" id="m-reset">${esc(t("reset"))}</button></div></div>`;
+  const rs = root.querySelector("#m-reset");
+  rs.onclick=()=>{ if(rs.dataset.armed){ try{localStorage.removeItem(KEY)}catch(e){} location.reload(); } else { rs.dataset.armed="1"; rs.textContent=t("reset_ok"); rs.classList.add("hot"); } };
+}
+
+applyChrome();
+go("home");
+</script>
+</body>
+</html>
