@@ -256,6 +256,40 @@ footer.site a{color:var(--fg)}
 .go-actions{display:flex;gap:8px;flex-wrap:wrap}
 .go-bar .btn.hot{padding:12px 28px;font-size:16px}
 .go-bar .btn.ghost{border-color:var(--bg);color:var(--bg);background:transparent}
+[hidden]{display:none!important}
+.mode-tabs{margin:0 0 24px;display:inline-flex}
+.pk-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:24px 0 0}
+.pk-search{flex:1;min-width:200px;max-width:420px;border:2px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:10px 18px;font:inherit;font-size:15px}
+.pk-search:focus{outline:none;border-color:var(--chili)}
+.pk-from{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:16px 0 0}
+.pk-from>span{font-size:13px;color:var(--muted);margin-right:4px}
+.pk-src{border:2px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:6px 14px;font-weight:600;font-size:13px}
+.pk-src:hover{border-color:var(--fg)}
+.pk-src.on{border-color:var(--chili);background:var(--chili);color:var(--chili-ink)}
+.pk-al{margin:22px 0 0}
+.pk-al-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pk-al-head .tile{width:44px;flex:none;border-radius:6px}
+.pk-al-head .tile .tt,.pk-al-head .tile .yr{display:none}
+.pk-al-head>div{min-width:0;flex:1}
+.pk-al-head b{display:block;font-size:15px;line-height:1.25}
+.pk-al-head span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pk-songs{display:flex;flex-wrap:wrap;gap:8px}
+.sg-chip{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:7px 14px 7px 9px;font:inherit;font-size:14px;font-weight:600;text-align:left;transition:background .15s,border-color .15s,transform .1s}
+.sg-chip:hover{border-color:var(--fg)}
+.sg-chip:active{transform:scale(.97)}
+.sg-chip i{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center}
+.sg-chip.on{background:var(--chili);border-color:var(--chili);color:var(--chili-ink)}
+.sg-chip.on i{border-color:var(--chili-ink);background:var(--chili-ink)}
+.sg-chip.on i::after{content:"";width:8px;height:4px;border-left:2px solid var(--chili);border-bottom:2px solid var(--chili);transform:translate(0,-1px) rotate(-45deg)}
+.pk-empty{color:var(--muted);margin:28px 0 0}
+.saved-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.saved{border:2px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.saved[open]{border-color:var(--fg)}
+.saved summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;cursor:pointer;list-style:none}
+.saved summary::-webkit-details-marker{display:none}
+.sv-t b{display:block;font-size:16px}
+.sv-t span{font-size:13px;color:var(--muted)}
+.saved .setlist{margin:0;padding:0 14px 14px}
 body:not([data-view="home"]) .mapa-float{display:none}
 
 
@@ -532,6 +566,12 @@ pt:{
   redo_duels:"Refazer os duelos", redo_tri:"Refazer a triagem",
   m_albums:"Álbuns", m_songs:"Músicas", empty_alb:"Você ainda não fez a batalha de álbuns.", do_now:"Fazer agora", empty_song:"Seu Top de músicas aparece aqui depois dos duelos.", begin:"Começar",
   reset:"Apagar tudo e começar do zero", reset_ok:"Clique de novo para confirmar",
+  mode_alb:"Por disco", mode_pick:"Música por música", steps_pick:["Escolher músicas","Duelos","Seu ranking"],
+  pk_h:"Quais músicas entram no ranking?", pk_p:"Toque nas músicas que você quer levar para os duelos. Aqui não tem triagem: todas as escolhidas disputam direto.", pk_tip:"Dica: faça um ranking para cada fase da banda e depois junte os tops aqui, numa final só com as que você ama.",
+  pk_from:"Puxar dos seus rankings:", pk_search:"Buscar música", pk_clear:"Limpar seleção", pk_all:"Todas", pk_off:"Nenhuma", pk_none:"Escolha pelo menos 2 músicas", pk_go:"Continuar", pk_empty:"Nenhuma música encontrada.",
+  pre_msg_pick:(n,k,est)=>`As ${n} músicas escolhidas vão disputar seu Top ${k}. Serão cerca de ${est} duelos.`, pre_msg_all:(n,est)=>`Você vai ordenar as ${n} músicas escolhidas, da 1ª à ${n}ª. Serão cerca de ${est} duelos.`, k_all:n=>`Todas (${n})`, pre_back_pick:"Voltar para a seleção", sb_h_all:"Qual você prefere?", redo_pick:"Mudar a seleção",
+  m_saved:"Rankings salvos", m_saved_p:"Todo ranking de músicas que você termina fica guardado aqui.", m_final:"Juntar todos numa final", m_del:"Apagar", m_del_ok:"Confirmar", m_meta:(n,d)=>`${n} músicas · ${d}`,
+  lbl_pick:"Seleção pessoal", lbl_era:g=>`Fase ${g}`, lbl_n:n=>`${n} discos`,
   bside_pre:"Lado B · ", other_rar:"Outras raridades", various:"Vários"
 },
 en:{
@@ -581,6 +621,12 @@ en:{
   redo_duels:"Redo the duels", redo_tri:"Redo the sorting",
   m_albums:"Albums", m_songs:"Songs", empty_alb:"You haven't done the album battle yet.", do_now:"Do it now", empty_song:"Your song Top shows up here after the duels.", begin:"Start",
   reset:"Erase everything and start over", reset_ok:"Click again to confirm",
+  mode_alb:"By album", mode_pick:"Song by song", steps_pick:["Pick songs","Duels","Your ranking"],
+  pk_h:"Which songs go into the ranking?", pk_p:"Tap the songs you want to take to the duels. No sorting step here: every song you pick goes straight in.", pk_tip:"Tip: make one ranking for each era of the band, then bring the tops together here for a final with only the songs you love.",
+  pk_from:"Pull from your rankings:", pk_search:"Search songs", pk_clear:"Clear selection", pk_all:"All", pk_off:"None", pk_none:"Pick at least 2 songs", pk_go:"Continue", pk_empty:"No songs found.",
+  pre_msg_pick:(n,k,est)=>`The ${n} songs you picked will fight for your Top ${k}. About ${est} duels.`, pre_msg_all:(n,est)=>`You'll rank all ${n} songs you picked, from 1st to ${n}th. About ${est} duels.`, k_all:n=>`All (${n})`, pre_back_pick:"Back to your picks", sb_h_all:"Which one do you prefer?", redo_pick:"Change your picks",
+  m_saved:"Saved rankings", m_saved_p:"Every song ranking you finish is kept here.", m_final:"Merge them into a final", m_del:"Delete", m_del_ok:"Confirm", m_meta:(n,d)=>`${n} songs · ${d}`,
+  lbl_pick:"Personal picks", lbl_era:g=>`${g} era`, lbl_n:n=>`${n} albums`,
   bside_pre:"B-sides · ", other_rar:"Other rarities", various:"Various"
 },
 es:{
@@ -630,6 +676,12 @@ es:{
   redo_duels:"Rehacer los duelos", redo_tri:"Rehacer la clasificación",
   m_albums:"Álbumes", m_songs:"Canciones", empty_alb:"Todavía no hiciste la batalla de álbumes.", do_now:"Hacerlo ahora", empty_song:"Tu Top de canciones aparece aquí después de los duelos.", begin:"Empezar",
   reset:"Borrar todo y empezar de cero", reset_ok:"Haz clic de nuevo para confirmar",
+  mode_alb:"Por disco", mode_pick:"Canción por canción", steps_pick:["Elegir canciones","Duelos","Tu ranking"],
+  pk_h:"¿Qué canciones entran en el ranking?", pk_p:"Toca las canciones que quieres llevar a los duelos. Aquí no hay clasificación previa: todas las elegidas compiten directo.", pk_tip:"Consejo: haz un ranking por cada etapa de la banda y después junta los tops aquí, en una final solo con las que te encantan.",
+  pk_from:"Traer de tus rankings:", pk_search:"Buscar canción", pk_clear:"Limpiar selección", pk_all:"Todas", pk_off:"Ninguna", pk_none:"Elige al menos 2 canciones", pk_go:"Continuar", pk_empty:"No se encontró ninguna canción.",
+  pre_msg_pick:(n,k,est)=>`Las ${n} canciones elegidas van a disputar tu Top ${k}. Serán unos ${est} duelos.`, pre_msg_all:(n,est)=>`Vas a ordenar las ${n} canciones elegidas, de la 1ª a la ${n}ª. Serán unos ${est} duelos.`, k_all:n=>`Todas (${n})`, pre_back_pick:"Volver a la selección", sb_h_all:"¿Cuál prefieres?", redo_pick:"Cambiar la selección",
+  m_saved:"Rankings guardados", m_saved_p:"Cada ranking de canciones que terminas queda guardado aquí.", m_final:"Juntarlos en una final", m_del:"Borrar", m_del_ok:"Confirmar", m_meta:(n,d)=>`${n} canciones · ${d}`,
+  lbl_pick:"Selección personal", lbl_era:g=>`Etapa ${g}`, lbl_n:n=>`${n} discos`,
   bside_pre:"Caras B · ", other_rar:"Otras rarezas", various:"Varios"
 }};
 
@@ -1367,8 +1419,22 @@ function renderAlbums(){
 }
 
 /* ---------- batalha de músicas ---------- */
-function counts(){ const c={love:0,like:0,meh:0,unk:0}; Object.values(S.ratings).forEach(v=>{ if(v in c) c[v]++; }); return c; }
-function pool(){ const love=SONGS.filter(s=>S.ratings[s.id]==="love").map(s=>s.id); const like=SONGS.filter(s=>S.ratings[s.id]==="like").map(s=>s.id); return {love,like}; }
+function scopeIds(){ return (S.triScope || ALBUMS.map(a=>a.id)).filter(id=>AL[id]); }
+function scopeSongs(){ const sel=new Set(scopeIds()); return SONGS.filter(s=>sel.has(s.a)); }
+function counts(){ const c={love:0,like:0,meh:0,unk:0}; scopeSongs().forEach(s=>{ const v=S.ratings[s.id]; if(v in c) c[v]++; }); return c; }
+function pool(){ const ss=scopeSongs(); return {love:ss.filter(s=>S.ratings[s.id]==="love").map(s=>s.id), like:ss.filter(s=>S.ratings[s.id]==="like").map(s=>s.id)}; }
+function pickedIds(){ return (S.picked||[]).filter(id=>SG[id]); }
+/* nome do ranking guardado como descrição, para trocar de idioma junto com o site */
+function scopeLabel(){
+  const ids=scopeIds(), set=new Set(ids), eq=list=>list.length===set.size && list.every(a=>set.has(a.id));
+  if(eq(ALBUMS)) return {k:"only_studio"};
+  if(eq(ALL)) return {k:"all_b"};
+  for(const g of GUITAR){ const l=ALL.filter(a=>a.g===g); if(l.length && eq(l)) return {k:"lbl_era",a:g}; }
+  if(ids.length===1) return {al:ids[0]};
+  return {k:"lbl_n",a:ids.length};
+}
+function labelText(L){ if(!L) return t("m_songs"); if(L.al) return AL[L.al]?groupName(AL[L.al]):""; return L.a!=null ? t(L.k,L.a) : t(L.k); }
+function normTxt(x){ return String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""); }
 
 function renderSongs(){
   const root = document.getElementById("v-songs");
@@ -1381,14 +1447,23 @@ function renderSongs(){
   if(st==="result") return songResult(root);
 }
 function stepsHTML(cur){
-  const L = t("steps");
+  const pick = S.songStage==="setup" ? S.songMode==="pick" : S.songSrc==="pick";
+  const L = t(pick?"steps_pick":"steps");
   return `<ol class="steps" aria-label="${esc(L.join(" · "))}">${L.map((l,i)=>`${i?'<li class="step-sep" aria-hidden="true"></li>':""}<li class="step${i+1===cur?" cur":i+1<cur?" done":""}"${i+1===cur?' aria-current="step"':""}><i>${i+1<cur?"✓":i+1}</i>${esc(l)}</li>`).join("")}</ol>`;
 }
+function modeTabs(){
+  const m = S.songMode==="pick";
+  return `<div class="seg mode-tabs" role="group"><button data-mode="albums" aria-pressed="${!m}">${esc(t("mode_alb"))}</button><button data-mode="pick" aria-pressed="${m}">${esc(t("mode_pick"))}</button></div>`;
+}
+function wireModeTabs(root){ root.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{ if(S.songMode===b.dataset.mode) return; S.songMode=b.dataset.mode; save(); songSetup(root); }); }
+
 function songSetup(root){
-  const scope = (S.triScope || ALBUMS.map(a=>a.id)).filter(id=>AL[id]);
-  const sel = new Set(scope);
-  const n = SONGS.filter(s=>sel.has(s.a)).length;
-  const mins = Math.max(1, Math.round(n*2.5/60));
+  if(S.songMode==="pick") return songPick(root);
+  const sel = new Set(scopeIds());
+  const ss = SONGS.filter(s=>sel.has(s.a));
+  const n = ss.length;
+  const todo = ss.filter(s=>!S.ratings[s.id]).map(s=>s.id);
+  const mins = Math.max(1, Math.round((todo.length||n)*2.5/60));
   const songsIn = list => list.reduce((s,a)=>s+(a.kind==="extra"?a.items.length:a.tr.length),0);
   const same = list => sel.size===list.length && list.every(a=>sel.has(a.id));
   const card = a => {
@@ -1397,8 +1472,10 @@ function songSetup(root){
     return `<button class="pick-al${on?" on":""}" data-al="${a.id}" aria-pressed="${on}">${tile(a)}<span class="chk" aria-hidden="true"></span><span class="nm">${esc(name)}</span><span class="mt">${a.y} · ${esc(t("tracks",cnt))}</span></button>`;
   };
   const allIn = list => list.every(a=>sel.has(a.id));
+  const rated = ss.some(s=>S.ratings[s.id]);
   root.innerHTML = `<div class="stage setup">
     ${stepsHTML(1)}
+    ${modeTabs()}
     <div class="setup-head"><h2>${esc(t("su_h"))}</h2><p>${esc(t("su_p"))}</p></div>
     <div class="presets">
       <button class="preset${same(ALBUMS)?" on":""}" data-q="studio"><b>${esc(t("only_studio"))}</b><span>${esc(t("tracks",songsIn(ALBUMS)))}</span></button>
@@ -1410,18 +1487,80 @@ function songSetup(root){
     <div class="grp-head"><h3>${esc(t("extras_h"))}</h3><button class="link" data-grp="extra">${esc(allIn(EXTRAS)?t("su_clear"):t("su_all"))}</button></div>
     <div class="pick-grid">${EXTRAS.map(card).join("")}</div>
     <div class="go-bar">
-      <div><b>${esc(n?t("su_count",n):t("su_none"))}</b>${n?`<span>${esc(t("su_time",mins))}</span>`:""}</div>
-      <div class="go-actions">${Object.keys(S.ratings).length?`<button class="btn ghost" id="s-skip">${esc(t("skip_tri"))}</button>`:""}<button class="btn hot" id="s-start" ${n?"":"disabled"}>${esc(t("su_go"))}</button></div>
+      <div><b>${esc(n?t("su_count",n):t("su_none"))}</b>${todo.length?`<span>${esc(t("su_time",mins))}</span>`:""}</div>
+      <div class="go-actions">${rated && todo.length?`<button class="btn ghost" id="s-skip">${esc(t("skip_tri"))}</button>`:""}<button class="btn hot" id="s-start" ${n?"":"disabled"}>${esc(t("su_go"))}</button></div>
     </div>
   </div>`;
+  wireModeTabs(root);
   const setScope = ids=>{ S.triScope=[...ids]; save(); songSetup(root); };
   root.querySelectorAll("[data-al]").forEach(b=>b.onclick=()=>{ const id=b.dataset.al; sel.has(id)?sel.delete(id):sel.add(id); setScope(sel); });
   root.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>setScope((b.dataset.q==="all"?ALL:ALBUMS).map(a=>a.id)));
   root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>setScope(ALL.filter(a=>a.g===b.dataset.g).map(a=>a.id)));
   root.querySelectorAll("[data-grp]").forEach(b=>b.onclick=()=>{ const list=b.dataset.grp==="studio"?ALBUMS:EXTRAS; const all=allIn(list); list.forEach(a=>all?sel.delete(a.id):sel.add(a.id)); setScope(sel); });
-  root.querySelector("#s-start").onclick=()=>{ S.triOrder = SONGS.filter(s=>sel.has(s.a)).map(s=>s.id); S.triIdx=0; S.songStage="triage"; save(); renderSongs(); };
-  const sk=root.querySelector("#s-skip"); if(sk) sk.onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
+  /* só passa na triagem o que ainda não foi marcado; assim dá para fazer uma fase de cada vez */
+  root.querySelector("#s-start").onclick=()=>{
+    S.songSrc="tri";
+    if(todo.length){ S.triOrder=todo; S.triIdx=0; S.songStage="triage"; } else S.songStage="pre";
+    save(); renderSongs();
+  };
+  const sk=root.querySelector("#s-skip"); if(sk) sk.onclick=()=>{ S.songSrc="tri"; S.songStage="pre"; save(); renderSongs(); };
 }
+
+/* escolha música por música, sem triagem */
+function songPick(root){
+  const sel = new Set(pickedIds());
+  const saved = S.saved||[];
+  const group = a => {
+    const ss = SONGS.filter(s=>s.a===a.id);
+    return `<section class="pk-al" data-grp="${a.id}"><div class="pk-al-head">${tile(a)}<div><b>${esc(groupName(a))}</b><span>${a.y}</span></div><button class="link" data-all="${a.id}"></button></div>
+      <div class="pk-songs">${ss.map(s=>`<button class="sg-chip" data-s="${s.id}" data-n="${esc(normTxt(s.t))}"><i aria-hidden="true"></i>${esc(s.t)}</button>`).join("")}</div></section>`;
+  };
+  root.innerHTML = `<div class="stage setup">
+    ${stepsHTML(1)}
+    ${modeTabs()}
+    <div class="setup-head"><h2>${esc(t("pk_h"))}</h2><p>${esc(t("pk_p"))}</p><p>${esc(t("pk_tip"))}</p></div>
+    ${saved.length?`<div class="pk-from"><span>${esc(t("pk_from"))}</span>${saved.map(r=>`<button class="pk-src" data-src="${r.id}">${esc(labelText(r.label))} · ${r.list.length}</button>`).join("")}</div>`:""}
+    <div class="pk-tools"><input type="search" class="pk-search" id="pk-q" placeholder="${esc(t("pk_search"))}" aria-label="${esc(t("pk_search"))}" autocomplete="off"><button class="link" id="pk-clear">${esc(t("pk_clear"))}</button></div>
+    <div class="grp-head" data-gh="studio"><h3>${esc(t("studio"))}</h3></div>
+    ${ALBUMS.map(group).join("")}
+    <div class="grp-head" data-gh="extra"><h3>${esc(t("extras_h"))}</h3></div>
+    ${EXTRAS.map(group).join("")}
+    <p class="pk-empty" id="pk-empty" hidden>${esc(t("pk_empty"))}</p>
+    <div class="go-bar">
+      <div><b id="pk-n"></b></div>
+      <div class="go-actions"><button class="btn hot" id="pk-go">${esc(t("pk_go"))}</button></div>
+    </div>
+  </div>`;
+  wireModeTabs(root);
+  const refresh = ()=>{
+    S.picked = SONGS.filter(s=>sel.has(s.id)).map(s=>s.id); save();
+    root.querySelectorAll("[data-s]").forEach(b=>{ const on=sel.has(b.dataset.s); b.classList.toggle("on",on); b.setAttribute("aria-pressed",on); });
+    root.querySelectorAll("[data-all]").forEach(b=>{ const ss=SONGS.filter(s=>s.a===b.dataset.all); b.textContent = ss.every(s=>sel.has(s.id)) ? t("pk_off") : t("pk_all"); });
+    root.querySelectorAll("[data-src]").forEach(b=>{ const r=saved.find(x=>String(x.id)===b.dataset.src); b.classList.toggle("on", !!r && r.list.every(id=>!SG[id]||sel.has(id))); });
+    const n = sel.size;
+    root.querySelector("#pk-n").textContent = n>=2 ? t("su_count",n) : t("pk_none");
+    root.querySelector("#pk-go").disabled = n<2;
+  };
+  root.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ const id=b.dataset.s; sel.has(id)?sel.delete(id):sel.add(id); refresh(); });
+  root.querySelectorAll("[data-all]").forEach(b=>b.onclick=()=>{ const ss=SONGS.filter(s=>s.a===b.dataset.all); const all=ss.every(s=>sel.has(s.id)); ss.forEach(s=>all?sel.delete(s.id):sel.add(s.id)); refresh(); });
+  root.querySelectorAll("[data-src]").forEach(b=>b.onclick=()=>{ const r=saved.find(x=>String(x.id)===b.dataset.src); if(!r) return; const ids=r.list.filter(id=>SG[id]); const all=ids.every(id=>sel.has(id)); ids.forEach(id=>all?sel.delete(id):sel.add(id)); refresh(); });
+  root.querySelector("#pk-clear").onclick=()=>{ sel.clear(); refresh(); };
+  const q = root.querySelector("#pk-q");
+  q.oninput=()=>{
+    const v = normTxt(q.value.trim()); let any=false;
+    const vis = {studio:false, extra:false};
+    root.querySelectorAll(".pk-al").forEach(sec=>{
+      let n=0; sec.querySelectorAll("[data-s]").forEach(b=>{ const ok=!v||b.dataset.n.includes(v); b.hidden=!ok; if(ok) n++; });
+      sec.hidden = !n; if(n){ any=true; vis[AL[sec.dataset.grp].kind==="extra"?"extra":"studio"]=true; }
+      const al = sec.querySelector("[data-all]"); if(al) al.hidden = !!v;
+    });
+    root.querySelectorAll("[data-gh]").forEach(h=>h.hidden=!vis[h.dataset.gh]);
+    root.querySelector("#pk-empty").hidden = any;
+  };
+  root.querySelector("#pk-go").onclick=()=>{ if(sel.size<2) return; S.songSrc="pick"; S.songStage="pre"; save(); renderSongs(); };
+  refresh();
+}
+
 function songTriage(root){
   const order = (S.triOrder||[]).filter(id=>SG[id]);
   if(S.triIdx>=order.length){ S.songStage="pre"; save(); return renderSongs(); }
@@ -1441,52 +1580,105 @@ function songTriage(root){
   keyHandler = e=>{ const m={"1":"love","2":"like","3":"meh","4":"unk"}[e.key]; if(m){ e.preventDefault(); rate(m); } else if(e.key==="Backspace"){ e.preventDefault(); root.querySelector("#t-back").click(); } };
 }
 function songPre(root){
-  const c = counts(), p = pool();
-  const K = S.songK;
-  let ids = p.love.slice(), mixed=false;
-  if(ids.length < K+5){ ids = ids.concat(p.like); mixed = p.love.length < K+5 && p.like.length>0; }
-  const est = ids.length ? estimate({ranked:[],queue:ids.slice(),cur:null,K}) : 0;
+  const pick = S.songSrc==="pick";
+  let K = S.songK, ids, mixed=false;
+  if(pick){ ids = pickedIds(); }
+  else {
+    if(!K) K = 10;
+    const p = pool(); ids = p.love.slice();
+    if(ids.length < K+5){ ids = ids.concat(p.like); mixed = p.love.length < K+5 && p.like.length>0; }
+  }
+  const n = ids.length;
+  const allOk = pick && n>2 && n<=40;
+  if(pick && !K && !allOk) K = 10;
+  const kEff = !K ? n : Math.min(K, n);
+  const est = n ? estimate({ranked:[],queue:ids.slice(),cur:null,K:kEff}) : 0;
+  let msg;
+  if(n<2) msg = pick ? t("pk_none") : t("pre_need");
+  else if(pick) msg = (!K || n<=K) ? t("pre_msg_all",n,est) : t("pre_msg_pick",n,K,est);
+  else msg = t("pre_msg",n,K,mixed,est);
+  const c = counts();
   root.innerHTML = `<div class="stage">${stepsHTML(2)}<div class="stage-head"><div><h2>${esc(t("pre_h"))}</h2></div></div>
-    <div class="counts"><div class="count"><b style="color:var(--love)">${c.love}</b><span>${esc(t("love"))}</span></div><div class="count"><b style="color:var(--like)">${c.like}</b><span>${esc(t("like"))}</span></div><div class="count"><b style="color:var(--meh)">${c.meh}</b><span>${esc(t("meh"))}</span></div><div class="count"><b style="color:var(--unk)">${c.unk}</b><span>${esc(t("unk"))}</span></div></div>
+    ${pick?"":`<div class="counts"><div class="count"><b style="color:var(--love)">${c.love}</b><span>${esc(t("love"))}</span></div><div class="count"><b style="color:var(--like)">${c.like}</b><span>${esc(t("like"))}</span></div><div class="count"><b style="color:var(--meh)">${c.meh}</b><span>${esc(t("meh"))}</span></div><div class="count"><b style="color:var(--unk)">${c.unk}</b><span>${esc(t("unk"))}</span></div></div>`}
     <div class="panel">
-      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("size"))}</div><div class="seg"><button data-k="10" aria-pressed="${K===10}">Top 10</button><button data-k="20" aria-pressed="${K===20}">Top 20</button></div></div>
-      <p>${esc(ids.length < 2 ? t("pre_need") : t("pre_msg",ids.length,K,mixed,est))}</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn hot" id="p-go" ${ids.length<2?"disabled":""}>${esc(t("pre_go"))}</button><button class="btn" id="p-tri">${esc(t("pre_back"))}</button></div>
+      <div><div class="eyebrow" style="margin-bottom:8px">${esc(t("size"))}</div><div class="seg"><button data-k="10" aria-pressed="${K===10}">Top 10</button><button data-k="20" aria-pressed="${K===20}">Top 20</button>${allOk?`<button data-k="0" aria-pressed="${!K}">${esc(t("k_all",n))}</button>`:""}</div></div>
+      <p>${esc(msg)}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn hot" id="p-go" ${n<2?"disabled":""}>${esc(t("pre_go"))}</button><button class="btn" id="p-tri">${esc(t(pick?"pre_back_pick":"pre_back"))}</button></div>
     </div></div>`;
   root.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{ S.songK=+b.dataset.k; save(); songPre(root); });
-  root.querySelector("#p-go").onclick=()=>{ S.songRanker=newRanker(ids, Math.min(K, ids.length)); S.songRankerK=K; undoStack=[]; S.songStage="battle"; save(); renderSongs(); };
-  root.querySelector("#p-tri").onclick=()=>{ S.songStage = (S.triOrder && S.triIdx<S.triOrder.length) ? "triage" : "setup"; save(); renderSongs(); };
+  root.querySelector("#p-go").onclick=()=>{
+    S.songRanker=newRanker(ids, kEff); S.songRankerK = !K ? n : K;
+    S.songScopeLabel = pick ? {k:"lbl_pick"} : scopeLabel();
+    undoStack=[]; S.songStage="battle"; save(); renderSongs();
+  };
+  root.querySelector("#p-tri").onclick=()=>{
+    if(pick) S.songStage="setup";
+    else S.songStage = (S.triOrder && S.triIdx<S.triOrder.length) ? "triage" : "setup";
+    save(); renderSongs();
+  };
 }
 function songBattle(root){
   const r = S.songRanker;
   if(!r){ S.songStage="pre"; save(); return renderSongs(); }
-  if(done(r)){ S.songResult=r.ranked.slice(); S.songResultK=S.songRankerK; S.songComps=r.comps; S.songView=Math.min(S.songRankerK, r.ranked.length); S.songRanker=null; undoStack=[]; S.songStage="result"; save(); return renderSongs(); }
-  root.innerHTML = battleHTML(r,"song",t("sb_h",S.songRankerK),t("s2")).replace('<div class="stage">','<div class="stage">'+stepsHTML(2));
+  if(done(r)){
+    S.songResult=r.ranked.slice(); S.songResultK=S.songRankerK; S.songComps=r.comps; S.songView=Math.min(S.songRankerK, r.ranked.length);
+    const rec = {id:Date.now(), ts:Date.now(), label:S.songScopeLabel||scopeLabel(), list:r.ranked.slice()};
+    S.saved = [rec].concat(S.saved||[]).slice(0,30); S.songResultId = rec.id;
+    S.songRanker=null; undoStack=[]; S.songStage="result"; save(); return renderSongs();
+  }
+  const title = S.songRankerK >= (r.total||Infinity) ? t("sb_h_all") : t("sb_h",S.songRankerK);
+  root.innerHTML = battleHTML(r,"song",title,t("s2")).replace('<div class="stage">','<div class="stage">'+stepsHTML(2));
   wireBattle(root, ()=>S.songRanker, v=>{S.songRanker=v; save();}, ()=>songBattle(root), ()=>go("home"));
 }
 function songResult(root){
-  const res = S.songResult||[], max = res.length, view = Math.min(S.songView||10, max);
+  const res = S.songResult||[], max = res.length;
+  const pick = S.songSrc==="pick";
+  /* mantém o ranking salvo igual ao da tela quando a pessoa reordena */
+  const rec = (S.saved||[]).find(x=>x.id===S.songResultId);
+  if(rec && rec.list.join()!==res.join()){ rec.list = res.slice(); save(); }
+  const opts = [...new Set([10,20].filter(v=>v<max).concat(max))];
+  const view = Math.min(S.songView||10, max);
+  const cur = opts.find(v=>v>=view) || max;
+  const segBtn = v => `<button data-v="${v}" aria-pressed="${v===cur}">${v===max && max!==10 && max!==20 ? esc(t("k_all",max)) : "Top "+v}</button>`;
   root.innerHTML = `<div class="stage">${stepsHTML(3)}<div class="stage-head"><div><div class="eyebrow">${esc(t("res_eb",S.songComps||0))}</div><h2>${esc(t("res_h"))}</h2></div>
-    <div class="seg"><button data-v="10" aria-pressed="${view<=10}">Top 10</button><button data-v="20" aria-pressed="${view>10}" ${max>10?"":"disabled"}>Top 20</button></div></div>
-    <p class="note" style="margin-bottom:16px">${esc(max<=10 && S.songResultK!==20 ? t("need20") : t("fine"))}</p>
-    ${setlistHTML(res,"song",view)}
-    <div class="duel-actions"><button class="btn solid" id="r-copy">${esc(t("copy"))}</button><button class="btn" id="r-again">${esc(t("redo_duels"))}</button><button class="btn" id="r-tri">${esc(t("redo_tri"))}</button></div></div>`;
+    ${opts.length>1?`<div class="seg">${opts.map(segBtn).join("")}</div>`:""}</div>
+    <p class="note" style="margin-bottom:16px">${esc(!pick && max<=10 && S.songResultK!==20 ? t("need20") : t("fine"))}</p>
+    ${setlistHTML(res,"song",cur)}
+    <div class="duel-actions"><button class="btn solid" id="r-copy">${esc(t("copy"))}</button><button class="btn" id="r-again">${esc(t("redo_duels"))}</button><button class="btn" id="r-tri">${esc(t(pick?"redo_pick":"redo_tri"))}</button></div></div>`;
   root.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{ S.songView=+b.dataset.v; save(); songResult(root); });
   wireSetlist(root, S.songResult, ()=>songResult(root));
-  root.querySelector("#r-copy").onclick=()=>copyPlain(t("copy_song",view)+"\n"+res.slice(0,view).map((id,i)=>`${i+1}. ${SG[id].t} (${groupName(AL[SG[id].a])})`).join("\n"), t("t_rank"));
+  root.querySelector("#r-copy").onclick=()=>copyPlain(t("copy_song",cur)+"\n"+res.slice(0,cur).map((id,i)=>`${i+1}. ${SG[id].t} (${groupName(AL[SG[id].a])})`).join("\n"), t("t_rank"));
   root.querySelector("#r-again").onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
-  root.querySelector("#r-tri").onclick=()=>{ S.ratings={}; S.triIdx=0; S.triOrder=null; S.songStage="setup"; save(); renderSongs(); };
+  root.querySelector("#r-tri").onclick=()=>{
+    if(pick){ S.songMode="pick"; S.songStage="setup"; }
+    else { S.ratings={}; S.triIdx=0; S.triOrder=null; S.songMode="albums"; S.songStage="setup"; }
+    save(); renderSongs();
+  };
 }
 
 /* ---------- meus rankings ---------- */
+function fmtDate(ts){ try{ return new Date(ts).toLocaleDateString({pt:"pt-BR",en:"en-US",es:"es-ES"}[LANG]||"pt-BR",{day:"2-digit",month:"short",year:"numeric"}); }catch(e){ return ""; } }
 function renderMine(){
   const root = document.getElementById("v-mine"); keyHandler=null;
   const albums = S.albumResult ? setlistHTML(S.albumResult,"album",13,false) : `<div class="empty">${esc(t("empty_alb"))} <button class="btn hot" data-go="albums" style="margin-left:8px">${esc(t("do_now"))}</button></div>`;
   const view = Math.min(S.songView||10, (S.songResult||[]).length);
   const songs = S.songResult ? setlistHTML(S.songResult,"song",view,false) : `<div class="empty">${esc(t("empty_song"))} <button class="btn hot" data-go="songs" style="margin-left:8px">${esc(t("begin"))}</button></div>`;
+  const saved = S.saved||[];
+  const savedHTML = saved.length ? `<div class="section-title"><h2>${esc(t("m_saved"))}</h2></div>
+    <p class="note">${esc(t("m_saved_p"))}</p>
+    ${saved.length>1?`<div style="margin:14px 0 0"><button class="btn hot" id="m-final">${esc(t("m_final"))}</button></div>`:""}
+    <div class="saved-list">${saved.map(r=>{ const list=r.list.filter(id=>SG[id]); return `<details class="saved"><summary><span class="sv-t"><b>${esc(labelText(r.label))}</b><span>${esc(t("m_meta",list.length,fmtDate(r.ts)))}</span></span><button class="link sv-del" data-del="${r.id}">${esc(t("m_del"))}</button></summary>${setlistHTML(list,"song",list.length,false)}</details>`; }).join("")}</div>` : "";
   root.innerHTML = `<div class="stage"><div class="section-title" style="margin-top:0"><h2>${esc(t("m_albums"))}</h2></div>${albums}
     <div class="section-title"><h2>${esc(t("m_songs"))}${S.songResult?` · Top ${view}`:""}</h2></div>${songs}
+    ${savedHTML}
     <div class="duel-actions" style="margin-top:32px"><button class="btn" id="m-reset">${esc(t("reset"))}</button></div></div>`;
+  root.querySelectorAll("[data-del]").forEach(b=>b.onclick=e=>{
+    e.preventDefault(); e.stopPropagation();
+    if(!b.dataset.armed){ b.dataset.armed="1"; b.textContent=t("m_del_ok"); return; }
+    S.saved = (S.saved||[]).filter(x=>String(x.id)!==b.dataset.del); save(); renderMine();
+  });
+  const fin = root.querySelector("#m-final");
+  if(fin) fin.onclick=()=>{ const set=new Set(); (S.saved||[]).forEach(r=>r.list.forEach(id=>{ if(SG[id]) set.add(id); })); S.picked=[...set]; S.songMode="pick"; S.songStage="setup"; save(); go("songs"); };
   const rs = root.querySelector("#m-reset");
   rs.onclick=()=>{ if(rs.dataset.armed){ try{localStorage.removeItem(KEY)}catch(e){} location.reload(); } else { rs.dataset.armed="1"; rs.textContent=t("reset_ok"); rs.classList.add("hot"); } };
 }
