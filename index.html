@@ -478,6 +478,37 @@ table.tracks .disc td{background:var(--surface-2);font-family:var(--mono);font-s
   .setlist .tile{width:44px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* duelo no celular: tela cheia, sem rolagem */
+.b-x,.mduel{display:none}
+@keyframes mfIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  body:has(#v-songs:not([hidden]) .battle-stage),body:has(#v-albums:not([hidden]) .battle-stage){overflow:hidden}
+  .battle-stage{position:fixed;inset:0;z-index:30;background:var(--bg);display:flex;flex-direction:column;margin:0;max-width:none;width:auto;padding:calc(10px + env(safe-area-inset-top,0px)) 14px calc(12px + env(safe-area-inset-bottom,0px));overflow:hidden}
+  .battle-stage .steps,.battle-stage .keys,.battle-stage .eyebrow,.battle-stage #b-quit,.battle-stage .duel{display:none}
+  .battle-stage .stage-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px;margin:0 0 10px}
+  .battle-stage .stage-head h2{font-size:21px;line-height:1.15}
+  .battle-stage .stage-head .bh-prog{grid-column:1/-1;min-width:0!important;max-width:none!important}
+  .battle-stage .progress{height:6px;margin:6px 0 2px}
+  .b-x{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);font-size:24px;line-height:1;padding:0}
+  .mduel{display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;position:relative}
+  .mf{flex:1 1 0;min-height:0;display:flex;align-items:center;gap:14px;padding:12px;background:var(--surface);border:2px solid var(--line);border-radius:16px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;animation:mfIn .26s ease both;transition:transform .16s,opacity .16s,border-color .16s,box-shadow .16s}
+  .mf+.mvs+.mf{animation-delay:.05s}
+  .mf:active{transform:scale(.985)}
+  .mf-cv{flex:none;width:min(46vw,calc((100vh - 230px)/2 - 26px));width:min(46vw,calc((100dvh - 230px)/2 - 26px))}
+  .mf-cv .tile{width:100%;border-radius:10px}
+  .mf-info{min-width:0;flex:1;display:flex;flex-direction:column;gap:6px;align-self:stretch;justify-content:center}
+  .mf-info h3{font-family:var(--body);font-weight:700;font-size:clamp(17px,5vw,22px);line-height:1.15;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .mf-info .sub{color:var(--muted);font-size:13px;line-height:1.3}
+  .mf-info .tag{align-self:flex-start;font-size:10px}
+  .mf-info .listen{margin-top:2px}
+  .mf-info .ico{width:34px;height:34px}
+  .mf-go{align-self:flex-start;margin-top:4px;background:var(--chili);color:var(--chili-ink);font-weight:700;font-size:14px;border-radius:999px;padding:6px 16px}
+  .mf.won{border-color:var(--chili);box-shadow:0 0 0 3px var(--chili);transform:scale(1.02)}
+  .mf.lost{opacity:.3;transform:scale(.96)}
+  .mvs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);z-index:2;width:48px;height:48px;border-radius:50%;background:var(--chili);color:var(--chili-ink);display:grid;place-items:center;font-family:var(--display);font-size:17px;box-shadow:0 0 0 5px var(--bg);pointer-events:none}
+  .battle-stage .duel-actions{margin-top:12px;flex-wrap:nowrap;gap:10px}
+  .battle-stage .duel-actions .btn{flex:1;padding:12px 10px}
+}
 </style>
 </head>
 <body>
@@ -572,7 +603,7 @@ pt:{
   pre_msg_pick:(n,k,est)=>`As ${n} músicas escolhidas vão disputar seu Top ${k}. Serão cerca de ${est} duelos.`, pre_msg_all:(n,est)=>`Você vai ordenar as ${n} músicas escolhidas, da 1ª à ${n}ª. Serão cerca de ${est} duelos.`, k_all:n=>`Todas (${n})`, pre_back_pick:"Voltar para a seleção", sb_h_all:"Qual você prefere?", redo_pick:"Mudar a seleção",
   m_saved:"Rankings salvos", m_saved_p:"Todo ranking de músicas que você termina fica guardado aqui.", m_final:"Juntar todos numa final", m_del:"Apagar", m_del_ok:"Confirmar", m_meta:(n,d)=>`${n} músicas · ${d}`,
   lbl_pick:"Seleção pessoal", lbl_era:g=>`Fase ${g}`, lbl_n:n=>`${n} discos`,
-  bside_pre:"Lado B · ", other_rar:"Outras raridades", various:"Vários"
+  img_save:"Salvar como imagem", img_wait:"Gerando imagem…", img_ok:"Imagem salva", img_fail:"Não deu para gerar a imagem agora", img_top:k=>`Meu Top ${k}`, img_all:n=>`Minhas ${n} favoritas`, img_alb:"Meus álbuns favoritos", bside_pre:"Lado B · ", other_rar:"Outras raridades", various:"Vários"
 },
 en:{
   brand:'Chili Peppers <span>Battle</span>', title:"Chili Peppers Battle",
@@ -627,7 +658,7 @@ en:{
   pre_msg_pick:(n,k,est)=>`The ${n} songs you picked will fight for your Top ${k}. About ${est} duels.`, pre_msg_all:(n,est)=>`You'll rank all ${n} songs you picked, from 1st to ${n}th. About ${est} duels.`, k_all:n=>`All (${n})`, pre_back_pick:"Back to your picks", sb_h_all:"Which one do you prefer?", redo_pick:"Change your picks",
   m_saved:"Saved rankings", m_saved_p:"Every song ranking you finish is kept here.", m_final:"Merge them into a final", m_del:"Delete", m_del_ok:"Confirm", m_meta:(n,d)=>`${n} songs · ${d}`,
   lbl_pick:"Personal picks", lbl_era:g=>`${g} era`, lbl_n:n=>`${n} albums`,
-  bside_pre:"B-sides · ", other_rar:"Other rarities", various:"Various"
+  img_save:"Save as image", img_wait:"Creating image…", img_ok:"Image saved", img_fail:"Couldn't create the image right now", img_top:k=>`My Top ${k}`, img_all:n=>`My ${n} favorites`, img_alb:"My favorite albums", bside_pre:"B-sides · ", other_rar:"Other rarities", various:"Various"
 },
 es:{
   brand:'Batalla <span>Chili Peppers</span>', title:"Batalla Chili Peppers",
@@ -682,7 +713,7 @@ es:{
   pre_msg_pick:(n,k,est)=>`Las ${n} canciones elegidas van a disputar tu Top ${k}. Serán unos ${est} duelos.`, pre_msg_all:(n,est)=>`Vas a ordenar las ${n} canciones elegidas, de la 1ª a la ${n}ª. Serán unos ${est} duelos.`, k_all:n=>`Todas (${n})`, pre_back_pick:"Volver a la selección", sb_h_all:"¿Cuál prefieres?", redo_pick:"Cambiar la selección",
   m_saved:"Rankings guardados", m_saved_p:"Cada ranking de canciones que terminas queda guardado aquí.", m_final:"Juntarlos en una final", m_del:"Borrar", m_del_ok:"Confirmar", m_meta:(n,d)=>`${n} canciones · ${d}`,
   lbl_pick:"Selección personal", lbl_era:g=>`Etapa ${g}`, lbl_n:n=>`${n} discos`,
-  bside_pre:"Caras B · ", other_rar:"Otras rarezas", various:"Varios"
+  img_save:"Guardar como imagen", img_wait:"Generando imagen…", img_ok:"Imagen guardada", img_fail:"No se pudo generar la imagen ahora", img_top:k=>`Mi Top ${k}`, img_all:n=>`Mis ${n} favoritas`, img_alb:"Mis álbumes favoritos", bside_pre:"Caras B · ", other_rar:"Otras rarezas", various:"Varios"
 }};
 
 /* notas dos lados B */
@@ -1347,6 +1378,83 @@ function copyPlain(txt, okMsg){
 }
 function toast(m){ const el=document.createElement("div"); el.className="toast"; el.textContent=m; document.body.appendChild(el); setTimeout(()=>el.remove(),1800); }
 
+
+/* ---------- ranking como imagem (PNG 1080 px de largura, pronto para stories) ---------- */
+function loadImg(src){
+  return new Promise(res=>{ if(!src) return res(null); const im=new Image(); if(/^https?:/.test(src)) im.crossOrigin="anonymous"; im.onload=()=>res(im); im.onerror=()=>res(null); im.src=src; });
+}
+function fitText(ctx, txt, max){
+  if(ctx.measureText(txt).width<=max) return txt;
+  let s=txt; while(s.length>1 && ctx.measureText(s+"…").width>max) s=s.slice(0,-1);
+  return s.trimEnd()+"…";
+}
+function rr(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+async function rankCanvas(ids, kind, heading, sub){
+  const F = (w,sz,fam)=>`${w} ${sz}px ${fam}`;
+  const DISP='"Bowlby One", "Arial Black", Impact, sans-serif', BODY='"Work Sans", system-ui, sans-serif', MONO='"IBM Plex Mono", ui-monospace, monospace';
+  try{ await Promise.all([document.fonts.load(F(400,40,DISP)), document.fonts.load(F(700,30,BODY)), document.fonts.load(F(500,30,BODY)), document.fonts.load(F(500,20,MONO))]); }catch(e){}
+  const n=ids.length, cols=n>20?2:1, rows=Math.ceil(n/cols);
+  const W=1080, TOP=340, FOOT=120, PAD=60, GAP=36;
+  const rowH=Math.max(60, Math.min(150, Math.floor((1920-TOP-FOOT)/rows)));
+  const H=TOP+FOOT+rows*rowH;
+  const c=document.createElement("canvas"); c.width=W; c.height=H;
+  const ctx=c.getContext("2d");
+  ctx.fillStyle="#150E10"; ctx.fillRect(0,0,W,H);
+  const g=ctx.createRadialGradient(W*.85,0,0,W*.85,0,W*.9); g.addColorStop(0,"rgba(255,74,61,.35)"); g.addColorStop(1,"rgba(255,74,61,0)");
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  const albumOf = id => kind==="album" ? AL[id] : AL[SG[id].a];
+  const uniq=[...new Set(ids.map(id=>albumOf(id).id))];
+  const [logo, ...covers] = await Promise.all([loadImg("assets/img/logo-chili-peppers-battle.webp"), ...uniq.map(aid=>loadImg(coverUrl(AL[aid],250)))]);
+  const cov=Object.fromEntries(uniq.map((aid,i)=>[aid,covers[i]]));
+  let tx=PAD;
+  if(logo){ const lh=210, lw=Math.round(lh*logo.width/logo.height); ctx.drawImage(logo,PAD-10,50,lw,lh); tx=PAD+lw+14; }
+  ctx.textBaseline="alphabetic"; ctx.fillStyle="#FFFFFF";
+  let hs=72; ctx.font=F(400,hs,DISP); while(ctx.measureText(heading).width>W-tx-PAD && hs>40){ hs-=4; ctx.font=F(400,hs,DISP); }
+  ctx.fillText(heading, tx, 150);
+  ctx.fillStyle="#FF4A3D"; ctx.font=F(700,30,BODY); ctx.fillText(fitText(ctx,"Red Hot Chili Peppers",W-tx-PAD), tx, 200);
+  if(sub){ ctx.fillStyle="#B9A7A2"; ctx.font=F(500,28,BODY); ctx.fillText(fitText(ctx,sub,W-tx-PAD), tx, 242); }
+  ctx.fillStyle="#3A2B2E"; ctx.fillRect(PAD,TOP-34,W-2*PAD,3);
+  const colW=(W-2*PAD-(cols-1)*GAP)/cols;
+  ids.forEach((id,i)=>{
+    const col=Math.floor(i/rows), r=i%rows, x=PAD+col*(colW+GAP), y=TOP+r*rowH;
+    const a=albumOf(id), name=kind==="album"?a.t:SG[id].t, meta=kind==="album"?String(a.y):`${groupName(a)} · ${a.y}`;
+    const cs=rowH-22, numW=Math.round(rowH*.62)+(n>=10?14:0);
+    ctx.fillStyle=i<3?"#FF4A3D":"#F5E9E4"; ctx.font=F(400,Math.round(rowH*.42),DISP); ctx.textAlign="right";
+    ctx.fillText(String(i+1), x+numW, y+rowH/2+rowH*.15); ctx.textAlign="left";
+    const cx=x+numW+16, cy=y+11;
+    ctx.save(); rr(ctx,cx,cy,cs,cs,Math.max(4,cs*.08)); ctx.clip();
+    if(cov[a.id]) ctx.drawImage(cov[a.id],cx,cy,cs,cs);
+    else { ctx.fillStyle=a.c[0]; ctx.fillRect(cx,cy,cs,cs); ctx.fillStyle=a.c[1]; ctx.beginPath(); ctx.moveTo(cx+cs,cy+cs*.45); ctx.lineTo(cx+cs,cy+cs); ctx.lineTo(cx+cs*.45,cy+cs); ctx.closePath(); ctx.fill(); }
+    ctx.restore();
+    const tx2=cx+cs+18, tw=x+colW-tx2;
+    ctx.fillStyle="#FFFFFF"; ctx.font=F(700,Math.round(rowH*.25),BODY); ctx.fillText(fitText(ctx,name,tw), tx2, y+rowH/2-2);
+    ctx.fillStyle="#B9A7A2"; ctx.font=F(500,Math.round(rowH*.17),BODY); ctx.fillText(fitText(ctx,meta,tw), tx2, y+rowH/2+rowH*.24);
+    if(r<rows-1){ ctx.fillStyle="rgba(255,255,255,.06)"; ctx.fillRect(tx2,y+rowH-1,x+colW-tx2,1); }
+  });
+  ctx.fillStyle="#3A2B2E"; ctx.fillRect(PAD,H-FOOT+20,W-2*PAD,2);
+  ctx.fillStyle="#B9A7A2"; ctx.font=F(500,24,MONO); ctx.fillText("chilipeppersbattle.mapasolucoesdigitais.com.br", PAD, H-FOOT+72);
+  return c;
+}
+async function saveRankImage(btn, ids, kind, heading, sub, fname){
+  if(btn.disabled) return;
+  const label=btn.textContent; btn.disabled=true; btn.textContent=t("img_wait");
+  try{
+    const c = await rankCanvas(ids, kind, heading, sub);
+    const blob = await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error("blob")),"image/png"));
+    const file = new File([blob], fname, {type:"image/png"});
+    let shared=false;
+    if(window.matchMedia("(max-width:760px)").matches && navigator.canShare && navigator.canShare({files:[file]})){
+      try{ await navigator.share({files:[file]}); shared=true; }catch(e){ if(e && e.name==="AbortError") shared=true; }
+    }
+    if(!shared){
+      const url=URL.createObjectURL(blob), a=document.createElement("a");
+      a.href=url; a.download=fname; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),5000); toast(t("img_ok"));
+    }
+  }catch(e){ toast(t("img_fail")); }
+  btn.disabled=false; btn.textContent=label;
+}
+
 /* ---------- duelo genérico ---------- */
 let undoStack=[];
 let keyHandler=null;
@@ -1359,10 +1467,17 @@ function battleHTML(r, kind, title, eyebrow){
   const card = id => kind==="album"
     ? `<div class="fighter" data-pick="${id}">${tile(AL[id],"lg")}<div><h3>${esc(AL[id].t)}</h3><div class="sub">${AL[id].y}</div><div style="margin-top:10px">${wikiLink(AL[id].la)}</div></div>${listen(AL[id].t)}<button class="pick" data-pick="${id}">${esc(t("pick_a"))}</button></div>`
     : `<div class="fighter song-fighter" data-pick="${id}"><div class="row">${tile(AL[SG[id].a])}<div style="min-width:0"><h3>${esc(SG[id].t)}</h3><div class="sub" style="margin-top:4px">${esc(groupName(AL[SG[id].a]))} · ${AL[SG[id].a].y}</div>${songNote(SG[id])}</div></div>${listenSong(SG[id])}<button class="pick" data-pick="${id}">${esc(t("pick_s"))}</button></div>`;
-  return `<div class="stage">
+  const mcard = id => {
+    if(kind==="album"){ const a=AL[id]; return `<div class="mf" data-pick="${id}"><div class="mf-cv">${tile(a,"lg")}</div><div class="mf-info"><h3>${esc(a.t)}</h3><div class="sub">${a.y}</div>${listen(a.t)}<span class="mf-go">${esc(t("pick_a"))}</span></div></div>`; }
+    const s=SG[id], a=AL[s.a];
+    return `<div class="mf" data-pick="${id}"><div class="mf-cv">${tile(a,"lg")}</div><div class="mf-info"><h3>${esc(s.t)}</h3><div class="sub">${esc(groupName(a))} · ${a.y}</div>${s.note?`<span class="tag">${esc(noteT(s.note))}</span>`:""}${listenSong(s)}<span class="mf-go">${esc(t("pick_s"))}</span></div></div>`;
+  };
+  return `<div class="stage battle-stage">
     <div class="stage-head"><div><div class="eyebrow">${esc(eyebrow)}</div><h2>${esc(title)}</h2></div>
-    <div style="min-width:220px;flex:1;max-width:360px"><div class="progress"><i style="width:${pct}%"></i></div><div class="ptext">${esc(t("duel_n",r.comps+1,est))}</div></div></div>
+    <button class="b-x" id="b-x" aria-label="${esc(t("quit"))}" title="${esc(t("quit"))}">×</button>
+    <div class="bh-prog" style="min-width:220px;flex:1;max-width:360px"><div class="progress"><i style="width:${pct}%"></i></div><div class="ptext">${esc(t("duel_n",r.comps+1,est))}</div></div></div>
     <div class="duel">${card(L)}<div class="vs">VS</div>${card(R)}</div>
+    <div class="mduel">${mcard(L)}<div class="mvs" aria-hidden="true">VS</div>${mcard(R)}</div>
     <div class="duel-actions"><button class="btn" id="b-undo" ${undoStack.length?"":"disabled"}>${esc(t("undo"))}</button><button class="btn" id="b-tie">${esc(t("tie"))}</button><button class="btn" id="b-quit">${esc(t("quit"))}</button></div>
     <div class="keys">${esc(t("keys"))}</div></div>`;
 }
@@ -1370,11 +1485,22 @@ function wireBattle(root, getR, setR, onPick, onQuit){
   const r = getR();
   const L = r.side ? opponent(r) : r.cur;
   const R = L===r.cur ? opponent(r) : r.cur;
-  const choose = id => { undoStack.push(JSON.stringify(getR())); const rr=getR(); answer(rr, id===rr.cur); setR(rr); onPick(); };
+  let busy = false;
+  const commit = id => { undoStack.push(JSON.stringify(getR())); const rr=getR(); answer(rr, id===rr.cur); setR(rr); onPick(); };
+  /* no celular, um toque rápido de destaque antes do próximo duelo */
+  const choose = id => {
+    if(busy) return;
+    const cards = root.querySelectorAll(".mf");
+    if(cards.length && window.matchMedia("(max-width:760px)").matches){
+      busy = true; cards.forEach(c=>c.classList.add(c.dataset.pick===id?"won":"lost"));
+      setTimeout(()=>commit(id), 230);
+    } else commit(id);
+  };
   root.querySelectorAll("[data-pick]").forEach(el=>el.addEventListener("click", e=>{ e.stopPropagation(); if(e.target.closest("a")) return; choose(el.dataset.pick); }));
   root.querySelector("#b-tie").onclick = ()=>{ undoStack.push(JSON.stringify(getR())); const rr=getR(); answer(rr,false); setR(rr); onPick(); };
   root.querySelector("#b-undo").onclick = ()=>{ if(!undoStack.length) return; setR(JSON.parse(undoStack.pop())); onPick(); };
   root.querySelector("#b-quit").onclick = onQuit;
+  const bx = root.querySelector("#b-x"); if(bx) bx.onclick = onQuit;
   keyHandler = e=>{
     if(e.key==="ArrowLeft"){ e.preventDefault(); choose(L); }
     else if(e.key==="ArrowRight"){ e.preventDefault(); choose(R); }
@@ -1404,9 +1530,10 @@ function renderAlbums(){
   keyHandler=null;
   if(S.albumResult){
     root.innerHTML = `<div class="stage"><div class="stage-head"><div><div class="eyebrow">${esc(t("ab_res_eb",S.albumComps||0))}</div><h2>${esc(t("ab_res_h"))}</h2></div>
-      <div class="duel-actions" style="margin:0"><button class="btn solid" id="a-copy">${esc(t("copy"))}</button><button class="btn" id="a-redo">${esc(t("redo"))}</button></div></div>
+      <div class="duel-actions" style="margin:0"><button class="btn hot" id="a-img">${esc(t("img_save"))}</button><button class="btn solid" id="a-copy">${esc(t("copy"))}</button><button class="btn" id="a-redo">${esc(t("redo"))}</button></div></div>
       <p class="note" style="margin-bottom:16px">${esc(t("fine"))}</p>${setlistHTML(S.albumResult,"album",13)}</div>`;
     wireSetlist(root, S.albumResult, renderAlbums);
+    root.querySelector("#a-img").onclick=e=>saveRankImage(e.currentTarget, S.albumResult, "album", t("img_alb"), "", "rhcp-albuns.png");
     root.querySelector("#a-copy").onclick=()=>copyPlain(t("copy_alb")+"\n"+S.albumResult.map((id,i)=>`${i+1}. ${AL[id].t} (${AL[id].y})`).join("\n"), t("t_rank"));
     root.querySelector("#a-redo").onclick=()=>{ S.albumResult=null; S.albumRanker=newRanker(ALBUMS.map(a=>a.id),13); undoStack=[]; save(); renderAlbums(); };
     return;
@@ -1627,7 +1754,7 @@ function songBattle(root){
     S.songRanker=null; undoStack=[]; S.songStage="result"; save(); return renderSongs();
   }
   const title = S.songRankerK >= (r.total||Infinity) ? t("sb_h_all") : t("sb_h",S.songRankerK);
-  root.innerHTML = battleHTML(r,"song",title,t("s2")).replace('<div class="stage">','<div class="stage">'+stepsHTML(2));
+  root.innerHTML = battleHTML(r,"song",title,t("s2")).replace('<div class="stage battle-stage">','<div class="stage battle-stage">'+stepsHTML(2));
   wireBattle(root, ()=>S.songRanker, v=>{S.songRanker=v; save();}, ()=>songBattle(root), ()=>go("home"));
 }
 function songResult(root){
@@ -1644,9 +1771,10 @@ function songResult(root){
     ${opts.length>1?`<div class="seg">${opts.map(segBtn).join("")}</div>`:""}</div>
     <p class="note" style="margin-bottom:16px">${esc(!pick && max<=10 && S.songResultK!==20 ? t("need20") : t("fine"))}</p>
     ${setlistHTML(res,"song",cur)}
-    <div class="duel-actions"><button class="btn solid" id="r-copy">${esc(t("copy"))}</button><button class="btn" id="r-again">${esc(t("redo_duels"))}</button><button class="btn" id="r-tri">${esc(t(pick?"redo_pick":"redo_tri"))}</button></div></div>`;
+    <div class="duel-actions"><button class="btn hot" id="r-img">${esc(t("img_save"))}</button><button class="btn solid" id="r-copy">${esc(t("copy"))}</button><button class="btn" id="r-again">${esc(t("redo_duels"))}</button><button class="btn" id="r-tri">${esc(t(pick?"redo_pick":"redo_tri"))}</button></div></div>`;
   root.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{ S.songView=+b.dataset.v; save(); songResult(root); });
   wireSetlist(root, S.songResult, ()=>songResult(root));
+  root.querySelector("#r-img").onclick=e=>saveRankImage(e.currentTarget, res.slice(0,cur), "song", cur===max && max!==10 && max!==20 ? t("img_all",max) : t("img_top",cur), rec ? labelText(rec.label) : "", `rhcp-top-${cur}.png`);
   root.querySelector("#r-copy").onclick=()=>copyPlain(t("copy_song",cur)+"\n"+res.slice(0,cur).map((id,i)=>`${i+1}. ${SG[id].t} (${groupName(AL[SG[id].a])})`).join("\n"), t("t_rank"));
   root.querySelector("#r-again").onclick=()=>{ S.songStage="pre"; save(); renderSongs(); };
   root.querySelector("#r-tri").onclick=()=>{
