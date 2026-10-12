@@ -291,6 +291,7 @@ body:not([data-view="home"]) .mapa-float{display:none}
 .banner img{display:block;width:100%;height:auto}
 .banner:hover{transform:translateY(-3px);box-shadow:0 16px 38px color-mix(in srgb,var(--chili) 32%,transparent)}
 .banner:focus-visible{outline:3px solid var(--chili);outline-offset:4px}
+@media (min-width:761px){.banners{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.banner{border-radius:10px}}
 
 /* logo no topo */
 .hero-logo{background:#000;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
