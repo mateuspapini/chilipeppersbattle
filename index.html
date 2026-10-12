@@ -64,8 +64,18 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--sea);outline-offset
 .brand{font-family:var(--display);font-size:20px;letter-spacing:.01em;margin-right:auto;background:none;border:0;color:var(--fg);padding:0;text-align:left}
 .brand span{color:var(--chili)}
 nav{display:flex;gap:6px;flex-wrap:wrap}
-nav button{border:2px solid var(--fg);background:transparent;color:var(--fg);border-radius:999px;padding:6px 14px;font-weight:600;font-size:14px}
-nav button[aria-current="true"]{background:var(--fg);color:var(--bg)}
+nav button{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;letter-spacing:-.2px;
+  transition:border-color .32s ease, background-color .3s ease, box-shadow .4s cubic-bezier(.16,1,.3,1)}
+nav button:hover, nav button:focus-visible, nav button[aria-current="true"]{border-color:var(--chili);
+  box-shadow:inset 22px 0 26px -22px color-mix(in srgb,var(--chili) 70%,transparent), inset -22px 0 26px -22px color-mix(in srgb,var(--chili) 70%,transparent), inset 0 0 14px color-mix(in srgb,var(--chili) 10%,transparent)}
+nav button:focus-visible{outline:2px solid var(--chili);outline-offset:4px}
+nav button[aria-current="true"]{color:var(--chili)}
+.gl{display:inline-flex;overflow:hidden;line-height:1.25;vertical-align:top}
+.gl-c{display:inline-grid;overflow:hidden}
+.gl-c>span{grid-area:1/1;transition:transform .45s cubic-bezier(.16,1,.3,1);transition-delay:var(--d)}
+.gl-c>span:last-child{transform:translateY(125%)}
+.glow:hover .gl-c>span:first-child,.glow:focus-visible .gl-c>span:first-child{transform:translateY(-125%)}
+.glow:hover .gl-c>span:last-child,.glow:focus-visible .gl-c>span:last-child{transform:translateY(0)}
 .lang{display:inline-flex;gap:4px;align-items:center}
 .lang button{border:0;background:transparent;padding:3px;border-radius:50%;line-height:0;opacity:.5;filter:saturate(.6);transition:opacity .15s,transform .15s,filter .15s}
 .lang button img{width:32px;height:32px;display:block}
@@ -275,6 +285,13 @@ body:not([data-view="home"]) .mapa-float{display:none}
 .themed .pv span{border-left-color:var(--acc-ink)}
 .themed .pv.on span{border-color:transparent;border-left-color:var(--acc-ink);border-right-color:var(--acc-ink)}
 
+/* banners de entrada (um par por idioma) */
+.banners{display:grid;gap:18px;margin-top:8px}
+.banner{display:block;width:100%;padding:0;border:0;background:#000;border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .2s ease, box-shadow .25s ease}
+.banner img{display:block;width:100%;height:auto}
+.banner:hover{transform:translateY(-3px);box-shadow:0 16px 38px color-mix(in srgb,var(--chili) 32%,transparent)}
+.banner:focus-visible{outline:3px solid var(--chili);outline-offset:4px}
+
 /* logo no topo */
 .hero-logo{background:#000;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
 .hero-logo img{display:block;width:100%;height:auto}
@@ -292,12 +309,22 @@ body:not([data-view="home"]) .mapa-float{display:none}
 .story-text p.motto{font-family:var(--display);font-size:clamp(22px,3vw,30px);line-height:1.2;color:var(--chili);margin-top:22px}
 .sign{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
 .social{display:flex;flex-direction:column;gap:10px}
-.social-links{display:flex;gap:10px 20px;flex-wrap:wrap}
-.social-links a{display:inline-flex;align-items:center;gap:8px;color:var(--fg);text-decoration:none;font-size:14px;font-weight:600}
-.social-links .ico{width:36px;height:36px}
-.social-links .ico img{width:24px;height:24px}
-.social-links a:hover .ico{transform:scale(1.1);border-color:var(--sea)}
-.social-links a:hover span:last-child{text-decoration:underline}
+.social-links{display:flex;gap:10px 22px;flex-wrap:wrap}
+.soc{display:inline-flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-size:14px;font-weight:600;outline:none}
+.soc-b{position:relative;width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;overflow:hidden;flex:none;
+  transition:border-color .2s ease, box-shadow .32s cubic-bezier(.22,1,.36,1)}
+.soc-b::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid transparent;opacity:0;transition:opacity .16s ease;pointer-events:none}
+.soc.near-l .soc-b::after{border-right-color:var(--near);background:radial-gradient(circle at 100% 50%,color-mix(in srgb,var(--near) 22%,transparent),transparent 60%);opacity:1}
+.soc.near-r .soc-b::after{border-left-color:var(--near);background:radial-gradient(circle at 0% 50%,color-mix(in srgb,var(--near) 22%,transparent),transparent 60%);opacity:1}
+.soc-sw{grid-area:1/1;display:grid;place-items:center;transition:transform .32s cubic-bezier(.22,1,.36,1)}
+.soc-sw img{width:24px;height:24px;display:block}
+.soc-arrow{transform:translateY(260%);color:var(--brand);font-size:20px;font-weight:700;line-height:1}
+.soc:hover .soc-b,.soc:focus-visible .soc-b{border-color:var(--brand);box-shadow:0 0 18px color-mix(in srgb,var(--brand) 55%,transparent)}
+.soc:hover .soc-sw:not(.soc-arrow),.soc:focus-visible .soc-sw:not(.soc-arrow){transform:translateY(-260%)}
+.soc:hover .soc-arrow,.soc:focus-visible .soc-arrow{transform:translateY(0)}
+.soc:focus-visible .soc-b{outline:2px solid var(--brand);outline-offset:4px}
+.soc:hover .soc-h{color:var(--brand)}
+@media (prefers-reduced-motion:reduce){.soc-sw,.soc-b,.soc-b::after,.gl-c>span{transition:none!important}}
 .story-sub{margin:40px 0 14px;display:flex;align-items:center;gap:12px}
 .story-sub::after{content:"";flex:1;height:2px;background:var(--line)}
 .yt{margin:0;display:flex;flex-direction:column;gap:8px}
@@ -423,6 +450,7 @@ table.tracks .disc td{background:var(--surface-2);font-family:var(--mono);font-s
   <div class="wrap">
     <button class="brand" data-go="home" id="brand"></button>
     <nav>
+      <button data-go="home" id="nav-home"></button>
       <button data-go="albums" id="nav-albums"></button>
       <button data-go="songs" id="nav-songs"></button>
       <button data-go="mine" id="nav-mine"></button>
@@ -458,7 +486,7 @@ const PIX_CODE = "00020126600014BR.GOV.BCB.PIX0125mateuspapini@yahoo.com.br0209S
 const T = {
 pt:{
   brand:'Batalha <span>Chili Peppers</span>', title:"Batalha Chili Peppers",
-  nav_albums:"Álbuns", nav_songs:"Músicas", nav_mine:"Meus rankings",
+  nav_home:"Início", nav_albums:"Álbuns", nav_songs:"Músicas", nav_mine:"Meus rankings",
   hero_count:(a,b)=>`13 álbuns · ${a} músicas de estúdio + ${b} lados B e raridades`,
   hero_h:'Descubra qual é a <em>sua</em> música favorita.',
   hero_p:"Primeiro você separa o que ama numa triagem rápida. Depois só as favoritas vão para o duelo, uma contra a outra, até sair o seu Top 10 ou Top 20.",
@@ -507,7 +535,7 @@ pt:{
 },
 en:{
   brand:'Chili Peppers <span>Battle</span>', title:"Chili Peppers Battle",
-  nav_albums:"Albums", nav_songs:"Songs", nav_mine:"My rankings",
+  nav_home:"Home", nav_albums:"Albums", nav_songs:"Songs", nav_mine:"My rankings",
   hero_count:(a,b)=>`13 albums · ${a} studio songs + ${b} B-sides and rarities`,
   hero_h:'Find out which song is <em>your</em> favorite.',
   hero_p:"First, a quick pass to sort out the songs you love. Then only your favorites go head-to-head, two at a time, until your Top 10 or Top 20 is set.",
@@ -556,7 +584,7 @@ en:{
 },
 es:{
   brand:'Batalla <span>Chili Peppers</span>', title:"Batalla Chili Peppers",
-  nav_albums:"Álbumes", nav_songs:"Canciones", nav_mine:"Mis rankings",
+  nav_home:"Inicio", nav_albums:"Álbumes", nav_songs:"Canciones", nav_mine:"Mis rankings",
   hero_count:(a,b)=>`13 álbumes · ${a} canciones de estudio + ${b} caras B y rarezas`,
   hero_h:'Descubre cuál es <em>tu</em> canción favorita.',
   hero_p:"Primero haces una clasificación rápida de lo que te encanta. Después solo las favoritas se enfrentan, de dos en dos, hasta que sale tu Top 10 o Top 20.",
@@ -664,7 +692,7 @@ const EXTRAS = [
  {id:"x-bssm", y:1991, par:"bssm", tr:["Castles Made of Sand||Faixa bônus nas plataformas digitais","Little Miss Lover|Jmy0gEROxnw|Faixa bônus nas plataformas digitais","Fela's Cock|bn2byeySto4|Lado B de Suck My Kiss","Search and Destroy|VW0sueFgcCk|Lado B de Under the Bridge e Give It Away","Sikamikaniko|0QhYvWHZHi8|Lado B de Under the Bridge, trilha de Quanto Mais Idiota Melhor","Soul to Squeeze|0XcN12uVHeQ|Lado B de Under the Bridge e Give It Away"]},
  {id:"x-ola", t:"Out in L.A.", y:1994, c:["#2F2A26","#E9B949"], p:3, g:"*", tr:["Oom Chucka Willie|AEBwh9z4uHQ|Compilação de raridades","Blues for Meister|MjpAmPoqSB0|Compilação de raridades","Deck the Halls|5PIuTXqFrMg|Compilação de raridades","F.U.|zLbFpAMITmA|Compilação de raridades"]},
  {id:"x-ohm", y:1995, par:"ohm", tr:["Melancholy Mechanics|56PWNtiIV3o|Lado B de Warped","Let's Make Evil|8kFavNl07SE|Lado B de My Friends","Stretch You Out|S0wtM8PdaBQ|Lado B de My Friends","Bob|qSAahkL6SeE|Faixa bônus nas plataformas digitais","I Found Out|qfbI82qdOls|Cover de John Lennon","Circle of the Noose|tS9NTmjnpDo|Gravada com Navarro para o disco seguinte, vazou"]},
- {id:"x-cal", y:1999, par:"cal", tr:["Instrumental #1|zUTWSL_uSuE|Lado B de Scar Tissue","Instrumental #2|9jDHLbjoqYM|Disco bônus australiano","Gong Li|g6TRzzfZjlU|Lado B de Scar Tissue","How Strong|ArQiPAzpx48|Lado B de Otherside","Fat Dance|zzlxNsqKCwg|Faixa bônus nas plataformas digitais","Quixotelixir|sspiWqii5vw|Faixa bônus nas plataformas digitais","Over Funk|oj_w9EsAQzQ|Faixa bônus nas plataformas digitais","Trouble in the Pub|Ui2z6qgy5aM|Demo vazada","Boatman|BY7TUfJSrpY|Demo instrumental vazada","Andaman & Nicobar|GjFXn3ZvlHc|Demo vazada","Tellin' a Lie|M-1QF7d4-0Q|Demo vazada","Sugar Sugar|9l4OW37FhCE|Demo vazada","Mommasan|-w30fC5A1os|Demo vazada","Plate of Brown|EkNfW6A3zBo|Demo instrumental vazada"]},
+ {id:"x-cal", y:1999, par:"cal", tr:["Instrumental #1|zUTWSL_uSuE|Lado B de Scar Tissue","Instrumental #2|9jDHLbjoqYM|Disco bônus australiano","Gong Li|g6TRzzfZjlU|Lado B de Scar Tissue","How Strong|ArQiPAzpx48|Lado B de Otherside","Fat Dance|zzlxNsqKCwg|Faixa bônus nas plataformas digitais","Quixoticelixer|sspiWqii5vw|Faixa bônus nas plataformas digitais","Over Funk|oj_w9EsAQzQ|Faixa bônus nas plataformas digitais","Trouble in the Pub|Ui2z6qgy5aM|Demo vazada","Boatman|BY7TUfJSrpY|Demo instrumental vazada","Andaman & Nicobar|GjFXn3ZvlHc|Demo vazada","Tellin' a Lie|M-1QF7d4-0Q|Demo vazada","Sugar Sugar|9l4OW37FhCE|Demo vazada","Mommasan|-w30fC5A1os|Demo vazada","Plate of Brown|EkNfW6A3zBo|Demo instrumental vazada"]},
  {id:"x-btw", y:2002, par:"btw", tr:["Time|M6RMq-WiCJE|Lado B de By the Way","A Teenager in Love|iYYNfpO2GrA|Lado B de By the Way","Body of Water|vWqN-3ecc64|Lado B de The Zephyr Song","Someone|AATqzT7mzuQ|Lado B de The Zephyr Song","Out of Range|o0yzcb59IIs|Lado B de The Zephyr Song","Rivers of Avalon|b46SkuckKsY|Lado B de The Zephyr Song","Havana Affair|JAFi9V6czdE|Cover dos Ramones","Slowly Deeply|hOIjWgw6CwM|Lado B de Universally Speaking","Nothing to Lose|0EzWmAPwoTs|Ao vivo, lado B de Can't Stop","Runaway|dBBFQyZPLyk|Bônus do By the Way remasterizado","Bicycle Song|cpV6H6y5n8E|Bônus do By the Way remasterizado","Fall Water|gGDd1U7Q4JA|Demo vazada","Goldmine|PuVdwAiMak0|Demo vazada","Rock and Roll|3xwv6EJxC0I|Demo vazada"]},
  {id:"x-gh", t:"Greatest Hits", y:2003, c:["#C7372F","#F3E3C3"], p:0, g:"John Frusciante", tr:["Fortune Faded|TYYW_WwYHuM|Saiu no Greatest Hits","Save the Population|tSjw2LMtl9U|Saiu no Greatest Hits","Eskimo|9ZAPwlntLt8|Lado B de Fortune Faded","Bunker Hill|pBo55gu8b1Q|Lado B de Fortune Faded","50/Fifty|FJu8xd2yOS8|Instrumental vazado","Starlight|TxscvwCVEwQ|Vazou","Leverage of Space|bQYq_NEsPVY|Só ao vivo, no Live in Hyde Park","Rolling Sly Stone|hMBMuulCW-0|Só ao vivo, no Live in Hyde Park","Fight for Your Country (Mini Epic)|agOPYVuJZIU|Só ao vivo"]},
  {id:"x-sa", y:2006, par:"sa", tr:["A Certain Someone|uodn9x8CDqQ|Lado B de Tell Me Baby","Mercy Mercy|4w5gi198LA4|Lado B de Tell Me Baby","Funny Face|yro5ohnpbXQ|Lado B de Snow (Hey Oh)","I'll Be Your Domino|qeqxzusURjQ|Lado B de Snow (Hey Oh)","Lately|o-g2xPH6Z2w|Lado B de Dani California","Million Miles of Water|hfyi9cewKe4|Lado B de Dani California","Whatever We Want|Phl5zMEDbUo|Lado B de Dani California","Joe|SPQm_g4UvZs|Lado B de Desecration Smile e Hump de Bump","Save This Lady|cL3UsX45PW4|Lado B de Desecration Smile e Hump de Bump"]},
@@ -805,7 +833,7 @@ document.addEventListener("click", e=>{
 const USE_DEEZER = true;
 const DZ = {"cover":{"rhcp":"7c8977715dac9ab9748fa72630cab257","fs":"9e7edb5bd29d54091b97da7204157562","umpp":"f329af1d3323c5b2d1d7cd5f23684aff","mm":"aa55b970a5118755fd3c013422cb04c6","bssm":"5d7af03204d679ef877b9033d279d8bd","ohm":"9cc1d61dba0176e55e407c1bfe6dde0f","cal":"5e61e8290a4d1d64ca58920656c9602d","btw":"49b073f55550d41055e02c493f9a7d39","sa":"a3a4028b1192c50d82a579439cbfc4af","iwy":"658b79cadf674bbab714b17ae7112a46","tg":"2d7eaff95342162e1e346dc8407be5d6","ul":"e68b2fbc27e04a5b936de68725955c47","rdc":"9064e4169639f1e8f901a9d5e0ef5029","gh":"e3f1bee87b1d5d1313641762f375a3fb"},"tracks":{"rhcp":[3098888,3098889,3098890,3098891,3098892,3098893,3098894,3098895,3098896,3098897,3098898],"fs":[3098937,3098938,3098939,3098940,3098941,3098942,3098943,3098944,3098945,3098946,3098947,3098948,3098949,3098950],"umpp":[118996232,118996234,118996236,118996238,118996240,118996242,118996244,118996246,118996248,118996250,118996252,118996254],"mm":[3098918,3098919,3098920,3098921,3098922,3098923,3098924,3098925,3098926,3098927,3098928,3098929,3098930],"bssm":[725788,725794,725800,725807,725813,725819,725824,725831,725837,725845,725850,725859,725866,725873,725882,725895,725897],"ohm":[775221,775232,775243,775251,775258,775260,775271,775281,775286,775295,775302,775310,775321],"cal":[774239,774246,774253,774261,774269,774278,774282,774287,774294,774301,774309,774316,774322,774329,774336],"btw":[782016,782023,782030,782036,782044,782053,782060,782065,782071,782076,782084,782092,782099,782102,782106,782117],"sa":[680516,680518,680520,680522,680524,680525,680528,680529,680532,680534,680536,680537,680538,680539,680540,680542,680544,680546,680548,680550,680552,680555,680557,680559,680560,0,0,0],"iwy":[14500369,14500370,14500371,14500372,14500373,14500374,14500375,14500376,14500377,14500378,14500379,14500380,14500381,14500382],"tg":[126534871,126534873,126534875,126534877,126534879,126534881,126534883,126534885,126534887,126534889,126534891,126534893,126534895],"ul":[1683706687,1683706697,1683706707,1683706717,1683706727,1683706737,1683706747,1683706757,1683706767,1683706777,1683706787,1683706797,1683706807,1683706817,1683706827,1683706837,1683706847],"rdc":[1928560177,1928560187,1928560197,1928560207,1928560217,1928560227,1928560237,1928560247,1928560257,1928560267,1928560277,1928560287,1928560297,1928560307,1928560317,1928560327,1928560337]},"extra":{"x-rhcp-1":3098903,"x-fs-1":3098954,"x-mm-2":3098931,"x-mm-3":3098934,"x-mm-4":3115381,"x-mm-5":3098936,"x-bssm-1":725911,"x-bssm-2":725904,"x-bssm-4":26286921,"x-bssm-6":785207,"x-ohm-1":4217486,"x-ohm-2":725549,"x-ohm-3":725554,"x-ohm-4":725560,"x-cal-5":725325,"x-cal-7":725331,"x-btw-2":26286901,"x-btw-7":26286911,"x-btw-10":726034,"x-btw-11":726042,"x-gh-1":785288,"x-gh-2":785296,"x-sa-1":3912669,"x-sa-2":3912668,"x-sa-3":3912708,"x-sa-4":3912709,"x-sa-5":3912605,"x-sa-6":3912606,"x-sa-7":3912604,"x-iwy-1":50331191,"x-iwy-2":50331201,"x-iwy-3":56720231,"x-iwy-4":56720241,"x-iwy-5":60683781,"x-iwy-6":60683782,"x-iwy-7":61930200,"x-iwy-8":61930199,"x-iwy-9":63267162,"x-iwy-10":63267163,"x-iwy-11":64398771,"x-iwy-12":69369980,"x-iwy-13":69369981,"x-iwy-14":69369982,"x-iwy-15":69369983,"x-iwy-16":69369979,"x-iwy-17":69369978,"x-ul-1":1765477677,"x-out-3":1230102172,"x-out-4":26286931,"x-out-5":26286941,"x-out-6":26286951}};
 /* capas próprias dos lados B (arquivos do site); os demais vêm do Deezer */
-const EXTRA_COVER = {"x-iwy": "assets/capas/lado-b-iwy.webp", "x-bssm": "assets/capas/lado-b-bssm.webp", "x-btw": "assets/capas/lado-b-btw.webp", "x-cal": "assets/capas/lado-b-cal.webp", "x-mm": "assets/capas/lado-b-mm.webp", "x-ohm": "assets/capas/lado-b-ohm.webp", "x-ola": "assets/capas/lado-b-ola.webp", "x-sa": "assets/capas/lado-b-sa.webp", "x-tg": "assets/capas/lado-b-tg.webp", "x-ul": "assets/capas/lado-b-ul.webp", "x-umpp": "assets/capas/lado-b-umpp.webp", "x-out": "assets/capas/lado-b-out.webp"};
+const EXTRA_COVER = {"x-iwy": "assets/capas/lado-b-iwy.webp", "x-bssm": "assets/capas/lado-b-bssm.webp", "x-btw": "assets/capas/lado-b-btw.webp", "x-cal": "assets/capas/lado-b-cal.webp", "x-mm": "assets/capas/lado-b-mm.webp", "x-ohm": "assets/capas/lado-b-ohm.webp", "x-ola": "assets/capas/lado-b-ola.webp", "x-sa": "assets/capas/lado-b-sa.webp", "x-tg": "assets/capas/lado-b-tg.webp", "x-ul": "assets/capas/lado-b-ul.webp", "x-umpp": "assets/capas/lado-b-umpp.webp", "x-out": "assets/capas/lado-b-out.webp", "x-fs": "assets/capas/lado-b-fs.webp"};
 function coverUrl(a, size){
   if(a.kind==="extra" && EXTRA_COVER[a.id]) return EXTRA_COVER[a.id];
   if(!USE_DEEZER) return null;
@@ -1012,7 +1040,7 @@ const PHOTOS = [
  ["im-with-you-brasil","Clima de I'm with You","I'm with You days","Época de I'm with You"],
  ["rhcp-cake","Até o bolo de aniversário","Even the birthday cake","Hasta el pastel de cumpleaños"]
 ];
-const SOCIAL = [["Reddit","u/mateuspapini","https://www.reddit.com/user/mateuspapini/","reddit"],["X (Twitter)","@MateusPapini","https://x.com/MateusPapini","x"],["Instagram","@mateuspapini","https://www.instagram.com/mateuspapini/","instagram"]];
+const SOCIAL = [["Reddit","u/mateuspapini","https://www.reddit.com/user/mateuspapini/","reddit","#FF4500"],["X (Twitter)","@MateusPapini","https://x.com/MateusPapini","x","var(--fg)"],["Instagram","@mateuspapini","https://www.instagram.com/mateuspapini/","instagram","#E4405F"]];
 function st(k){ return (STORY[LANG]||STORY.pt)[k]; }
 function capOf(i){ return PHOTOS[i][LANG==="en"?2:LANG==="es"?3:1]; }
 function ytCard(id, kind, cap, credit){
@@ -1030,7 +1058,7 @@ function storyHTML(){
         <p class="lead">${esc(p[0])}</p><p>${esc(p[1])}</p><p>${esc(p[2])}</p>
         <p class="viva">${esc(p[3])}</p><p class="motto">${esc(p[4])}</p>
         <div class="sign">— ${esc(st("sign"))}</div>
-        <div class="social"><span class="eyebrow">${esc(st("follow"))}</span><div class="social-links">${SOCIAL.map(s=>`<a href="${s[2]}" target="_blank" rel="noopener me" aria-label="${esc(s[0])}: ${esc(s[1])}"><span class="ico"><img src="assets/icons/${s[3]}.png" alt=""></span><span>${esc(s[1])}</span></a>`).join("")}</div></div>
+        <div class="social"><span class="eyebrow">${esc(st("follow"))}</span><div class="social-links">${SOCIAL.map((s,i)=>`<a class="soc" data-i="${i}" href="${s[2]}" target="_blank" rel="noopener me" title="${esc(s[0])}: ${esc(s[1])}" aria-label="${esc(s[0])}: ${esc(s[1])}" style="--brand:${s[4]}"><span class="soc-b"><span class="soc-sw"><img src="assets/icons/${s[3]}.png" alt=""></span><span class="soc-sw soc-arrow" aria-hidden="true">↗</span></span><span class="soc-h">${esc(s[1])}</span></a>`).join("")}</div></div>
       </div>
       ${ytCard("LszJipHan_4","short",st("v2"),"")}
     </div>
@@ -1040,6 +1068,17 @@ function storyHTML(){
     <div class="gallery">${PHOTOS.map((ph,i)=>`<button class="ph" data-ph="${i}" aria-label="${esc(capOf(i))}"><img src="assets/fotos/${ph[0]}.webp" alt="${esc(capOf(i))}" loading="lazy"><span>${esc(capOf(i))}</span></button>`).join("")}</div>
   </section>`;
 }
+/* redes sociais: brilho nos vizinhos do botão ativo */
+function socNear(a){
+  const box = a && a.closest(".social-links"); if(!box) return;
+  const list = [...box.querySelectorAll(".soc")], i = list.indexOf(a), brand = getComputedStyle(a).getPropertyValue("--brand");
+  list.forEach((el,j)=>{ el.classList.toggle("near-l", j===i-1); el.classList.toggle("near-r", j===i+1); el.style.setProperty("--near", brand); });
+}
+function socClear(box){ if(box) box.querySelectorAll(".soc").forEach(el=>el.classList.remove("near-l","near-r")); }
+document.addEventListener("mouseover", e=>{ const a=e.target.closest(".soc"); if(a) socNear(a); });
+document.addEventListener("mouseout", e=>{ const box=e.target.closest(".social-links"); if(box && !box.contains(e.relatedTarget)) socClear(box); });
+document.addEventListener("focusin", e=>{ const a=e.target.closest(".soc"); if(a) socNear(a); });
+document.addEventListener("focusout", e=>{ const box=e.target.closest(".social-links"); if(box && !box.contains(e.relatedTarget)) socClear(box); });
 /* vídeos: no site final o player abre na própria página; aqui, abre no YouTube */
 document.addEventListener("click", e=>{
   const a = e.target.closest("a[data-yt]"); if(!a || !EMBED_VIDEOS) return;
@@ -1180,13 +1219,17 @@ function renderAlbumPage(id){
   if(a.cover) paletteFromCover(a.cover).then(pal=>{ if(current==="album" && openId===id) applyCoverPalette(root, a, pal); });
 }
 
+/* botão com troca de letras em cascata */
+function glowLabel(el, text){
+  el.setAttribute("aria-label", text);
+  el.classList.add("glow");
+  el.innerHTML = `<span class="gl" aria-hidden="true">${[...text].map((ch,i)=>{ const c = ch===" " ? "&nbsp;" : esc(ch); return `<span class="gl-c" style="--d:${i*34}ms"><span>${c}</span><span>${c}</span></span>`; }).join("")}</span>`;
+}
 function applyChrome(){
   document.documentElement.lang = LANG==="pt"?"pt-BR":LANG;
   document.title = t("title");
   document.getElementById("brand").innerHTML = t("brand");
-  document.getElementById("nav-albums").textContent = t("nav_albums");
-  document.getElementById("nav-songs").textContent = t("nav_songs");
-  document.getElementById("nav-mine").textContent = t("nav_mine");
+  [["nav-home","nav_home"],["nav-albums","nav_albums"],["nav-songs","nav_songs"],["nav-mine","nav_mine"]].forEach(([id,k])=>glowLabel(document.getElementById(id), t(k)));
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===LANG?"true":"false"));
   document.getElementById("footer").innerHTML = `<p>${t("footer")}${USE_DEEZER?" "+t("dz_credit"):""}</p><a class="mapa" href="https://mapasolucoesdigitais.com.br/" target="_blank" rel="noopener" aria-label="${esc(t("built"))} MAPA Soluções Digitais"><span>${esc(t("built"))}</span><img src="${MAPA_LOGO}" alt="MAPA Soluções Digitais"></a>`;
 }
@@ -1209,15 +1252,16 @@ function renderHome(){
       </div>
       <div class="hero-logo"><img src="assets/img/logo-chili-peppers-battle.webp" alt="Chili Peppers Battle · Fan site" width="1448" height="1086"></div>
     </div>
-    <div class="modes">
-      <button class="mode" data-go="albums"><div class="eyebrow">${esc(t("m_alb_eb"))}</div><h3>${esc(t("m_alb_h"))}</h3><p>${esc(t("m_alb_p"))}</p><span class="go">${esc(t("start"))}</span></button>
-      <button class="mode" data-go="songs"><div class="eyebrow">${esc(t("m_song_eb"))}</div><h3>${esc(t("m_song_h"))}</h3><p>${esc(t("m_song_p"))}</p><span class="go">${esc(t("start"))}</span></button>
+    <div class="banners">
+      <button class="banner" data-go="albums" aria-label="${esc(t("m_alb_h"))}: ${esc(t("m_alb_p"))}"><img src="assets/banners/albuns-${LANG}.webp" alt="" width="1600" height="580"></button>
+      <button class="banner" data-go="songs" aria-label="${esc(t("m_song_h"))}: ${esc(t("m_song_p"))}"><img src="assets/banners/musicas-${LANG}.webp" alt="" width="1600" height="592"></button>
     </div>
     <div class="section-title"><h2>${esc(t("disco_h"))}</h2><span class="eyebrow">${esc(t("disco_eb"))}</span></div>
     <div class="grid">${ALBUMS.map(a=>`<button class="album-mini click" data-open="${a.id}" aria-label="${esc(t("open_album"))}: ${esc(a.t)}">${tile(a)}<span class="name">${esc(a.t)}</span><span class="meta">${a.y} · ${esc(t("tracks",a.tr.length))}</span></button>`).join("")}</div>
     <div class="section-title"><h2>${esc(t("extras_h"))}</h2><span class="eyebrow">${esc(t("extras_eb"))}</span></div>
     <div class="grid">${EXTRAS.map(x=>`<button class="album-mini click" data-open="${x.id}" aria-label="${esc(t("open_album"))}: ${esc(groupName(x))}">${tile(x)}<span class="name">${esc(x.par && !x.t ? x.pname : groupName(x))}</span><span class="meta">${esc(t("tracks",x.items.length))}${x.par?" · "+esc(t("bside")):""}</span></button>`).join("")}</div>
     ${USE_DEEZER?"":`<p class="note" style="margin-top:28px">${esc(t("proto"))}</p>`}
+    ${storyHTML()}
     <div class="support" id="apoie">
       <div class="intro"><div class="eyebrow">${esc(t("sup_eb"))}</div><h2>${esc(t("sup_h"))}</h2><p>${esc(t("sup_p"))}</p></div>
       <div class="give">
@@ -1237,8 +1281,7 @@ function renderHome(){
         <div class="pix">${esc(t("pix_key"))} <span class="pix-key">${PIX_KEY}</span></div>
         <div class="give-actions"><button class="btn solid" id="pix-code">${esc(t("pix_code_btn"))}</button><button class="btn" id="pix-copy">${esc(t("pix_key_btn"))}</button></div>
       </div>
-    </div>
-    ${storyHTML()}`;
+    </div>`;
   document.getElementById("pix-copy").onclick = ()=>copyPlain(PIX_KEY, t("t_pix_key"));
   document.getElementById("pix-code").onclick = ()=>copyPlain(PIX_CODE, t("t_pix_code"));
 }
