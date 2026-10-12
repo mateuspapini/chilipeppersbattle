@@ -700,7 +700,7 @@ const EXTRAS = [
  {id:"x-iwy", t:"I'm Beside You", y:2011, par:"iwy", tr:["Strange Man|DmPPONFRla4|","Long Progression|XBtSHoflrVY|","Magpies on Fire|Odw2fQOQBFc|","Victorian Machinery|o-4Fo-gJnXU|","Never Is a Long Time|pxAqxI5R6RA|","Love of Your Life|g4LFjWlcoF8|","Hometown Gypsy|chVLUCdK_zY|","The Sunset Sleeps|KUlSJGgTulY|","Pink as Floyd|bcP-nC0lWTc|","Your Eyes Girl|NI6OHk-docQ|","In Love, Dying|2uhTHpf0c9E|","This Is the Kitt||","Brave from Afar|_Mx82hTic90|","Catch My Death|tPvA1Xhp1Jk|","How It Ends|6K02Xu9P9wo|","Open/Close|VwWV62EfYkU|","Hanalei|UGVzkSg0ZV0|","Renaissance|Vr6uDiLyI9s|Inédita, citada pelo Josh e tocada ao vivo"]},
  {id:"x-tg", y:2016, par:"tg", tr:["Kaly|djgSAtV-13M|Vazou","Outer Space|UvYiEj47Gwo|Vazou"]},
  {id:"x-ul", y:2022, par:"ul", tr:["Nerve Flip|hadG1wTbj3A|Bônus da edição japonesa"]},
- {id:"x-out", y:"—", c:["#455A3A","#EAD9A0"], p:4, g:"*", tr:["Set It Straight|xRsj3YjwGg0|Trecho no filme Tough Guys (1986), nunca lançada","Love Rollercoaster|CZfuqFWad2Q|Trilha de Beavis and Butt-Head Do America","Bulletproof|_QGtlOdnbBk|Ao vivo","Everybody Knows This Is Nowhere|VCjeTJu-tfY|Cover de Neil Young","I Get Around|Hz6ibuY_Ezw|Cover dos Beach Boys","Suffragette City|A81N61q1-x4|Cover de David Bowie","Tiny Dancer|AfvIvI8uDiY|Cover de Elton John","Dr. Funkenstein|3WoxJrD_Bdg|Cover do Parliament"]}
+ {id:"x-out", y:"—", c:["#455A3A","#EAD9A0"], p:4, g:"*", tr:["Set It Straight|xRsj3YjwGg0|Trecho no filme Tough Guys (1986), nunca lançada","Love Rollercoaster|CZfuqFWad2Q|Trilha de Beavis and Butt-Head Do America","Bulletproof|_QGtlOdnbBk|Ao vivo","Everybody Knows This Is Nowhere|VCjeTJu-tfY|Cover de Neil Young","I Get Around|Hz6ibuY_Ezw|Cover dos Beach Boys","Suffragette City|A81N61q1-x4|Cover de David Bowie","Tiny Dancer|PPJo6KC2-Ik|Cover de Elton John","Dr. Funkenstein|3WoxJrD_Bdg|Cover do Parliament"]}
 ];
 EXTRAS.forEach(x=>{
   x.kind="extra";
@@ -713,7 +713,7 @@ const SONGS = ALBUMS.flatMap(a=>a.tr.map((t,i)=>({id:a.id+"-"+(i+1), t, a:a.id, 
   .concat(EXTRAS.flatMap(x=>x.items.map((s,i)=>({id:x.id+"-"+(i+1), t:s.t, a:x.id, n:i+1, yt:s.yt, note:s.note}))));
 const SG = Object.fromEntries(SONGS.map(s=>[s.id,s]));
 /* faixas de estúdio que não estão no Deezer: trecho pelo YouTube */
-Object.assign(SG["sa-26"],{yt:"yqaxwen5Kj0"}); Object.assign(SG["sa-27"],{yt:"Vka1W1d7G9A"}); Object.assign(SG["sa-28"],{yt:"44S9JcqkioY"});
+Object.assign(SG["sa-26"],{yt:"yqaxwen5Kj0"}); Object.assign(SG["sa-27"],{yt:"Vka1W1d7G9A"}); Object.assign(SG["sa-28"],{yt:"44S9JcqkioY"}); Object.assign(SG["x-out-7"],{ys:23});
 const GUITAR = ["Jack Sherman","Hillel Slovak","John Frusciante","Dave Navarro","Josh Klinghoffer"];
 
 const esc = s => String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -899,7 +899,7 @@ async function togglePreview(id, btn){
 document.addEventListener("click", e=>{
   const b = e.target.closest(".pv"); if(!b) return;
   e.preventDefault(); e.stopPropagation();
-  if(b.dataset.ytp) playYT(b.dataset.ytp, b.dataset.title||"", b); else togglePreview(b.dataset.dz, b);
+  if(b.dataset.ytp) playYT(b.dataset.ytp, b.dataset.title||"", b, b.dataset.start); else togglePreview(b.dataset.dz, b);
 }, true);
 /* se o botão da música tocando sumir da tela (troca de duelo ou de página), a prévia para */
 new MutationObserver(()=>{
@@ -911,7 +911,7 @@ new MutationObserver(()=>{
 function pvBtn(song){
   const id = dzTrack(song);
   if(id) return `<button class="pv" data-dz="${id}" aria-label="${esc(t("pv_play"))}" title="${esc(t("pv_play"))}"><span></span></button>`;
-  if(EMBED_VIDEOS && song.yt) return `<button class="pv" data-ytp="${esc(song.yt)}" data-title="${esc(song.t)}" aria-label="${esc(t("pv_play_yt"))}" title="${esc(t("pv_play_yt"))}"><span></span></button>`;
+  if(EMBED_VIDEOS && song.yt) return `<button class="pv" data-ytp="${esc(song.yt)}"${song.ys!=null?` data-start="${song.ys}"`:""} data-title="${esc(song.t)}" aria-label="${esc(t("pv_play_yt"))}" title="${esc(t("pv_play_yt"))}"><span></span></button>`;
   return "";
 }
 
@@ -962,7 +962,7 @@ function closeYT(){
   try{ if(ytPlayer && ytPlayer.stopVideo) ytPlayer.stopVideo(); }catch(e){}
   const c = document.getElementById("ytmini"); if(c) c.hidden = true;
 }
-async function playYT(id, title, btn){
+async function playYT(id, title, btn, start){
   if(ytPlaying===id){ pauseYT(); return; }
   stopPreview();
   btn.classList.add("loading");
@@ -976,7 +976,7 @@ async function playYT(id, title, btn){
     let d = 0;
     for(let i=0;i<40;i++){ const vd = ytPlayer.getVideoData ? ytPlayer.getVideoData() : null; d = ytPlayer.getDuration ? ytPlayer.getDuration() : 0; if(d>0 && (!vd || vd.video_id===id)) break; await new Promise(r=>setTimeout(r,100)); }
     if(ytPlaying!==id) return;
-    const from = d>90 ? Math.floor(d*0.3) : 0;
+    const from = start!=null && start!=="" ? +start : (d>90 ? Math.floor(d*0.3) : 0);
     ytPlayer.seekTo(from, true); ytPlayer.playVideo();
     btn.classList.remove("loading");
     clearInterval(ytTimer);
